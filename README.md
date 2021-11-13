@@ -1,4 +1,4 @@
-# Termux:GUI C7C++ Bindings
+# Termux:GUI C/C++ Bindings
 A C/C++ library to interact with the Termux:GUI plugin.
 
 
