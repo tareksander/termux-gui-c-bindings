@@ -30,8 +30,11 @@ namespace tg {
         std::string type;
         std::string aid;
         int id;
+        bool finishing;
         
-        Event(std::string& type);
+        
+        
+        
     };
     
     
@@ -43,8 +46,10 @@ namespace tg {
         Connection(const Connection&);
         Connection& operator=(const Connection&);
     public:
-        /// Creates a connection to the plugin.
-        /// Throws a std::runtime_error if the connection fails.
+        /**
+         * Creates a connection to the plugin.
+         * Throws a std::runtime_error if the connection fails.
+         */
         Connection();
         
         
@@ -52,14 +57,29 @@ namespace tg {
         ~Connection();
         
         /**
-        Brings Termux to the foreground by forking and calling \p am \p start .
-        */
+         * Brings Termux to the foreground by forking and calling \p am \p start .
+         */
         void totermux();
         
         
         /** Sends a Toast. Set \p longer to true if you want to display the text for longer. */
         void toast(std::string& text, bool longer);
+        
+        /** Blocks until an Event is available and returns it. */
+        Event event();
     };
+    
+    
+    
+    class Activity {
+    private:
+        
+    public:
+        
+        
+        
+    };
+    
     
     
 }

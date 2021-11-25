@@ -5,7 +5,7 @@ version = 0.1.3
 
 .PHONY: clean install build uninstall debs cleandebs
 
-OBJECTS = src/connection.o src/bindsocket.o
+OBJECTS = src/connection.o src/bindsocket.o src/activity.o
 
 build: termuxgui.a libtermuxgui.so
 
@@ -51,7 +51,7 @@ termux-gui-c_${version}_%.deb:
 	${MAKE} clean
 	sed 's/VERSION/${version}/g' manifests/${call arch,$@}.json > manifests/current.json
 	echo "Architecture:" ${call arch,$@}
-	env CPPFLAGS="-target ${call arch,$@}-linux-android24 -D${call arch,$@}" LDFLAGS="-target ${call arch,$@}-linux-android24" CC="$(NDK)/toolchains/llvm/prebuilt/$(HOST_TAG)/bin/clang" CXX="$(NDK)/toolchains/llvm/prebuilt/$(HOST_TAG)/bin/clang++" AR="$(NDK)/toolchains/llvm/prebuilt/$(HOST_TAG)/bin/llvm-ar" $(MAKE) libtermuxgui.so
+	env CPPFLAGS="-target ${call arch,$@}-linux-android24 -D${call arch,$@}" LDFLAGS="-target ${call arch,$@}-linux-android24 -static-libstdc++" CC="$(NDK)/toolchains/llvm/prebuilt/$(HOST_TAG)/bin/clang" CXX="$(NDK)/toolchains/llvm/prebuilt/$(HOST_TAG)/bin/clang++" AR="$(NDK)/toolchains/llvm/prebuilt/$(HOST_TAG)/bin/llvm-ar" $(MAKE) libtermuxgui.so
 	termux-create-package manifests/current.json
 
 

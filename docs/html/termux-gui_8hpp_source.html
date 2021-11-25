@@ -100,39 +100,58 @@ $(function() {
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::string type;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        std::string aid;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classtg_1_1Event.html">Event</a>(std::string&amp; type);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classtg_1_1Connection.html">   39</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classtg_1_1Connection.html">Connection</a> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">int</span> mainfd = 0;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">int</span> eventfd = 0;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classtg_1_1Connection.html#a7d14b5be95aec8ddeef71a90822ef1ef">Connection</a>(<span class="keyword">const</span> <a class="code" href="classtg_1_1Connection.html">Connection</a>&amp;);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classtg_1_1Connection.html">Connection</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classtg_1_1Connection.html">Connection</a>&amp;);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classtg_1_1Connection.html#a7d14b5be95aec8ddeef71a90822ef1ef">Connection</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="classtg_1_1Connection.html#a06239f65dc5c1102a9fb7ca525b0e80b">~Connection</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classtg_1_1Connection.html#a788795b5e486a0db075aece4f05ceb00">totermux</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">bool</span> finishing;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    };</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classtg_1_1Connection.html">   42</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classtg_1_1Connection.html">Connection</a> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">int</span> mainfd = 0;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">int</span> eventfd = 0;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classtg_1_1Connection.html#a7d14b5be95aec8ddeef71a90822ef1ef">Connection</a>(<span class="keyword">const</span> <a class="code" href="classtg_1_1Connection.html">Connection</a>&amp;);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classtg_1_1Connection.html">Connection</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classtg_1_1Connection.html">Connection</a>&amp;);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classtg_1_1Connection.html#a7d14b5be95aec8ddeef71a90822ef1ef">Connection</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="classtg_1_1Connection.html#a06239f65dc5c1102a9fb7ca525b0e80b">~Connection</a>();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classtg_1_1Connection.html#a5b0062a0daa38d61e5d8a20cbfcdd2cf">toast</a>(std::string&amp; text, <span class="keywordtype">bool</span> longer);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    };</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclasstg_1_1Connection_html"><div class="ttname"><a href="classtg_1_1Connection.html">tg::Connection</a></div><div class="ttdef"><b>Definition:</b> termux-gui.hpp:39</div></div>
-<div class="ttc" id="aclasstg_1_1Connection_html_a06239f65dc5c1102a9fb7ca525b0e80b"><div class="ttname"><a href="classtg_1_1Connection.html#a06239f65dc5c1102a9fb7ca525b0e80b">tg::Connection::~Connection</a></div><div class="ttdeci">~Connection()</div><div class="ttdef"><b>Definition:</b> connection.cpp:374</div></div>
-<div class="ttc" id="aclasstg_1_1Connection_html_a5b0062a0daa38d61e5d8a20cbfcdd2cf"><div class="ttname"><a href="classtg_1_1Connection.html#a5b0062a0daa38d61e5d8a20cbfcdd2cf">tg::Connection::toast</a></div><div class="ttdeci">void toast(std::string &amp;text, bool longer)</div><div class="ttdef"><b>Definition:</b> connection.cpp:387</div></div>
-<div class="ttc" id="aclasstg_1_1Connection_html_a788795b5e486a0db075aece4f05ceb00"><div class="ttname"><a href="classtg_1_1Connection.html#a788795b5e486a0db075aece4f05ceb00">tg::Connection::totermux</a></div><div class="ttdeci">void totermux()</div><div class="ttdef"><b>Definition:</b> connection.cpp:383</div></div>
-<div class="ttc" id="aclasstg_1_1Connection_html_a7d14b5be95aec8ddeef71a90822ef1ef"><div class="ttname"><a href="classtg_1_1Connection.html#a7d14b5be95aec8ddeef71a90822ef1ef">tg::Connection::Connection</a></div><div class="ttdeci">Connection()</div><div class="ttdef"><b>Definition:</b> connection.cpp:362</div></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classtg_1_1Connection.html#a788795b5e486a0db075aece4f05ceb00">totermux</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classtg_1_1Connection.html#a5b0062a0daa38d61e5d8a20cbfcdd2cf">toast</a>(std::string&amp; text, <span class="keywordtype">bool</span> longer);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="classtg_1_1Event.html">Event</a> <a class="code" href="classtg_1_1Connection.html#aaffbcec579792943c5b0013f837598b2">event</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    };</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classtg_1_1Activity.html">   74</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classtg_1_1Activity.html">Activity</a> {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    };</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclasstg_1_1Activity_html"><div class="ttname"><a href="classtg_1_1Activity.html">tg::Activity</a></div><div class="ttdef"><b>Definition:</b> termux-gui.hpp:74</div></div>
+<div class="ttc" id="aclasstg_1_1Connection_html"><div class="ttname"><a href="classtg_1_1Connection.html">tg::Connection</a></div><div class="ttdef"><b>Definition:</b> termux-gui.hpp:42</div></div>
+<div class="ttc" id="aclasstg_1_1Connection_html_a06239f65dc5c1102a9fb7ca525b0e80b"><div class="ttname"><a href="classtg_1_1Connection.html#a06239f65dc5c1102a9fb7ca525b0e80b">tg::Connection::~Connection</a></div><div class="ttdeci">~Connection()</div><div class="ttdef"><b>Definition:</b> connection.cpp:373</div></div>
+<div class="ttc" id="aclasstg_1_1Connection_html_a5b0062a0daa38d61e5d8a20cbfcdd2cf"><div class="ttname"><a href="classtg_1_1Connection.html#a5b0062a0daa38d61e5d8a20cbfcdd2cf">tg::Connection::toast</a></div><div class="ttdeci">void toast(std::string &amp;text, bool longer)</div><div class="ttdef"><b>Definition:</b> connection.cpp:386</div></div>
+<div class="ttc" id="aclasstg_1_1Connection_html_a788795b5e486a0db075aece4f05ceb00"><div class="ttname"><a href="classtg_1_1Connection.html#a788795b5e486a0db075aece4f05ceb00">tg::Connection::totermux</a></div><div class="ttdeci">void totermux()</div><div class="ttdef"><b>Definition:</b> connection.cpp:382</div></div>
+<div class="ttc" id="aclasstg_1_1Connection_html_a7d14b5be95aec8ddeef71a90822ef1ef"><div class="ttname"><a href="classtg_1_1Connection.html#a7d14b5be95aec8ddeef71a90822ef1ef">tg::Connection::Connection</a></div><div class="ttdeci">Connection()</div><div class="ttdef"><b>Definition:</b> connection.cpp:361</div></div>
+<div class="ttc" id="aclasstg_1_1Connection_html_aaffbcec579792943c5b0013f837598b2"><div class="ttname"><a href="classtg_1_1Connection.html#aaffbcec579792943c5b0013f837598b2">tg::Connection::event</a></div><div class="ttdeci">Event event()</div><div class="ttdef"><b>Definition:</b> connection.cpp:390</div></div>
 <div class="ttc" id="aclasstg_1_1Event_html"><div class="ttname"><a href="classtg_1_1Event.html">tg::Event</a></div><div class="ttdef"><b>Definition:</b> termux-gui.hpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

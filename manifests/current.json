@@ -3,7 +3,7 @@
     "version": "0.1.3",
     "homepage": "https://github.com/tareksander/termux-gui-c-bindings",
     "description": "A C/C++ library to interact with the Termux:GUI plugin.",
-    "arch": "arm",
+    "arch": "i686",
     "files" :{
       "src/termux-gui.hpp": "include/termux-gui.hpp",
       "src/termux-gui.h": "include/termux-gui.h",

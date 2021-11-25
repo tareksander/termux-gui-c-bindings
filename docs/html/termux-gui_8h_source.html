@@ -116,25 +116,36 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="termux-gui_8h.html#a52ce322709724aa16bd582d72dab7f24">   63</a></span>&#160;<span class="preprocessor">#define TG_ACTIVITY_DIALOG 1 </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="termux-gui_8h.html#a87960959bfa8fa24acf32a8012de3122">   64</a></span>&#160;<span class="preprocessor">#define TG_ACTIVITY_PIP (1&lt;&lt;1) </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="termux-gui_8h.html#a4cd0812d1eab72dbe1c57b427a278f01">   65</a></span>&#160;<span class="preprocessor">#define TG_ACTIVITY_LOCKSCREEN (1&lt;&lt;2) </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="termux-gui_8h.html#ac0a55c97b976b6e08c82319ec4ac7541">   66</a></span>&#160;<span class="preprocessor">#define TG_ACTIVITY_CANCELOUTSIDE (1&lt;&lt;3) </span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="termux-gui_8h.html#a4aee6f099d02e89a75c076a0a26ad2e1">   67</a></span>&#160;<span class="preprocessor">#define TG_ACTIVITY_OVERLAY (1&lt;&lt;4) </span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="termux-gui_8h.html#a611c79f6a2653b73c846d00353556d9a">tg_activity</a>(<span class="keywordtype">int</span> mainfd, <span class="keywordtype">int</span>* tid, <span class="keywordtype">int</span> flags);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="termux-gui_8h.html#a913658a252d8ef2bedb1108fde86a63a">tg_finish_activity</a>(<span class="keywordtype">int</span> mainfd, <span class="keywordtype">char</span>* aid);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="astructtg__event_html"><div class="ttname"><a href="structtg__event.html">tg_event</a></div><div class="ttdef"><b>Definition:</b> termux-gui.h:23</div></div>
 <div class="ttc" id="astructtg__event_html_a1538a476f4e3bcaa0b95077e7c1c29eb"><div class="ttname"><a href="structtg__event.html#a1538a476f4e3bcaa0b95077e7c1c29eb">tg_event::finishing</a></div><div class="ttdeci">bool finishing</div><div class="ttdoc">determines if the Activity is finishing. Is only guranteed to be accurate for TG_EVENT_DESTROY .</div><div class="ttdef"><b>Definition:</b> termux-gui.h:28</div></div>
 <div class="ttc" id="astructtg__event_html_a8a71b21559758801b2cd1c0467be6233"><div class="ttname"><a href="structtg__event.html#a8a71b21559758801b2cd1c0467be6233">tg_event::aid</a></div><div class="ttdeci">char * aid</div><div class="ttdoc">The Activity id as a string. If this field is valid, it has to be freed with free().</div><div class="ttdef"><b>Definition:</b> termux-gui.h:27</div></div>
-<div class="ttc" id="atermux-gui_8h_html_a4c73a6dec6919d181e83b0b4a6a6a736"><div class="ttname"><a href="termux-gui_8h.html#a4c73a6dec6919d181e83b0b4a6a6a736">tg_toast</a></div><div class="ttdeci">void tg_toast(int mainfd, const char *text, bool longer)</div><div class="ttdef"><b>Definition:</b> connection.cpp:318</div></div>
-<div class="ttc" id="atermux-gui_8h_html_a5ab622546928f01433182546c582efff"><div class="ttname"><a href="termux-gui_8h.html#a5ab622546928f01433182546c582efff">tg_totermux</a></div><div class="ttdeci">void tg_totermux()</div><div class="ttdef"><b>Definition:</b> connection.cpp:299</div></div>
-<div class="ttc" id="atermux-gui_8h_html_a85fc75e1e8eee3c11160ff7a42ed11aa"><div class="ttname"><a href="termux-gui_8h.html#a85fc75e1e8eee3c11160ff7a42ed11aa">tg_getevent</a></div><div class="ttdeci">tg_event tg_getevent(int eventfd)</div><div class="ttdef"><b>Definition:</b> connection.cpp:322</div></div>
+<div class="ttc" id="atermux-gui_8h_html_a4c73a6dec6919d181e83b0b4a6a6a736"><div class="ttname"><a href="termux-gui_8h.html#a4c73a6dec6919d181e83b0b4a6a6a736">tg_toast</a></div><div class="ttdeci">void tg_toast(int mainfd, const char *text, bool longer)</div><div class="ttdef"><b>Definition:</b> connection.cpp:317</div></div>
+<div class="ttc" id="atermux-gui_8h_html_a5ab622546928f01433182546c582efff"><div class="ttname"><a href="termux-gui_8h.html#a5ab622546928f01433182546c582efff">tg_totermux</a></div><div class="ttdeci">void tg_totermux()</div><div class="ttdef"><b>Definition:</b> connection.cpp:298</div></div>
+<div class="ttc" id="atermux-gui_8h_html_a611c79f6a2653b73c846d00353556d9a"><div class="ttname"><a href="termux-gui_8h.html#a611c79f6a2653b73c846d00353556d9a">tg_activity</a></div><div class="ttdeci">char * tg_activity(int mainfd, int *tid, int flags)</div><div class="ttdef"><b>Definition:</b> activity.cpp:29</div></div>
+<div class="ttc" id="atermux-gui_8h_html_a85fc75e1e8eee3c11160ff7a42ed11aa"><div class="ttname"><a href="termux-gui_8h.html#a85fc75e1e8eee3c11160ff7a42ed11aa">tg_getevent</a></div><div class="ttdeci">tg_event tg_getevent(int eventfd)</div><div class="ttdef"><b>Definition:</b> connection.cpp:321</div></div>
+<div class="ttc" id="atermux-gui_8h_html_a913658a252d8ef2bedb1108fde86a63a"><div class="ttname"><a href="termux-gui_8h.html#a913658a252d8ef2bedb1108fde86a63a">tg_finish_activity</a></div><div class="ttdeci">void tg_finish_activity(int mainfd, char *aid)</div><div class="ttdef"><b>Definition:</b> activity.cpp:61</div></div>
 <div class="ttc" id="atermux-gui_8h_html_a9a2fc3224a79a83c6cbcea43f6014bf0"><div class="ttname"><a href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0">tg_event_t</a></div><div class="ttdeci">tg_event_t</div><div class="ttdef"><b>Definition:</b> termux-gui.h:13</div></div>
 <div class="ttc" id="atermux-gui_8h_html_a9a2fc3224a79a83c6cbcea43f6014bf0a32b1729151e912bb8d0a5b2a6388a06c"><div class="ttname"><a href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0a32b1729151e912bb8d0a5b2a6388a06c">TG_EVENT_CREATE</a></div><div class="ttdeci">@ TG_EVENT_CREATE</div><div class="ttdoc">valid event parameters: aid</div><div class="ttdef"><b>Definition:</b> termux-gui.h:15</div></div>
 <div class="ttc" id="atermux-gui_8h_html_a9a2fc3224a79a83c6cbcea43f6014bf0a74aec451103efa01c0769ac732645700"><div class="ttname"><a href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0a74aec451103efa01c0769ac732645700">TG_EVENT_START</a></div><div class="ttdeci">@ TG_EVENT_START</div><div class="ttdoc">valid event parameters: aid</div><div class="ttdef"><b>Definition:</b> termux-gui.h:16</div></div>
@@ -143,7 +154,7 @@ $(function() {
 <div class="ttc" id="atermux-gui_8h_html_a9a2fc3224a79a83c6cbcea43f6014bf0abc08a35e239c3d29d7041befc98e9907"><div class="ttname"><a href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0abc08a35e239c3d29d7041befc98e9907">TG_EVENT_STOP</a></div><div class="ttdeci">@ TG_EVENT_STOP</div><div class="ttdoc">valid event parameters: aid , finishing</div><div class="ttdef"><b>Definition:</b> termux-gui.h:19</div></div>
 <div class="ttc" id="atermux-gui_8h_html_a9a2fc3224a79a83c6cbcea43f6014bf0abd7db63bc7d9dbf40c2a2dfc4e985f2b"><div class="ttname"><a href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0abd7db63bc7d9dbf40c2a2dfc4e985f2b">TG_EVENT_PAUSE</a></div><div class="ttdeci">@ TG_EVENT_PAUSE</div><div class="ttdoc">valid event parameters: aid , finishing</div><div class="ttdef"><b>Definition:</b> termux-gui.h:18</div></div>
 <div class="ttc" id="atermux-gui_8h_html_a9a2fc3224a79a83c6cbcea43f6014bf0afc854902ecf5e013308eed1016cad6d7"><div class="ttname"><a href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0afc854902ecf5e013308eed1016cad6d7">TG_EVENT_INVALID</a></div><div class="ttdeci">@ TG_EVENT_INVALID</div><div class="ttdoc">This marks that the event had an unsupported type.</div><div class="ttdef"><b>Definition:</b> termux-gui.h:14</div></div>
-<div class="ttc" id="atermux-gui_8h_html_ace342ba8c7cf7c39cb15126e23ca7c7c"><div class="ttname"><a href="termux-gui_8h.html#ace342ba8c7cf7c39cb15126e23ca7c7c">tg_connect</a></div><div class="ttdeci">int tg_connect(int *mainSocket, int *eventSocket)</div><div class="ttdef"><b>Definition:</b> connection.cpp:172</div></div>
+<div class="ttc" id="atermux-gui_8h_html_ace342ba8c7cf7c39cb15126e23ca7c7c"><div class="ttname"><a href="termux-gui_8h.html#ace342ba8c7cf7c39cb15126e23ca7c7c">tg_connect</a></div><div class="ttdeci">int tg_connect(int *mainSocket, int *eventSocket)</div><div class="ttdef"><b>Definition:</b> connection.cpp:171</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -5,10 +5,11 @@
 #include <sys/wait.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <string.h>
 
-
+// this is in C because there is some kind of error with bind in C++
 int bindsocket(int socket, struct sockaddr_un *adr) {
-    return bind(socket, (struct sockaddr *) adr, sizeof(struct sockaddr_un));
+    return bind(socket, (struct sockaddr *) adr, sizeof(sa_family_t) + strnlen(adr->sun_path+1 ,100) + 1);
 }
 
 

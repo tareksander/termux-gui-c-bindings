@@ -1,12 +1,9 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/un.h>
-#include <sys/mman.h>
 #include <sys/wait.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-
-
 
 #include <string.h>
 #include <errno.h>
@@ -15,8 +12,8 @@
 
 #include <random>
 #include <string>
-#include <vector>
 #include <stdexcept>
+#include <iostream>
 
 
 #include "json.hpp"
@@ -35,9 +32,8 @@ static const char SOCKNAME_CHARS[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnop
 
 
 static struct sockaddr_un generateSocketName() {
-    std::default_random_engine gen;
-    gen.seed(getpid());
-    std::uniform_int_distribution<int> randchar(0,sizeof(SOCKNAME_CHARS)-1); // -1 for the null byte at the end
+    static default_random_engine gen = default_random_engine(getpid());
+    uniform_int_distribution<int> randchar(0,sizeof(SOCKNAME_CHARS)-1); // -1 for the null byte at the end
     string name;
     for (int i = 0;i<SOCKNAME_LENGTH;i++) {
         name += SOCKNAME_CHARS[randchar(gen)];
@@ -50,7 +46,6 @@ static struct sockaddr_un generateSocketName() {
 static int callAm(char* const mainname, char* const eventname) {
     pid_t ret = fork();
     if (ret == 0) {
-        // if am doesn't not work, it's probably because it can't report to stdout
         fclose(stdout);
         fclose(stderr);
         const char* const args[] = {
@@ -59,8 +54,10 @@ static int callAm(char* const mainname, char* const eventname) {
             "-n",
             "com.termux.gui/.GUIReceiver",
             "--es",
+            "mainSocket",
             mainname,
             "--es",
+            "eventSocket",
             eventname,
             NULL
         };
@@ -115,7 +112,7 @@ int receiveMessage(int fd, char* buff, int buffsize) {
     int togo = 4;
     while (togo > 0) {
         size_t ret = read(fd, const_cast<char*>(buffp), togo);
-        if (ret != 0) {
+        if (ret == -1) {
             return 1;
         }
         togo -= ret;
@@ -129,7 +126,7 @@ int receiveMessage(int fd, char* buff, int buffsize) {
     buffp = buff;
     while (togo > 0) {
         size_t ret = read(fd, const_cast<char*>(buffp), togo);
-        if (ret != 0) {
+        if (ret == -1) {
             return 1;
         }
         togo -= ret;
@@ -144,11 +141,12 @@ json receiveMessageJSON(int fd) {
     int ret = receiveMessage(fd, buff, sizeof(buff));
     switch (ret) {
         case 0:
+            //cout << json::parse(buff) << "\n";
             return json::parse(buff);
         case 2:
-            throw runtime_error("Message buffer too small");
+            throw runtime_error(string("Message buffer too small: ")+strerror(errno));
         default:
-            throw runtime_error("Could not receive Message");
+            throw runtime_error(string("Could not receive Message")+strerror(errno));
     }
 }
 
@@ -166,9 +164,10 @@ json constructMessage(std::string method, json params) {
     return msg;
 }
 
-int bindsocket(int socket, struct sockaddr_un *adr);
 
 extern "C" {
+    int bindsocket(int socket, struct sockaddr_un *adr);
+    
     int tg_connect(int* mainSocket, int* eventSocket) {
         // create 2 Unix sockets
         int mainfd = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -282,7 +281,7 @@ extern "C" {
         }
         // and discard the response
         uint8_t b;
-        while ((ret = write(*mainSocket, &b, 1)) == 0) {}
+        while ((ret = read(*mainSocket, &b, 1)) == 0) {}
         if (ret == -1) {
             close(*mainSocket);
             close(*eventSocket);
@@ -388,6 +387,35 @@ namespace tg {
         tg_toast(this->mainfd, text.c_str(), longer);
     }
     
+    Event Connection::event() {
+        json ev = receiveMessageJSON(eventfd);
+        Event tev;
+        tev.type = ev["type"].get<string>();
+        auto type = ev["type"];
+        if (type == Event::CREATE) {
+            tev.aid = ev["value"]["aid"].get<string>();
+        }
+        if (type == Event::START) {
+            tev.aid = ev["value"]["aid"].get<string>();
+        }
+        if (type == Event::RESUME) {
+            tev.aid = ev["value"]["aid"].get<string>();
+        }
+        if (type == Event::PAUSE) {
+            tev.aid = ev["value"]["aid"].get<string>();
+            tev.finishing = ev["value"]["finishing"].get<bool>();
+        }
+        if (type == Event::STOP) {
+            tev.aid = ev["value"]["aid"].get<string>();
+            tev.finishing = ev["value"]["finishing"].get<bool>();
+        }
+        if (type == Event::DESTROY) {
+            tev.aid = ev["value"]["aid"].get<string>();
+            tev.finishing = ev["value"]["finishing"].get<bool>();
+        }
+        return tev;
+    }
+    
     
     const string Event::CREATE = "create";
     const string Event::START = "start";
@@ -396,9 +424,7 @@ namespace tg {
     const string Event::STOP = "stop";
     const string Event::DESTROY = "destroy";
     
-    Event::Event(std::string& type) {
-        this-> type = type;
-    }
+    
     
 }
 
