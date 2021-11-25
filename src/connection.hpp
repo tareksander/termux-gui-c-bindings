@@ -1,6 +1,8 @@
 #ifndef CONNECTION_HPP
 #define CONNECTION_HPP
 
+#include <string>
+
 #include "json.hpp"
 using json = nlohmann::json;
 
@@ -17,6 +19,8 @@ json receiveMessageJSON(int fd);
 
 json sendReceiveMessageJSON(int fd, json msg);
 
+
+json constructMessage(std::string method, json params);
 
 
 #endif

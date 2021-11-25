@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['object_5fiterator_715',['object_iterator',['../structnlohmann_1_1detail_1_1internal__iterator.html#a8cb0af3498061426c1d0a65ad6220408',1,'nlohmann::detail::internal_iterator']]]
+  ['number_5fbuffer_740',['number_buffer',['../classnlohmann_1_1detail_1_1serializer.html#a1a9d8b344a6cb47728a3519693ec03d1',1,'nlohmann::detail::serializer']]]
 ];

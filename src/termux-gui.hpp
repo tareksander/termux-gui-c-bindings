@@ -4,6 +4,8 @@
 #define __TERMUX_GUI_HPP__
 
 
+#include <string>
+
 // include nlohmann-json if available
 
 #if __has_include(<nlohmann/json.hpp>)
@@ -14,7 +16,25 @@
 #include "json.hpp"
 #endif
 
-namespace termuxgui {
+namespace tg {
+    
+    class Event {
+    public:
+        static const std::string CREATE;
+        static const std::string START;
+        static const std::string RESUME;
+        static const std::string PAUSE;
+        static const std::string STOP;
+        static const std::string DESTROY;
+        
+        std::string type;
+        std::string aid;
+        int id;
+        
+        Event(std::string& type);
+    };
+    
+    
     /** This class represents a connection to the plugin. The connection is automatically closed when the object is destroyed. */
     class Connection {
     private:
@@ -31,8 +51,14 @@ namespace termuxgui {
         /** Closes the connection. */
         ~Connection();
         
+        /**
+        Brings Termux to the foreground by forking and calling \p am \p start .
+        */
+        void totermux();
         
         
+        /** Sends a Toast. Set \p longer to true if you want to display the text for longer. */
+        void toast(std::string& text, bool longer);
     };
     
     

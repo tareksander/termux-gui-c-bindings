@@ -81,6 +81,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a65398d6ce53baca4d838728b66de1ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af551d0f8a422d03b60bffee940690b18"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtermuxgui_1_1Connection.html#af551d0f8a422d03b60bffee940690b18">~Connection</a> ()</td></tr>
 <tr class="separator:af551d0f8a422d03b60bffee940690b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bf271c95037236231d12578ddb61a81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtermuxgui_1_1Connection.html#a8bf271c95037236231d12578ddb61a81">totermux</a> ()</td></tr>
+<tr class="separator:a8bf271c95037236231d12578ddb61a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa108916ca54bde67b68439ca37f9b6bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtermuxgui_1_1Connection.html#aa108916ca54bde67b68439ca37f9b6bc">toast</a> (string &amp;text, bool longer)</td></tr>
+<tr class="separator:aa108916ca54bde67b68439ca37f9b6bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represents a connection to the plugin. The connection is automatically closed when the object is destroyed. </p>
@@ -118,6 +122,54 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Closes the connection. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa108916ca54bde67b68439ca37f9b6bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa108916ca54bde67b68439ca37f9b6bc">&#9670;&nbsp;</a></span>toast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void termuxgui::Connection::toast </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>longer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sends a Toast. Set <code>longer</code> to true if you want to display the text for longer. </p>
+
+</div>
+</div>
+<a id="a8bf271c95037236231d12578ddb61a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf271c95037236231d12578ddb61a81">&#9670;&nbsp;</a></span>totermux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void termuxgui::Connection::totermux </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brings Termux to the foreground by forking and calling <code>am</code> <code>start</code> . </p>
 
 </div>
 </div>

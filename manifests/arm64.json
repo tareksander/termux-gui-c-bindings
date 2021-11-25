@@ -1,0 +1,12 @@
+{
+    "name": "termux-gui-c",
+    "version": "VERSION",
+    "homepage": "https://github.com/tareksander/termux-gui-c-bindings",
+    "description": "A C/C++ library to interact with the Termux:GUI plugin.",
+    "arch": "aarch64",
+    "files" :{
+      "src/termux-gui.hpp": "include/termux-gui.hpp",
+      "src/termux-gui.h": "include/termux-gui.h",
+      "libtermuxgui.so": "lib/libtermuxgui.so"
+    }
+}

@@ -66,28 +66,89 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">termux-gui.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+</div>
 <p><a href="termux-gui_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtg__event.html">tg_event</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a9a2fc3224a79a83c6cbcea43f6014bf0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0">tg_event_t</a> { <br />
+&#160;&#160;<a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0afc854902ecf5e013308eed1016cad6d7">TG_EVENT_INVALID</a>
+, <a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0a32b1729151e912bb8d0a5b2a6388a06c">TG_EVENT_CREATE</a>
+, <a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0a74aec451103efa01c0769ac732645700">TG_EVENT_START</a>
+, <a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0ab5bd8594fba73c0338cfb81faf3577e7">TG_EVENT_RESUME</a>
+, <br />
+&#160;&#160;<a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0abd7db63bc7d9dbf40c2a2dfc4e985f2b">TG_EVENT_PAUSE</a>
+, <a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0abc08a35e239c3d29d7041befc98e9907">TG_EVENT_STOP</a>
+, <a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0a8c901bb8fb23def553e91ee7d5f2c87e">TG_EVENT_DESTROY</a>
+<br />
+ }</td></tr>
+<tr class="separator:a9a2fc3224a79a83c6cbcea43f6014bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:adfa871f998fb6bfbc3469fe8c4d3c1af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="termux-gui_8h.html#adfa871f998fb6bfbc3469fe8c4d3c1af">termuxgui_connect</a> (int *mainSocket, int *eventSocket)</td></tr>
-<tr class="separator:adfa871f998fb6bfbc3469fe8c4d3c1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace342ba8c7cf7c39cb15126e23ca7c7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="termux-gui_8h.html#ace342ba8c7cf7c39cb15126e23ca7c7c">tg_connect</a> (int *mainSocket, int *eventSocket)</td></tr>
+<tr class="separator:ace342ba8c7cf7c39cb15126e23ca7c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ab622546928f01433182546c582efff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="termux-gui_8h.html#a5ab622546928f01433182546c582efff">tg_totermux</a> ()</td></tr>
+<tr class="separator:a5ab622546928f01433182546c582efff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c73a6dec6919d181e83b0b4a6a6a736"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="termux-gui_8h.html#a4c73a6dec6919d181e83b0b4a6a6a736">tg_toast</a> (int mainfd, const char *text, bool longer)</td></tr>
+<tr class="separator:a4c73a6dec6919d181e83b0b4a6a6a736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85fc75e1e8eee3c11160ff7a42ed11aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtg__event.html">tg_event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="termux-gui_8h.html#a85fc75e1e8eee3c11160ff7a42ed11aa">tg_getevent</a> (int eventfd)</td></tr>
+<tr class="separator:a85fc75e1e8eee3c11160ff7a42ed11aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="adfa871f998fb6bfbc3469fe8c4d3c1af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfa871f998fb6bfbc3469fe8c4d3c1af">&#9670;&nbsp;</a></span>termuxgui_connect()</h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a9a2fc3224a79a83c6cbcea43f6014bf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2fc3224a79a83c6cbcea43f6014bf0">&#9670;&nbsp;</a></span>tg_event_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int termuxgui_connect </td>
+          <td class="memname">enum <a class="el" href="termux-gui_8h.html#a9a2fc3224a79a83c6cbcea43f6014bf0">tg_event_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>All possible event types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9a2fc3224a79a83c6cbcea43f6014bf0afc854902ecf5e013308eed1016cad6d7"></a>TG_EVENT_INVALID&#160;</td><td class="fielddoc"><p>This marks that the event had an unsupported type. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9a2fc3224a79a83c6cbcea43f6014bf0a32b1729151e912bb8d0a5b2a6388a06c"></a>TG_EVENT_CREATE&#160;</td><td class="fielddoc"><p>valid event parameters: <code>aid</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9a2fc3224a79a83c6cbcea43f6014bf0a74aec451103efa01c0769ac732645700"></a>TG_EVENT_START&#160;</td><td class="fielddoc"><p>valid event parameters: <code>aid</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9a2fc3224a79a83c6cbcea43f6014bf0ab5bd8594fba73c0338cfb81faf3577e7"></a>TG_EVENT_RESUME&#160;</td><td class="fielddoc"><p>valid event parameters: <code>aid</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9a2fc3224a79a83c6cbcea43f6014bf0abd7db63bc7d9dbf40c2a2dfc4e985f2b"></a>TG_EVENT_PAUSE&#160;</td><td class="fielddoc"><p>valid event parameters: <code>aid</code> , <code>finishing</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9a2fc3224a79a83c6cbcea43f6014bf0abc08a35e239c3d29d7041befc98e9907"></a>TG_EVENT_STOP&#160;</td><td class="fielddoc"><p>valid event parameters: <code>aid</code> , <code>finishing</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9a2fc3224a79a83c6cbcea43f6014bf0a8c901bb8fb23def553e91ee7d5f2c87e"></a>TG_EVENT_DESTROY&#160;</td><td class="fielddoc"><p>valid event parameters: <code>aid</code> , <code>finishing</code> </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ace342ba8c7cf7c39cb15126e23ca7c7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace342ba8c7cf7c39cb15126e23ca7c7c">&#9670;&nbsp;</a></span>tg_connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tg_connect </td>
           <td>(</td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>mainSocket</em>, </td>
@@ -111,6 +172,78 @@ Functions</h2></td></tr>
  Errors: <br  />
  -1: Could not connect to the plugin. <br  />
  -2: The plugin doesn't have the same user id as the running program. </p>
+
+</div>
+</div>
+<a id="a85fc75e1e8eee3c11160ff7a42ed11aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85fc75e1e8eee3c11160ff7a42ed11aa">&#9670;&nbsp;</a></span>tg_getevent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structtg__event.html">tg_event</a> tg_getevent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventfd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Blocks until an event is available. </p>
+
+</div>
+</div>
+<a id="a4c73a6dec6919d181e83b0b4a6a6a736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c73a6dec6919d181e83b0b4a6a6a736">&#9670;&nbsp;</a></span>tg_toast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tg_toast </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mainfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>longer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sends a Toast. Set <code>longer</code> to true if you want to display the text for longer. </p>
+
+</div>
+</div>
+<a id="a5ab622546928f01433182546c582efff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ab622546928f01433182546c582efff">&#9670;&nbsp;</a></span>tg_totermux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tg_totermux </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brings Termux to the foreground by forking and calling <code>am</code> <code>start</code> . </p>
 
 </div>
 </div>

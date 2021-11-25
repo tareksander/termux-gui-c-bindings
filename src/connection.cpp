@@ -6,6 +6,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+
+
 #include <string.h>
 #include <errno.h>
 #include <stdlib.h>
@@ -157,9 +159,17 @@ json sendReceiveMessageJSON(int fd, json msg) {
     return receiveMessageJSON(fd);
 }
 
+json constructMessage(std::string method, json params) {
+    json msg;
+    msg["method"] = method;
+    msg["params"] = params;
+    return msg;
+}
+
+int bindsocket(int socket, struct sockaddr_un *adr);
 
 extern "C" {
-    int termuxgui_connect(int* mainSocket, int* eventSocket) {
+    int tg_connect(int* mainSocket, int* eventSocket) {
         // create 2 Unix sockets
         int mainfd = socket(AF_UNIX, SOCK_STREAM, 0);
         if (mainfd == -1) {
@@ -181,7 +191,7 @@ extern "C" {
                 return -1;
             }
             mainname = generateSocketName();
-            if (bind(mainfd, reinterpret_cast<struct sockaddr*>(&mainname), sizeof(struct sockaddr_un)) == 0) {
+            if (bindsocket(mainfd, &mainname) == 0) {
                 break;
             } else {
                 if (errno == EBADF || errno == EINVAL || ENOTSOCK) {
@@ -200,7 +210,7 @@ extern "C" {
                 return -1;
             }
             eventname = generateSocketName();
-            if (bind(eventfd, reinterpret_cast<struct sockaddr*>(&eventname), sizeof(struct sockaddr_un)) == 0) {
+            if (bindsocket(eventfd, &eventname) == 0) {
                 break;
             } else {
                 if (errno == EBADF || errno == EINVAL || ENOTSOCK) {
@@ -285,14 +295,72 @@ extern "C" {
         close(eventfd);
         return 0;
     }
+    
+    void tg_totermux() {
+        pid_t ret = fork();
+        if (ret == 0) {
+            fclose(stdout);
+            fclose(stderr);
+            const char* const args[] = {
+                "am",
+                "start",
+                "-n",
+                "com.termux/.app.TermuxActivity",
+                NULL
+            };
+            execvp("am", const_cast<char* const*>(args));
+            exit(0);
+        } else {
+            waitpid(ret, NULL, 0);
+        }
+    }
+    
+    void tg_toast(int mainfd, const char* text, bool longer) {
+        sendMessageJSON(mainfd, constructMessage("toast", {{"text", text}, {"long", longer}}));
+    }
+    
+    tg_event tg_getevent(int eventfd) {
+        json ev = receiveMessageJSON(eventfd);
+        tg_event tev;
+        tev.type = TG_EVENT_INVALID;
+        auto type = ev["type"];
+        if (type == "create") {
+            tev.type = TG_EVENT_CREATE;
+            tev.aid = strdup(ev["value"]["aid"].get<string>().c_str());
+        }
+        if (type == "start") {
+            tev.type = TG_EVENT_START;
+            tev.aid = strdup(ev["value"]["aid"].get<string>().c_str());
+        }
+        if (type == "resume") {
+            tev.type = TG_EVENT_RESUME;
+            tev.aid = strdup(ev["value"]["aid"].get<string>().c_str());
+        }
+        if (type == "pause") {
+            tev.type = TG_EVENT_PAUSE;
+            tev.aid = strdup(ev["value"]["aid"].get<string>().c_str());
+            tev.finishing = ev["value"]["finishing"].get<bool>();
+        }
+        if (type == "stop") {
+            tev.type = TG_EVENT_STOP;
+            tev.aid = strdup(ev["value"]["aid"].get<string>().c_str());
+            tev.finishing = ev["value"]["finishing"].get<bool>();
+        }
+        if (type == "destroy") {
+            tev.type = TG_EVENT_DESTROY;
+            tev.aid = strdup(ev["value"]["aid"].get<string>().c_str());
+            tev.finishing = ev["value"]["finishing"].get<bool>();
+        }
+        return tev;
+    }
 }
 
 
 
 
-namespace termuxgui {
+namespace tg {
     Connection::Connection() {
-        int ret = termuxgui_connect(&this->mainfd, &this->eventfd);
+        int ret = tg_connect(&this->mainfd, &this->eventfd);
         switch (ret) {
             case 0:
                 return;
@@ -312,6 +380,25 @@ namespace termuxgui {
         }
     }
     
+    void Connection::totermux() {
+        tg_totermux();
+    }
+    
+    void Connection::toast(string& text, bool longer) {
+        tg_toast(this->mainfd, text.c_str(), longer);
+    }
+    
+    
+    const string Event::CREATE = "create";
+    const string Event::START = "start";
+    const string Event::RESUME = "resume";
+    const string Event::PAUSE = "pause";
+    const string Event::STOP = "stop";
+    const string Event::DESTROY = "destroy";
+    
+    Event::Event(std::string& type) {
+        this-> type = type;
+    }
     
 }
 
