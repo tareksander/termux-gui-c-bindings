@@ -1,25 +1,38 @@
 
-.PHONY: clean install build static shared
+.PHONY: clean install build uninstall objects
 
-build: static shared
-
-
-static: termuxgui.o
-	ar rcs lib$<.a $<
+build: termuxgui.a libtermuxgui.so
 
 
-shared: termuxgui.o
-	g++ -shared -o lib$<.so $<
+termuxgui.a: src/connection.o
+	$(AR) rcs termuxgui.a $<
 
 
-termux-gui.o: termuxgui.c termux-gui.h termux-gui.hpp
-	g++ -c -fpic $<
+libtermuxgui.so: src/connection.o
+	$(CXX) $(LDFLAGS) -shared -o libtermuxgui.so $<
+
+
+
+
+%.o: %.cpp
+	$(CXX) $(CPPFLAGS) -c -fpic $< -o $@
+
+
 
 
 clean:
-	rm -f termuxgui.o libtermuxgui.so termuxgui.a
+	rm -f libtermuxgui.so termuxgui.a
+	rm -f src/*.o
 
-install:
+install: libtermuxgui.so
 	install -d ${PREFIX}/usr/include/termuxgui/
-	install -t ${PREFIX}/usr/include/termuxgui/ termux-gui.hpp termux-gui.h
+	install -t ${PREFIX}/usr/include/termuxgui/ src/termux-gui.hpp src/termux-gui.h
 	install libtermuxgui.so ${PREFIX}/usr/lib/
+
+
+uninstall:
+	rm -r ${PREFIX}/usr/include/termuxgui/
+	rm ${PREFIX}/usr/lib/libtermuxgui.so
+	
+
+
