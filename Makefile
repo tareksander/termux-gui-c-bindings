@@ -32,14 +32,14 @@ clean:
 	rm -f src/*.o manifests/current.json
 
 install: libtermuxgui.so
-	install -d ${PREFIX}/usr/include/termuxgui/
-	install -t ${PREFIX}/usr/include/termuxgui/ src/termux-gui.hpp src/termux-gui.h
-	install libtermuxgui.so ${PREFIX}/usr/lib/
+	install -d ${PREFIX}/include/termuxgui/
+	install -t ${PREFIX}/include/termuxgui/ src/termux-gui.hpp src/termux-gui.h
+	install libtermuxgui.so ${PREFIX}/lib/
 
 
 uninstall:
-	rm -r ${PREFIX}/usr/include/termuxgui/
-	rm ${PREFIX}/usr/lib/libtermuxgui.so
+	rm -r ${PREFIX}/include/termuxgui/
+	rm ${PREFIX}/lib/libtermuxgui.so
 	
 
 debs: termux-gui-c_${version}_armv7.deb termux-gui-c_${version}_i686.deb termux-gui-c_${version}_x86_64.deb termux-gui-c_${version}_arm64.deb
