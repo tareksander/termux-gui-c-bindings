@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pluginuidexception_3',['PluginUIDException',['../classtgui_1_1PluginUIDException.html',1,'tgui']]],
-  ['protocolunavailableexception_4',['ProtocolUnavailableException',['../classtgui_1_1ProtocolUnavailableException.html',1,'tgui']]]
+  ['dark_5fmode_9',['dark_mode',['../structtermuxgui__activity__configuration.html#a16778889f4eff95ef656b850b7698b23',1,'termuxgui_activity_configuration']]],
+  ['density_10',['density',['../structtermuxgui__activity__configuration.html#a96f6b6240b6f3740b96edc05c7db2b8e',1,'termuxgui_activity_configuration']]]
 ];

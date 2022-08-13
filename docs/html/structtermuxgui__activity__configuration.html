@@ -88,38 +88,54 @@ $(document).ready(function(){initNavTree('structtermuxgui__activity__configurati
 <div class="title">termuxgui_activity_configuration Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides information on the current device and Activity configuration.  
+ <a href="structtermuxgui__activity__configuration.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="termuxgui_8h_source.html">termuxgui.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a16778889f4eff95ef656b850b7698b23"><td class="memItemLeft" align="right" valign="top"><a id="a16778889f4eff95ef656b850b7698b23"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>dark_mode</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#a16778889f4eff95ef656b850b7698b23">dark_mode</a></td></tr>
+<tr class="memdesc:a16778889f4eff95ef656b850b7698b23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether dark mode is enabled. Always false on Android &lt; 10. <br /></td></tr>
 <tr class="separator:a16778889f4eff95ef656b850b7698b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87c2be0d8db3de7dfaed37482b387a84"><td class="memItemLeft" align="right" valign="top"><a id="a87c2be0d8db3de7dfaed37482b387a84"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>country</b> [2]</td></tr>
-<tr class="separator:a87c2be0d8db3de7dfaed37482b387a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d164882f6503c4dd74be49ea29893da"><td class="memItemLeft" align="right" valign="top"><a id="a3d164882f6503c4dd74be49ea29893da"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>language</b> [2]</td></tr>
-<tr class="separator:a3d164882f6503c4dd74be49ea29893da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c6bfddd3fa83614f8ab432efa9db58"><td class="memItemLeft" align="right" valign="top"><a id="a81c6bfddd3fa83614f8ab432efa9db58"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#a81c6bfddd3fa83614f8ab432efa9db58">country</a> [3]</td></tr>
+<tr class="memdesc:a81c6bfddd3fa83614f8ab432efa9db58"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 2 letter country code. A NULL terminator is included for convenience. <br /></td></tr>
+<tr class="separator:a81c6bfddd3fa83614f8ab432efa9db58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c00800764435c7e2e2963bfd3e4d20"><td class="memItemLeft" align="right" valign="top"><a id="a73c00800764435c7e2e2963bfd3e4d20"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#a73c00800764435c7e2e2963bfd3e4d20">language</a> [3]</td></tr>
+<tr class="memdesc:a73c00800764435c7e2e2963bfd3e4d20"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 2 letter language code. A NULL terminator is included for convenience. <br /></td></tr>
+<tr class="separator:a73c00800764435c7e2e2963bfd3e4d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00fa5013a68850b14432a83e5c2be7ab"><td class="memItemLeft" align="right" valign="top"><a id="a00fa5013a68850b14432a83e5c2be7ab"></a>
-termuxgui_activity_orientation&#160;</td><td class="memItemRight" valign="bottom"><b>orientation</b></td></tr>
+<a class="el" href="termuxgui_8h.html#a6a7d6c61623c483b19473f2152c16b27">termuxgui_activity_orientation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#a00fa5013a68850b14432a83e5c2be7ab">orientation</a></td></tr>
+<tr class="memdesc:a00fa5013a68850b14432a83e5c2be7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current Activity orientation. Only <code>TERMUXGUI_ACTIVITY_LANDSCAPE</code>, <code>TERMUXGUI_ACTIVITY_REVERSE_LANDSCAPE</code>, <code>TERMUXGUI_ACTIVITY_PORTRAIT</code>, <code>TERMUXGUI_ACTIVITY_REVERSE_PORTRAIT</code> and <code>TERMUXGUI_ACTIVITY_UNSPECIFIED</code> are possible values. <br /></td></tr>
 <tr class="separator:a00fa5013a68850b14432a83e5c2be7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80f71295a51bac2d78567fe036817766"><td class="memItemLeft" align="right" valign="top"><a id="a80f71295a51bac2d78567fe036817766"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>keyboard_hidden</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#a80f71295a51bac2d78567fe036817766">keyboard_hidden</a></td></tr>
+<tr class="memdesc:a80f71295a51bac2d78567fe036817766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the soft keyboard is currently shown. <br /></td></tr>
 <tr class="separator:a80f71295a51bac2d78567fe036817766"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad120dcba767fa1f1ac70483c67620b4c"><td class="memItemLeft" align="right" valign="top"><a id="ad120dcba767fa1f1ac70483c67620b4c"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>screen_width</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#ad120dcba767fa1f1ac70483c67620b4c">screen_width</a></td></tr>
+<tr class="memdesc:ad120dcba767fa1f1ac70483c67620b4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current Activity width in dp. <br /></td></tr>
 <tr class="separator:ad120dcba767fa1f1ac70483c67620b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8368409cfd0ded45945b57c94b13891a"><td class="memItemLeft" align="right" valign="top"><a id="a8368409cfd0ded45945b57c94b13891a"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>screen_height</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#a8368409cfd0ded45945b57c94b13891a">screen_height</a></td></tr>
+<tr class="memdesc:a8368409cfd0ded45945b57c94b13891a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current Activity height in dp. <br /></td></tr>
 <tr class="separator:a8368409cfd0ded45945b57c94b13891a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adec88cc3416ec64470a6d1a11e8f958b"><td class="memItemLeft" align="right" valign="top"><a id="adec88cc3416ec64470a6d1a11e8f958b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>font_scale</b></td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#adec88cc3416ec64470a6d1a11e8f958b">font_scale</a></td></tr>
+<tr class="memdesc:adec88cc3416ec64470a6d1a11e8f958b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current font scale. <br /></td></tr>
 <tr class="separator:adec88cc3416ec64470a6d1a11e8f958b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96f6b6240b6f3740b96edc05c7db2b8e"><td class="memItemLeft" align="right" valign="top"><a id="a96f6b6240b6f3740b96edc05c7db2b8e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>density</b></td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__activity__configuration.html#a96f6b6240b6f3740b96edc05c7db2b8e">density</a></td></tr>
+<tr class="memdesc:a96f6b6240b6f3740b96edc05c7db2b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The display density, such that screenwidth * density = screenwidth_in_px. <br /></td></tr>
 <tr class="separator:a96f6b6240b6f3740b96edc05c7db2b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides information on the current device and Activity configuration. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/termuxgui/<a class="el" href="termuxgui_8h_source.html">termuxgui.h</a></li>
 </ul>
 </div><!-- contents -->

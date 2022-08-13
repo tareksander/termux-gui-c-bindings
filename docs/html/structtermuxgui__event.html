@@ -88,22 +88,368 @@ $(document).ready(function(){initNavTree('structtermuxgui__event.html',''); init
 <div class="title">termuxgui_event Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents an event send from the plugin. A union is used so that all events can still have a single type.  
+ <a href="structtermuxgui__event.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="termuxgui_8h_source.html">termuxgui.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a6a3bd7a2e9a38a102f6341db5444476e"><td class="memItemLeft" align="right" valign="top"><a id="a6a3bd7a2e9a38a102f6341db5444476e"></a>
-termuxgui_event_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__event.html#a6a3bd7a2e9a38a102f6341db5444476e">type</a></td></tr>
-<tr class="memdesc:a6a3bd7a2e9a38a102f6341db5444476e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The event type specifies which struct in the union is valid. <br /></td></tr>
+<a class="el" href="termuxgui_8h.html#a07421bfe87fa131546cf71edec647ed5">termuxgui_event_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__event.html#a6a3bd7a2e9a38a102f6341db5444476e">type</a></td></tr>
+<tr class="memdesc:a6a3bd7a2e9a38a102f6341db5444476e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The event type specifies which entry in the union is valid. <br /></td></tr>
 <tr class="separator:a6a3bd7a2e9a38a102f6341db5444476e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99b4aaaf12244d77b015237b2823213"><td class="memItemLeft" align="right" valign="top"><a id="af99b4aaaf12244d77b015237b2823213"></a>
+<a class="el" href="termuxgui_8h.html#aeabbd0ef0574137266a6a7b8420cb648">termuxgui_activity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtermuxgui__event.html#af99b4aaaf12244d77b015237b2823213">activity</a></td></tr>
+<tr class="memdesc:af99b4aaaf12244d77b015237b2823213"><td class="mdescLeft">&#160;</td><td class="mdescRight">Most events are specific to an Activity. In that case, this field isn't NULL. <br /></td></tr>
+<tr class="separator:af99b4aaaf12244d77b015237b2823213"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1be9d0cd457c47cf358ccf8acf275b9c"><td class="memItemLeft" ><a id="a1be9d0cd457c47cf358ccf8acf275b9c"></a>
 union {</td></tr>
+<tr class="memitem:a27b93243f3f3b0d61899049dc575ac35"><td class="memItemLeft" >
+&#160;&#160;&#160;bool&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#af93ea049c5c1d6af94b63566bda7cfa1">finishing</a></td></tr>
+<tr class="memdesc:a27b93243f3f3b0d61899049dc575ac35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the Activity is finishing.<br  />
+ Valid for: <code>TERMUXGUI_EVENT_PAUSE</code>, <code>TERMUXGUI_EVENT_STOP</code> and <code>TERMUXGUI_EVENT_DESTROY</code>. <br /></td></tr>
+<tr class="separator:a27b93243f3f3b0d61899049dc575ac35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cb06d765e1c98a9088c0a5679a2f92e"><td class="memItemLeft" >
+&#160;&#160;&#160;<a class="el" href="structtermuxgui__activity__configuration.html">termuxgui_activity_configuration</a>&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#adf9e615267ecd67982e8337d4ea76607">configuration</a></td></tr>
+<tr class="memdesc:a4cb06d765e1c98a9088c0a5679a2f92e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_CONFIG</code>. <br /></td></tr>
+<tr class="separator:a4cb06d765e1c98a9088c0a5679a2f92e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af020c5dbb21c992e158ecccfdc45affe"><td class="memItemLeft" >
 &#160;&#160;&#160;struct {</td></tr>
-<tr class="memitem:af020c5dbb21c992e158ecccfdc45affe"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<b>click</b></td></tr>
+<tr class="memitem:a552f53da62175ad98bb3b7dbac2491be"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a552f53da62175ad98bb3b7dbac2491be"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the View. <br /></td></tr>
+<tr class="separator:a552f53da62175ad98bb3b7dbac2491be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c6552d8b2396cc928af75789e35eb9"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a09ce3f43dba4ebc680cdd8b2b6a52093">x</a></td></tr>
+<tr class="memdesc:a36c6552d8b2396cc928af75789e35eb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">For ImageView only. <br /></td></tr>
+<tr class="separator:a36c6552d8b2396cc928af75789e35eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8935ca9359812df3fe743d92ecc09b4f"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a1219915d1ce50d00c18c670c3893a22c">y</a></td></tr>
+<tr class="memdesc:a8935ca9359812df3fe743d92ecc09b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">For ImageView only. <br /></td></tr>
+<tr class="separator:a8935ca9359812df3fe743d92ecc09b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac8e42cc0ea252957d6ab2c9fecc9897"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;bool&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ab105bfea6ac6161ca275b83b8012aaf9">set</a></td></tr>
+<tr class="memdesc:aac8e42cc0ea252957d6ab2c9fecc9897"><td class="mdescLeft">&#160;</td><td class="mdescRight">For CheckBox, Switch and ToggleButton. <br /></td></tr>
+<tr class="separator:aac8e42cc0ea252957d6ab2c9fecc9897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af020c5dbb21c992e158ecccfdc45affe"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#af3ad6fb755a74e7bd82c40bad8dc5a2f">click</a></td></tr>
+<tr class="memdesc:af020c5dbb21c992e158ecccfdc45affe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_CLICK</code>. <br /></td></tr>
 <tr class="separator:af020c5dbb21c992e158ecccfdc45affe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ad80625e302bcd07709f4b29cab086"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a4523d35f4f2b90d310f81a6c602443a7"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a4523d35f4f2b90d310f81a6c602443a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the View. <br /></td></tr>
+<tr class="separator:a4523d35f4f2b90d310f81a6c602443a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ad80625e302bcd07709f4b29cab086"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a5199368eb9f07fc1edefebca9e189151">longClick</a></td></tr>
+<tr class="memdesc:a87ad80625e302bcd07709f4b29cab086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_LONG_CLICK</code>. <br /></td></tr>
+<tr class="separator:a87ad80625e302bcd07709f4b29cab086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8413d8254f92f889a36c778b357267ca"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a12d125d2339eec00ab2283c94761bfe9"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a12d125d2339eec00ab2283c94761bfe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the View. <br /></td></tr>
+<tr class="separator:a12d125d2339eec00ab2283c94761bfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e612c63bbd9e1cc73d0fbf6a651d94c"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;bool&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#aca242e206984e13a98529fdc4612c3b6">focus</a></td></tr>
+<tr class="memdesc:a0e612c63bbd9e1cc73d0fbf6a651d94c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the View now has focus or not. <br /></td></tr>
+<tr class="separator:a0e612c63bbd9e1cc73d0fbf6a651d94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8413d8254f92f889a36c778b357267ca"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a1fc20f66dda95ea2834048d822382129">focus</a></td></tr>
+<tr class="memdesc:a8413d8254f92f889a36c778b357267ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_FOCUS</code>. <br /></td></tr>
+<tr class="separator:a8413d8254f92f889a36c778b357267ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b0df83ad6ab5a377494674aeaf9d319"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a376f4f4926eb7aae62ea782c015f0608"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a376f4f4926eb7aae62ea782c015f0608"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the View. <br /></td></tr>
+<tr class="separator:a376f4f4926eb7aae62ea782c015f0608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e480096f1d6725db328654dc347cec2"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="termuxgui_8h.html#a46edfc7b988a71933e0e529958835637">termuxgui_touch_action</a>&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a5a92bdec7382279256a71699f627b848">action</a></td></tr>
+<tr class="memdesc:a3e480096f1d6725db328654dc347cec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of touch event. <br /></td></tr>
+<tr class="separator:a3e480096f1d6725db328654dc347cec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8f47cf8e0f453ea5b18411f72c6e13f"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="structtermuxgui__touch__pointer.html">termuxgui_touch_pointer</a> **&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a4b4567c94dd84b75f7683183558113a8">pointers</a></td></tr>
+<tr class="separator:ae8f47cf8e0f453ea5b18411f72c6e13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a443d4843d05a3beb0af21c41332cfa65"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ad9172a4ce177723dfe1c0b2a6235d1d6">index</a></td></tr>
+<tr class="memdesc:a443d4843d05a3beb0af21c41332cfa65"><td class="mdescLeft">&#160;</td><td class="mdescRight">index of the pointer added or removed. <br /></td></tr>
+<tr class="separator:a443d4843d05a3beb0af21c41332cfa65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5a37b5d261481cebed12aa6c0f3ecaf"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;uint64_t&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#afc7d36a9606c2f16ae78a27432dfde4d">time</a></td></tr>
+<tr class="memdesc:ad5a37b5d261481cebed12aa6c0f3ecaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamp of the event. <br /></td></tr>
+<tr class="separator:ad5a37b5d261481cebed12aa6c0f3ecaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b0df83ad6ab5a377494674aeaf9d319"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#acad79c702c3cabc9721e8baa38f3a3af">touch</a></td></tr>
+<tr class="memdesc:a1b0df83ad6ab5a377494674aeaf9d319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_TOUCH</code>. <br /></td></tr>
+<tr class="separator:a1b0df83ad6ab5a377494674aeaf9d319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b62119b1ace95cb6a2760415562d360"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a739038a064f84e858ac5cb866c3519e9"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a739038a064f84e858ac5cb866c3519e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the TextView. <br /></td></tr>
+<tr class="separator:a739038a064f84e858ac5cb866c3519e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e7e0f0ca278779fb532894664e8617"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a97591a986fcbebc673c532f94309277a">text</a></td></tr>
+<tr class="memdesc:aa6e7e0f0ca278779fb532894664e8617"><td class="mdescLeft">&#160;</td><td class="mdescRight">The new text of the TextView. <br /></td></tr>
+<tr class="separator:aa6e7e0f0ca278779fb532894664e8617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b62119b1ace95cb6a2760415562d360"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ae1d5d7e23a49bab20c39ef3574d6a0c9">text</a></td></tr>
+<tr class="memdesc:a7b62119b1ace95cb6a2760415562d360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_TEXT</code>. <br /></td></tr>
+<tr class="separator:a7b62119b1ace95cb6a2760415562d360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46230580fc3bb335e5ced00dd030b0c8"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a2db3a2b6f53b82c5b24b06a776516fe9"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a2db3a2b6f53b82c5b24b06a776516fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the SwipeRefreshLayout. <br /></td></tr>
+<tr class="separator:a2db3a2b6f53b82c5b24b06a776516fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46230580fc3bb335e5ced00dd030b0c8"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a3684815c7c4e897b44305b1331753a33">refresh</a></td></tr>
+<tr class="memdesc:a46230580fc3bb335e5ced00dd030b0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_REFRESH</code>. <br /></td></tr>
+<tr class="separator:a46230580fc3bb335e5ced00dd030b0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a201a7f47f637cd36382e355c9f7cda"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a48db1433de55c39a89c334dfaea0332e"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a48db1433de55c39a89c334dfaea0332e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the RadioGroup. <br /></td></tr>
+<tr class="separator:a48db1433de55c39a89c334dfaea0332e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a090d8399182488c53dbdaf258c1f5c2c"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ad1b39fd5ccc524ec554ea74e36d9de32">selected</a></td></tr>
+<tr class="memdesc:a090d8399182488c53dbdaf258c1f5c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the selected RadioButton. <br /></td></tr>
+<tr class="separator:a090d8399182488c53dbdaf258c1f5c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a201a7f47f637cd36382e355c9f7cda"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a82176c9ba719167c561407d5d4417249">selected</a></td></tr>
+<tr class="memdesc:a0a201a7f47f637cd36382e355c9f7cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_SELECTED</code>. <br /></td></tr>
+<tr class="separator:a0a201a7f47f637cd36382e355c9f7cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3c3e189182f6459290a8dd856249356"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a4e6b2ffb2002f1a91dc4838b08486077"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a4e6b2ffb2002f1a91dc4838b08486077"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the Spinner or TabLayout. <br /></td></tr>
+<tr class="separator:a4e6b2ffb2002f1a91dc4838b08486077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f508a85aa2bcdd86727137637f48996"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ad1b39fd5ccc524ec554ea74e36d9de32">selected</a></td></tr>
+<tr class="memdesc:a5f508a85aa2bcdd86727137637f48996"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the selected element or tab, starting at 0. <br /></td></tr>
+<tr class="separator:a5f508a85aa2bcdd86727137637f48996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3c3e189182f6459290a8dd856249356"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a76b5a67b034e37650d985ec41df05412">itemSelected</a></td></tr>
+<tr class="memdesc:ae3c3e189182f6459290a8dd856249356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_ITEM_SELECTED</code>. <br /></td></tr>
+<tr class="separator:ae3c3e189182f6459290a8dd856249356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb56c273e79bb28e798d6e06514b0c5f"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a4af98e80295f984228000b565a54d55a"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a4af98e80295f984228000b565a54d55a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the WebView. <br /></td></tr>
+<tr class="separator:a4af98e80295f984228000b565a54d55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73ac07f7add81838648d606a8e870c4d"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a70c642a1b2f435fa7970e1cec9970e96">url</a></td></tr>
+<tr class="memdesc:a73ac07f7add81838648d606a8e870c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The URL that was tried to navigate to. <br /></td></tr>
+<tr class="separator:a73ac07f7add81838648d606a8e870c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb56c273e79bb28e798d6e06514b0c5f"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#abd33db4ed5183d671350bdb99b9f72fe">webNavigation</a></td></tr>
+<tr class="memdesc:adb56c273e79bb28e798d6e06514b0c5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_WEBVIEW_NAVIGATION</code>. <br /></td></tr>
+<tr class="separator:adb56c273e79bb28e798d6e06514b0c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73f8255c4c0addab1e04812a26ed6b7d"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a53e59186b9a640b40a25d0a82c52f583"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a53e59186b9a640b40a25d0a82c52f583"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the WebView. <br /></td></tr>
+<tr class="separator:a53e59186b9a640b40a25d0a82c52f583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc3c5fda7ad9e1d3d1db58e579f78ab"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a70c642a1b2f435fa7970e1cec9970e96">url</a></td></tr>
+<tr class="memdesc:afcc3c5fda7ad9e1d3d1db58e579f78ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">The URL the HTTP error came from. <br /></td></tr>
+<tr class="separator:afcc3c5fda7ad9e1d3d1db58e579f78ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a177373bf55c97f04b5274cfdc58ade58"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a4ecfd24a46c5a3a6ab27306b65c0cce1">code</a></td></tr>
+<tr class="memdesc:a177373bf55c97f04b5274cfdc58ade58"><td class="mdescLeft">&#160;</td><td class="mdescRight">The HTTP error code. <br /></td></tr>
+<tr class="separator:a177373bf55c97f04b5274cfdc58ade58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73f8255c4c0addab1e04812a26ed6b7d"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ae9f5c39d2eecf2184f65fa4c5fb0b271">webHTTPError</a></td></tr>
+<tr class="memdesc:a73f8255c4c0addab1e04812a26ed6b7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_WEBVIEW_HTTP_ERROR</code>. <br /></td></tr>
+<tr class="separator:a73f8255c4c0addab1e04812a26ed6b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b7435f3d52697a0ad238179d65c96f"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a1807124cdd872f98ececf03694726454"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a1807124cdd872f98ececf03694726454"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the WebView. <br /></td></tr>
+<tr class="separator:a1807124cdd872f98ececf03694726454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85fd0a08927c986eff9cfcb0690cd01b"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a70c642a1b2f435fa7970e1cec9970e96">url</a></td></tr>
+<tr class="memdesc:a85fd0a08927c986eff9cfcb0690cd01b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The URL the error was encountered with. <br /></td></tr>
+<tr class="separator:a85fd0a08927c986eff9cfcb0690cd01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b7435f3d52697a0ad238179d65c96f"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a6f90856bdc20f61b9ccb55258c9fe6d8">webError</a></td></tr>
+<tr class="memdesc:a03b7435f3d52697a0ad238179d65c96f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_WEBVIEW_ERROR</code>. <br /></td></tr>
+<tr class="separator:a03b7435f3d52697a0ad238179d65c96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a095f030a42863d87425ed87b3f098f81"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a0824e3f27e17fb3ff3a7cf05824af992"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a0824e3f27e17fb3ff3a7cf05824af992"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the WebView. <br /></td></tr>
+<tr class="separator:a0824e3f27e17fb3ff3a7cf05824af992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a095f030a42863d87425ed87b3f098f81"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a0200997510f31fa098aef00571a89a4a">webDestroyed</a></td></tr>
+<tr class="memdesc:a095f030a42863d87425ed87b3f098f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_WEBVIEW_DESTROYED</code>. <br /></td></tr>
+<tr class="separator:a095f030a42863d87425ed87b3f098f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a551f904f4b8a1785670e580f1f92f36c"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:ad18d98ac5dcf7d8bd4d21af3685f1d74"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:ad18d98ac5dcf7d8bd4d21af3685f1d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the WebView. <br /></td></tr>
+<tr class="separator:ad18d98ac5dcf7d8bd4d21af3685f1d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77243ee51bde90d7fc8c3f15274eea88"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a4d1752c91954631dd94a138ee7f6f91b">progress</a></td></tr>
+<tr class="memdesc:a77243ee51bde90d7fc8c3f15274eea88"><td class="mdescLeft">&#160;</td><td class="mdescRight">The progress of the site loading in percent. <br /></td></tr>
+<tr class="separator:a77243ee51bde90d7fc8c3f15274eea88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a551f904f4b8a1785670e580f1f92f36c"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ab1ef709d6394a638c210fd2255f3aecb">webProgress</a></td></tr>
+<tr class="memdesc:a551f904f4b8a1785670e580f1f92f36c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_WEBVIEW_PROGRESS</code>. <br /></td></tr>
+<tr class="separator:a551f904f4b8a1785670e580f1f92f36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad26e63ed3ae5c9435f2e16b5ee8b48"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a75fedcc0c5aa4f13c0f3d67f01239caa"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a75fedcc0c5aa4f13c0f3d67f01239caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the WebView. <br /></td></tr>
+<tr class="separator:a75fedcc0c5aa4f13c0f3d67f01239caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9f23adb7ccbf55b45ddf628fec70cc0"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a3e2f92aa1ae56bfcd1564198c577d122">msg</a></td></tr>
+<tr class="memdesc:af9f23adb7ccbf55b45ddf628fec70cc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The console message. <br /></td></tr>
+<tr class="separator:af9f23adb7ccbf55b45ddf628fec70cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad26e63ed3ae5c9435f2e16b5ee8b48"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a6bd375c7b1ae45d5ecba5b0371aeef92">webConsole</a></td></tr>
+<tr class="memdesc:a0ad26e63ed3ae5c9435f2e16b5ee8b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_WEBVIEW_CONSOLE</code>. <br /></td></tr>
+<tr class="separator:a0ad26e63ed3ae5c9435f2e16b5ee8b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae11a75421a425cbe83db54ee0edb1de2"><td class="memItemLeft" >
+&#160;&#160;&#160;bool&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#ac6dbcf979dc65f3fd70ff8e7854544c6">airplane</a></td></tr>
+<tr class="memdesc:ae11a75421a425cbe83db54ee0edb1de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current state of airplane mode.<br  />
+ Valid for <code>TERMUXGUI_EVENT_AIRPLANE</code>. <br /></td></tr>
+<tr class="separator:ae11a75421a425cbe83db54ee0edb1de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9464889ae678a5f7c8a4ea9d4eeed2c4"><td class="memItemLeft" >
+&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a6df04507ac93f571167285e634db6b32">locale</a></td></tr>
+<tr class="memdesc:a9464889ae678a5f7c8a4ea9d4eeed2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current locale.<br  />
+ Valid for <code>TERMUXGUI_EVENT_LOCALE</code>. <br /></td></tr>
+<tr class="separator:a9464889ae678a5f7c8a4ea9d4eeed2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd7203762ce3b8b0242be11c8625d7a5"><td class="memItemLeft" >
+&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#af0394eda0db132b7fabe1726e4864542">timezone</a></td></tr>
+<tr class="memdesc:afd7203762ce3b8b0242be11c8625d7a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current timezone.<br  />
+ Valid for <code>TERMUXGUI_EVENT_TIMEZONE</code>. <br /></td></tr>
+<tr class="separator:afd7203762ce3b8b0242be11c8625d7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ffc975ff8c24f31c0f588c45aba5211"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a0a939de4d05cca9c16d0396990f03a7c"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;bool&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a559b6e72a080f909502aab177b91f678">pip</a></td></tr>
+<tr class="memdesc:a0a939de4d05cca9c16d0396990f03a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current state of picture-in-picture mode. <br /></td></tr>
+<tr class="separator:a0a939de4d05cca9c16d0396990f03a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ffc975ff8c24f31c0f588c45aba5211"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a25fe7c36195258e96783cbdc9a7cb14d">pip</a></td></tr>
+<tr class="memdesc:a3ffc975ff8c24f31c0f588c45aba5211"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_PIP</code>. <br /></td></tr>
+<tr class="separator:a3ffc975ff8c24f31c0f588c45aba5211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0398cd6cbf4402a97d6fbe6c91495a35"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a3cc937248b8a1a378e44fa2ce3074956"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#aaa8a6ec7e9f51ad8c8abd54f521782f9">rid</a></td></tr>
+<tr class="memdesc:a3cc937248b8a1a378e44fa2ce3074956"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the remote layout. <br /></td></tr>
+<tr class="separator:a3cc937248b8a1a378e44fa2ce3074956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b8cae1d8b73a827b2b8c2d331e9b8ff"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a7b8cae1d8b73a827b2b8c2d331e9b8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the View. <br /></td></tr>
+<tr class="separator:a7b8cae1d8b73a827b2b8c2d331e9b8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0398cd6cbf4402a97d6fbe6c91495a35"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#afc3a58be12730b20cf3379082af1141b">remoteClick</a></td></tr>
+<tr class="memdesc:a0398cd6cbf4402a97d6fbe6c91495a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_REMOTE_CLICK</code>. <br /></td></tr>
+<tr class="separator:a0398cd6cbf4402a97d6fbe6c91495a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac03cbf0ce1ea84ef5086304cfaad18"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a44e262a7b77674a17e8ad031cc4f787b"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a7af847af93e9ab070783862f20176239">id</a></td></tr>
+<tr class="memdesc:a44e262a7b77674a17e8ad031cc4f787b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the notification. <br /></td></tr>
+<tr class="separator:a44e262a7b77674a17e8ad031cc4f787b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9575dfcb7a931aed58d63e152facb7"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#aa50e6e2d4e99898db3d5914c22aa3c67">action</a></td></tr>
+<tr class="memdesc:a9d9575dfcb7a931aed58d63e152facb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the action, starting at 0. <br /></td></tr>
+<tr class="separator:a9d9575dfcb7a931aed58d63e152facb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac03cbf0ce1ea84ef5086304cfaad18"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a5c78ed4624bb5c87c182e251e5a6afe8">action</a></td></tr>
+<tr class="memdesc:a3ac03cbf0ce1ea84ef5086304cfaad18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_NOTIFICATION_ACTION</code>. <br /></td></tr>
+<tr class="separator:a3ac03cbf0ce1ea84ef5086304cfaad18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9411d85c5221dbc1f9970b8e2aeec810"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a0eb748ce7684f8b609878437b9024108"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a8750409cadda79351999adad7d4e902a">span</a></td></tr>
+<tr class="memdesc:a0eb748ce7684f8b609878437b9024108"><td class="mdescLeft">&#160;</td><td class="mdescRight">The new distance between the 2 pointers. <br /></td></tr>
+<tr class="separator:a0eb748ce7684f8b609878437b9024108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9411d85c5221dbc1f9970b8e2aeec810"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#af9454cc02d6d3c89d641de592bb68d72">overlayScale</a></td></tr>
+<tr class="memdesc:a9411d85c5221dbc1f9970b8e2aeec810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_OVERLAY_SCALE</code>. <br /></td></tr>
+<tr class="separator:a9411d85c5221dbc1f9970b8e2aeec810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa086b27b3b4128e43ba9d7921b56b594"><td class="memItemLeft" >
+&#160;&#160;&#160;char *&#160;&#160;&#160;<a class="el" href="structtermuxgui__event.html#a8248c999351a96756ee9ff9db8420610">stacktrace</a></td></tr>
+<tr class="memdesc:aa086b27b3b4128e43ba9d7921b56b594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TERMUXGUI_EVENT_DEBUG_EXCEPTION</code>.<br  />
+ Note: If not NULL, this has to be freed with free() <br /></td></tr>
+<tr class="separator:aa086b27b3b4128e43ba9d7921b56b594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1be9d0cd457c47cf358ccf8acf275b9c"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 <tr class="separator:a1be9d0cd457c47cf358ccf8acf275b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents an event send from the plugin. A union is used so that all events can still have a single type. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7af847af93e9ab070783862f20176239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7af847af93e9ab070783862f20176239">&#9670;&nbsp;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int termuxgui_event::id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The id of the View. </p>
+<p>The id of the notification.</p>
+<p>The id of the WebView.</p>
+<p>The id of the Spinner or TabLayout.</p>
+<p>The id of the RadioGroup.</p>
+<p>The id of the SwipeRefreshLayout.</p>
+<p>The id of the TextView. </p>
+
+</div>
+</div>
+<a id="a4b4567c94dd84b75f7683183558113a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4567c94dd84b75f7683183558113a8">&#9670;&nbsp;</a></span>pointers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structtermuxgui__touch__pointer.html">termuxgui_touch_pointer</a>** termuxgui_event::pointers</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The pointers of the touch event.<br  />
+ Note: This is only valid until the next touch event is received. </p>
+
+</div>
+</div>
+<a id="ad1b39fd5ccc524ec554ea74e36d9de32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b39fd5ccc524ec554ea74e36d9de32">&#9670;&nbsp;</a></span>selected</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int termuxgui_event::selected</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The id of the selected RadioButton. </p>
+<p>The index of the selected element or tab, starting at 0. </p>
+
+</div>
+</div>
+<a id="a70c642a1b2f435fa7970e1cec9970e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70c642a1b2f435fa7970e1cec9970e96">&#9670;&nbsp;</a></span>url</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* termuxgui_event::url</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The URL that was tried to navigate to. </p>
+<p>The URL the error was encountered with.</p>
+<p>The URL the HTTP error came from. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/termuxgui/<a class="el" href="termuxgui_8h_source.html">termuxgui.h</a></li>
 </ul>
