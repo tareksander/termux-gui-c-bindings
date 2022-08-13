@@ -9,7 +9,7 @@
 
 /**
  * @namespace tgui
- * Test
+ * @brief This is the C++ API of the library.<br>For an introduction in how the use the API, see <a href="https://github.com/tareksander/termux-gui-c-bindings/blob/main/TUTORIAL.md#c-tutorial-">the Tutorial</a>.<br>
  */
 
 
