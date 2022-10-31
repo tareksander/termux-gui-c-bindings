@@ -66,6 +66,7 @@ namespace tgui::impl {
 			int fd = -1;
 		private:
 			std::array<uint8_t, BUFFERSIZE> buffer;
+            int lastsize = 0;
 			bool err = false;
 			int64_t count = 0;
 			int again = 0;

@@ -27,8 +27,8 @@ namespace tgui::impl {
 	bool Connection::SocketInputStream::Next(const void** data, int* size) {
 		if (err) return false;
 		if (again != 0) {
-			// buffer.data()+BUFFERSIZE is one over the buffer so go again bytes back
-			*data = buffer.data()+BUFFERSIZE-again;
+			// buffer.data()+lastsize is one over the last return, so go again bytes back
+			*data = buffer.data()+lastsize-again;
 			*size = again;
 			count += again;
 			again = 0;
@@ -41,6 +41,7 @@ namespace tgui::impl {
 		}
 		*data = buffer.data();
 		*size = ret;
+        lastsize = ret;
 		count += ret;
 		return true;
 	}
@@ -49,6 +50,7 @@ namespace tgui::impl {
 		this->count -= again;
 	}
 	bool Connection::SocketInputStream::Skip(int count) {
+        if (err) return false;
 		while (count > BUFFERSIZE) {
 			int ret = read(fd, buffer.data(), BUFFERSIZE);
 			if (ret <= 0) {
@@ -75,11 +77,15 @@ namespace tgui::impl {
 	
 	
 	Connection::SocketOutputStream::SocketOutputStream() {}
-	Connection::SocketOutputStream::~SocketOutputStream() {}
+	Connection::SocketOutputStream::~SocketOutputStream() {
+        if (towrite != 0) {
+			writeRaw(buffer.data(), towrite);
+		}
+    }
 	bool Connection::SocketOutputStream::Next(void** data, int* size) {
 		if (err) return false;
 		if (towrite != 0) {
-			if (writeRaw(buffer.data(), towrite)) {
+			if (! writeRaw(buffer.data(), towrite)) {
 				err = true;
 				return false;
 			}
@@ -94,6 +100,10 @@ namespace tgui::impl {
 	void Connection::SocketOutputStream::BackUp(int count) {
 		towrite -= count;
 		this->count -= count;
+        if (! writeRaw(buffer.data(), towrite)) {
+            err = true;
+        }
+        towrite = 0;
 	}
 	int64_t Connection::SocketOutputStream::ByteCount() const {
 		return count;
@@ -198,7 +208,7 @@ namespace tgui::impl {
 			close(eventfd);
 			throw ConnectionTimeoutException();
 		}
-		int tmp = accept(mainfd, NULL, NULL);
+		int tmp = accept4(mainfd, NULL, NULL, SOCK_CLOEXEC);
 		if (tmp == -1) {
 			close(mainfd);
 			close(eventfd);
@@ -218,7 +228,7 @@ namespace tgui::impl {
 			close(eventfd);
 			throw ConnectionTimeoutException();
 		}
-		tmp = accept(eventfd, NULL, NULL);
+		tmp = accept4(eventfd, NULL, NULL, SOCK_CLOEXEC);
 		if (tmp == -1) {
 			close(mainfd);
 			close(eventfd);
