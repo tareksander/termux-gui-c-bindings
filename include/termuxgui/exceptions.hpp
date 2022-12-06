@@ -1,34 +1,80 @@
 #pragma once
 
 #include <exception>
+#include <system_error>
 
 namespace tgui {
 	
 	
 	/**
-	 * Signifies that the desired protocol or protocol version was unavailable. The plugin has to be updated.
+	 * @brief Base class for all exceptions.
 	 */
-	class ProtocolUnavailableException : public std::exception {};
+	class TermuxGUIException : public std::exception {};
 	
 	/**
-	 * The timeout expired while trying to establish the connection.
+	 * @brief Signifies that the desired protocol or protocol version was unavailable. The plugin has to be updated.
 	 */
-	class ConnectionTimeoutException : public std::exception {};
+	class ProtocolUnavailableException : public TermuxGUIException {};
 	
 	/**
-	 * The plugin doesn't have the same UID as the program, meaning the connection can't be trusted.
+	 * @brief The timeout expired while trying to establish the connection.
 	 */
-	class PluginUIDException : public std::exception {};
+	class ConnectionTimeoutException : public TermuxGUIException {};
 	
 	/**
-	 * A protobuf message could not be read.
+	 * @brief The plugin doesn't have the same UID as the program, meaning the connection can't be trusted.
 	 */
-	class MessageReadException : public std::exception {};
+	class PluginUIDException : public TermuxGUIException {};
 	
 	/**
-	 * A protobuf message could not be written.
+	 * @brief A protobuf message could not be read.
 	 */
-	class MessageWriteException : public std::exception {};
+	class MessageReadException : public TermuxGUIException {};
+	
+	/**
+	 * @brief A protobuf message could not be written.
+	 */
+	class MessageWriteException : public TermuxGUIException {};
+	
+	
+	/**
+	 * @brief A plugin method was not successful.
+	 */
+	class MethodError : public TermuxGUIException {};
+	
+	/**
+	 * @brief An `std::system_error` was caught.
+	 */
+	class SystemException : public TermuxGUIException {
+		public:
+		
+		/**
+		 * @brief The caught `std::system_error`
+		 */
+		const std::system_error e;
+		
+		SystemException(const std::system_error e) : e{e} {}
+	};
+	
+	
+	/**
+	 * @brief A generic `std::exception` was caught.
+	 */
+	class UncaughtExceptionException : public TermuxGUIException {
+		public:
+		
+		/**
+		 * @brief The caught `std::exception`.
+		 */
+		const std::exception e;
+		
+		UncaughtExceptionException(const std::exception e) : e{e} {}
+	};
+	
+	
+	
+	
+	
 	
 	
 	

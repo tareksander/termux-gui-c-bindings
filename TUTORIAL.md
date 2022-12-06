@@ -2,7 +2,7 @@
 
 
 Make sure you installed the library like explained in the README.  
-This tutorial assumes you have the basic understanding of the Android GUI from the [crash course](https://github.com/tareksander/termux-gui).  
+This tutorial assumes you have the basic understanding of the Android GUI from the [crash course](https://github.com/tareksander/termux-gui#using-the-plugin).  
 
 
 [C Tutorial](#ctut)<!-- @IGNORE PREVIOUS: anchor -->  

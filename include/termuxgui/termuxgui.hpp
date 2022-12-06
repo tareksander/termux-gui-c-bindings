@@ -15,7 +15,8 @@
 
 #include "exceptions.hpp"
 #include "connection.hpp"
-
+#include "activity.hpp"
+#include "event.hpp"
 
 
 

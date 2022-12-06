@@ -38,15 +38,30 @@ Only the additional functions and changes are documented here.
 
 // Types used by multiple messages
 
+enum Orientation {
+  unspecified = 0;
+  behind = 1;
+  fullSensor = 2;
+  fullUser = 3;
+  landscape = 4;
+  locked = 5;
+  nosensor = 6;
+  portrait = 7;
+  reverseLandscape = 8;
+  reversePortrait = 9;
+  sensor = 10;
+  sensorLandscape = 11;
+  sensorPortrait = 12;
+  user = 13;
+  userLandscape = 14;
+  userPortrait = 15;
+}
+
 message Configuration {
   bool darkMode = 2;
   string country = 3;
   string language = 4;
-  enum Orientation {
-    portrait = 0;
-    landscape = 1;
-  }
-  Orientation orientation = 5;
+  Orientation orientation = 5; // Only valid values are landscape, portrait and unspecified
   bool keyboardHidden = 6;
   int32 screenWidth = 7;
   int32 screenHeight = 8;
@@ -106,6 +121,19 @@ message Size {
 }
 
 
+/*
+Only used for setWidth and setHeight, to include the special constants MATCH_PARENT and WRAP_CONTENT
+ */
+message ViewSize {
+  enum Constant {
+    MATCH_PARENT = 0;
+    WRAP_CONTENT = 1;
+  }
+  oneof value {
+    Size size = 1;
+    Constant constant = 2;
+  }
+}
 
 
 
@@ -135,7 +163,7 @@ message NewActivityRequest {
 }
 
 /*
-A message with aid = "" and tid = -1 indicates an error.
+A message with aid = -1 and tid = -1 indicates an error.
 Otherwise unlike for JSON, the tid is always returned.
 For overlays, the tid is invalid though.
  */
@@ -198,6 +226,7 @@ message SetTaskDescriptionRequest {
   int32 aid = 1;
   /*
   Images have to be a PNG or JPEG file in binary format (not base64 encoded like for JSON).
+  If empty (length 0), resets the icon to the default.
    */
   bytes img = 2;
   string label = 3;
@@ -278,24 +307,6 @@ message SetOrientationRequest {
   /*
   The orientation is determined with an enum instead of a string.
    */
-  enum Orientation {
-      unspecified = 0;
-      behind = 1;
-      fullSensor = 2;
-      fullUser = 3;
-      landscape = 4;
-      locked = 5;
-      nosensor = 6;
-      portrait = 7;
-      reverseLandscape = 8;
-      reversePortrait = 9;
-      sensor = 10;
-      sensorLandscape = 11;
-      sensorPortrait = 12;
-      user = 13;
-      userLandscape = 14;
-      userPortrait = 15;
-  }
   Orientation orientation = 2;
 }
 
@@ -339,7 +350,12 @@ message IsLockedRequest {
 }
 
 message IsLockedResponse {
-  bool locked = 1;
+  enum Locked {
+    UNKNOWN = 0;
+    LOCKED = 1;
+    UNLOCKED = 2;
+  }
+  Locked locked = 1;
 }
 
 
@@ -361,7 +377,7 @@ message HideSoftKeyboardResponse {
 }
 
 message InterceptBackButtonRequest {
-  string aig = 1;
+  int32 aid = 1;
   bool intercept = 2;
 }
 
@@ -382,7 +398,7 @@ message GetVersionResponse {
 // View creation methods
 
 /*
-For all creating responses, an id of -1 indicates a failure.
+For all creation responses, an id of -1 indicates a failure.
  */
 
 
@@ -429,7 +445,7 @@ message CreateTextViewResponse {
 message CreateEditTextRequest {
   Create data = 1;
   bool noline = 2;
-  bool blockinput = 3;
+  // blockinput is removed, because it never worked correctly and custom views will be supported with ImageView and GLSurfaceView
   /*
   The type is an enum instead of a string.
    */
@@ -448,8 +464,8 @@ message CreateEditTextRequest {
     textEmailAddress = 12;
     textPassword = 13;
   }
-  Type type = 4;
-  string txt = 5;
+  Type type = 3;
+  string txt = 4;
 }
 
 message CreateEditTextResponse {
@@ -459,7 +475,8 @@ message CreateEditTextResponse {
 
 message CreateButtonRequest {
   Create data = 1;
-  string text = 2;
+  bool allcaps = 2;
+  string text = 3;
 }
 
 message CreateButtonResponse {
@@ -469,6 +486,7 @@ message CreateButtonResponse {
 
 message CreateImageViewRequest {
   Create data = 1;
+  bool keyboard = 2; // If true, makes the ImageView work with the soft & hardware keyboard and send key events
 }
 
 message CreateImageViewResponse {
@@ -622,6 +640,7 @@ message ShowCursorResponse {
 
 message SetLinearLayoutParamsRequest {
   View v = 1;
+  // Use a negative number to keep the current weight.
   float weight = 2;
   // Use 0 to keep the current position. The position starts at 1, to make the default message smaller.
   int32 position = 3;
@@ -694,7 +713,7 @@ message SetVisibilityResponse {
 
 message SetWidthRequest {
   View v = 1;
-  Size s = 2;
+  ViewSize s = 2;
 }
 
 message SetWidthResponse {
@@ -704,7 +723,7 @@ message SetWidthResponse {
 
 message SetHeightRequest {
   View v = 1;
-  Size s = 2;
+  ViewSize s = 2;
 }
 
 message SetHeightResponse {
@@ -721,6 +740,9 @@ message GetDimensionsRequest {
 }
 
 message GetDimensionsResponse {
+  /*
+  Negative values for one of these denote an error.
+   */
   float width = 1;
   float height = 2;
 }
@@ -847,7 +869,8 @@ message GetTextRequest {
 }
 
 message GetTextResponse {
-  string text = 1;
+  bool success = 1;
+  string text = 2;
 }
 
 
@@ -880,6 +903,9 @@ message GetScrollPositionRequest {
 }
 
 message GetScrollPositionResponse {
+  /*
+  Negative values for one of these denote an error.
+   */
   float x = 1;
   float y = 2;
 }
@@ -970,6 +996,15 @@ message SelectTabRequest {
 }
 
 message SelectTabResponse {
+  bool success = 1;
+}
+
+message SelectItemRequest {
+  View v = 1;
+  uint32 item = 2;
+}
+
+message SelectItemResponse {
   bool success = 1;
 }
 
@@ -1147,7 +1182,10 @@ message SetRemoteVisibilityResponse {
 message SetRemotePaddingRequest {
   int32 rid = 1;
   int32 id = 2;
-  Direction d = 3;
+  Size left = 3;
+  Size top = 4;
+  Size right = 5;
+  Size bottom = 6;
 }
 
 message SetRemotePaddingResponse {
@@ -1186,7 +1224,8 @@ message AllowJavascriptRequest {
 }
 
 message AllowJavascriptResponse {
-  bool allowed = 1;
+  bool success = 1;
+  bool allowed = 2;
 }
 
 
@@ -1203,6 +1242,8 @@ message AllowContentURIResponse {
 message SetDataRequest {
   View v = 1;
   string data = 2;
+  bool base64 = 3;
+  string mime = 4;
 }
 
 message SetDataResponse {
@@ -1297,16 +1338,24 @@ message CreateNotificationRequest {
     BigImageNotification bigImage = 10;
     CustomNotification custom = 11;
   }
-  bytes icon = 1;
-  string channel = 2;
-  Importance importance = 3;
-  bool alertOnce = 4;
-  bool showTimestamp = 5;
-  int64 timestamp = 6;
+  /*
+  Use -1 to create a new notification.
+   */
+  int32 id = 1;
+  bytes icon = 2;
+  string channel = 3;
+  Importance importance = 4;
+  bool alertOnce = 5;
+  bool showTimestamp = 6;
   repeated string actions = 7;
+  int64 timestamp = 12;
+  bool ongoing = 13;
 }
 
 message CreateNotificationResponse {
+  /*
+  -1 indicates an error.
+   */
   int32 id = 1;
 }
 
@@ -1362,16 +1411,6 @@ message SendTouchEventRequest {
 }
 
 message SendTouchEventResponse {
-  bool success = 1;
-}
-
-
-message SendGestureEventRequest {
-  View v = 1;
-  bool send = 2;
-}
-
-message SendGestureEventResponse {
   bool success = 1;
 }
 
@@ -1482,7 +1521,8 @@ message Method {
     SetBufferRequest setBuffer = 230;
     RefreshImageViewRequest refreshImageView = 231;
     SelectTabRequest selectTab = 232;
-    SetClickableRequest setClickable = 233;
+    SelectItemRequest selectItem = 233;
+    SetClickableRequest setClickable = 234;
     
     
     // RemoteViews methods
@@ -1533,9 +1573,8 @@ message Method {
     SendLongClickEventRequest sendLongClickEvent = 601;
     SendFocusChangeEventRequest sendFocusChangeEvent = 602;
     SendTouchEventRequest sendTouchEvent = 603;
-    SendGestureEventRequest sendGestureEvent = 604;
-    SendTextEventRequest sendTextEvent = 605;
-    SendOverlayTouchEventRequest sendOverlayTouch = 606;
+    SendTextEventRequest sendTextEvent = 604;
+    SendOverlayTouchEventRequest sendOverlayTouch = 605;
     
   }
 }
@@ -1582,8 +1621,6 @@ message ConfigEvent {
 
 message ClickEvent {
   View v = 1;
-  int32 x = 2;
-  int32 y = 3;
   bool set = 4;
 }
 
@@ -1632,7 +1669,8 @@ message SelectedEvent {
 
 message ItemSelectedEvent {
   View v = 1;
-  // For Spinners, this is the index in the list you provided, and not the string of the option like for JSON
+  // For Spinners, this is the index in the list you provided, and not the string of the option like for JSON.
+  // -1 if nothing was selected.
   int32 selected = 2;
 }
 
@@ -1733,6 +1771,24 @@ message OverlayScaleEvent {
 }
 
 
+message KeyEvent {
+  enum Modifier {
+    MOD_NONE = 0;
+    MOD_LSHIFT = 1;
+    MOD_RSHIFT = 2;
+    MOD_LCTRL = 4;
+    MOD_RCTRL = 8;
+    MOD_ALT = 16;
+    MOD_FN = 32;
+    MOD_CAPS_LOCK = 64;
+    MOD_ALT_GR = 128;
+    MOD_NUM_LOCK = 256;
+  }
+  uint32 code = 1; // may eventually return xkb keycodes here, but unused for now
+  uint32 modifiers = 2; // Bits are according to the Modifier enum
+  uint32 codePoint = 3; // The unicode code point of the character
+}
+
 
 // Debug events
 
@@ -1779,6 +1835,7 @@ message Event {
     NotificationDismissedEvent notificationDismissed = 45;
     NotificationActionEvent notificationAction = 46;
     OverlayScaleEvent overlayScale = 47;
+    KeyEvent keyEvent = 48;
     
     
     // Debug events

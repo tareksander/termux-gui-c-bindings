@@ -4,6 +4,7 @@
  * @file
  * @brief This is the C API of the library.<br>For an introduction in how the use the API, see <a href="https://github.com/tareksander/termux-gui-c-bindings/blob/main/TUTORIAL.md#c-tutorial">the Tutorial</a>.<br>
  * 
+ * @details
  * Functions return an error code. If the code is <= 0, the operation was a success and the out parameters are valid.
  * For codes > 0, the out parameters have to be treated as invalid.
  * <br><br>
@@ -73,7 +74,10 @@ typedef enum {
 	TERMUXGUI_ERR_ACTIVITY_DESTROYED = 3,
 	/// A protocol buffer message could not be read or written.
 	TERMUXGUI_ERR_MESSAGE = 4,
-    
+	/// There is not enough memory to complete an operation.
+	TERMUXGUI_ERR_NOMEM = 5,
+	/// An exception was thrown in the C++ part that could not be mapped to other errors.
+	TERMUXGUI_ERR_EXCEPTION = 6,
 } termuxgui_err;
 
 
@@ -150,32 +154,32 @@ typedef enum {
  * @brief The types an EditText can be. See <a href="https://developer.android.com/reference/android/widget/TextView#attr_android:inputType">the Android documentation</a> for more information.
  */
 typedef enum {
-    /// Normal text input.
+	/// Normal text input.
 	TERMUXGUI_EDIT_TEXT_TEXT = 0,
-    /// Multiline text input.
-    TERMUXGUI_EDIT_TEXT_TEXT_MULTILINE = 1,
-    /// Phone number input.
-    TERMUXGUI_EDIT_TEXT_PHONE = 3,
-    /// Date input.
-    TERMUXGUI_EDIT_TEXT_DATE = 4,
-    /// Time input.
-    TERMUXGUI_EDIT_TEXT_TIME = 5,
-    /// Date and time input.
-    TERMUXGUI_EDIT_TEXT_DATETIME = 6,
-    /// Number input.
-    TERMUXGUI_EDIT_TEXT_NUMBER = 7,
-    /// Decimal number input.
-    TERMUXGUI_EDIT_TEXT_NUMBER_DECIMAL = 8,
-    /// Password number input.
-    TERMUXGUI_EDIT_TEXT_NUMBER_PASSWORD = 9,
-    /// Signed number input.
-    TERMUXGUI_EDIT_TEXT_NUMBER_SIGNED = 10,
-    /// Signed decimal number input.
-    TERMUXGUI_EDIT_TEXT_NUMBER_DECIMAL_SIGNED = 11,
-    /// Email address input.
-    TERMUXGUI_EDIT_TEXT_TEXT_EMAIL_ADDRESS = 12,
-    /// Password input.
-    TERMUXGUI_EDIT_TEXT_TEXT_PASSWORD = 13,
+	/// Multiline text input.
+	TERMUXGUI_EDIT_TEXT_TEXT_MULTILINE = 1,
+	/// Phone number input.
+	TERMUXGUI_EDIT_TEXT_PHONE = 3,
+	/// Date input.
+	TERMUXGUI_EDIT_TEXT_DATE = 4,
+	/// Time input.
+	TERMUXGUI_EDIT_TEXT_TIME = 5,
+	/// Date and time input.
+	TERMUXGUI_EDIT_TEXT_DATETIME = 6,
+	/// Number input.
+	TERMUXGUI_EDIT_TEXT_NUMBER = 7,
+	/// Decimal number input.
+	TERMUXGUI_EDIT_TEXT_NUMBER_DECIMAL = 8,
+	/// Password number input.
+	TERMUXGUI_EDIT_TEXT_NUMBER_PASSWORD = 9,
+	/// Signed number input.
+	TERMUXGUI_EDIT_TEXT_NUMBER_SIGNED = 10,
+	/// Signed decimal number input.
+	TERMUXGUI_EDIT_TEXT_NUMBER_DECIMAL_SIGNED = 11,
+	/// Email address input.
+	TERMUXGUI_EDIT_TEXT_TEXT_EMAIL_ADDRESS = 12,
+	/// Password input.
+	TERMUXGUI_EDIT_TEXT_TEXT_PASSWORD = 13,
 } termuxgui_edit_text_type;
 
 
@@ -210,76 +214,78 @@ typedef struct {
  * @brief All possible event types.
  */
 typedef enum {
-    /// Send when an Activity is created. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
+	/// Send when an Activity is created. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
 	TERMUXGUI_EVENT_CREATE = 0,
-    /// Send when an Activity is started. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
+	/// Send when an Activity is started. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
 	TERMUXGUI_EVENT_START = 1,
-    /// Send when an Activity is resumed. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
+	/// Send when an Activity is resumed. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
 	TERMUXGUI_EVENT_RESUME = 2,
-    /// Send when an Activity is paused. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
+	/// Send when an Activity is paused. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
 	TERMUXGUI_EVENT_PAUSE = 3,
-    /// Send when an Activity is stopped. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
+	/// Send when an Activity is stopped. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
 	TERMUXGUI_EVENT_STOP = 4,
-    /// Send when an Activity is destroyed. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
+	/// Send when an Activity is destroyed. See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">the Android documentation for Activity lifecycle</a> for more information.
 	TERMUXGUI_EVENT_DESTROY = 5,
-    /// Send when the configuration for an activity changes, i.e. because the Activity is rotated or dark mode is switched on.
+	/// Send when the configuration for an activity changes, i.e. because the Activity is rotated or dark mode is switched on.
 	TERMUXGUI_EVENT_CONFIG = 6,
-    /// Send when a View is clicked.
+	/// Send when a View is clicked.
 	TERMUXGUI_EVENT_CLICK = 7,
-    /// Send when pressing and holding a View.
+	/// Send when pressing and holding a View.
 	TERMUXGUI_EVENT_LONG_CLICK = 8,
-    /// Send when a View gains focus.
+	/// Send when a View gains focus.
 	TERMUXGUI_EVENT_FOCUS = 9,
-    /// Send when a view is touched.
+	/// Send when a view is touched.
 	TERMUXGUI_EVENT_TOUCH = 10,
-    /// Send when the text of a TextView changes.
+	/// Send when the text of a TextView changes.
 	TERMUXGUI_EVENT_TEXT = 11,
-    /// Send when a refresh is triggered on a SwipeRefreshLayout.
+	/// Send when a refresh is triggered on a SwipeRefreshLayout.
 	TERMUXGUI_EVENT_REFRESH = 12,
-    /// Send when a RadioButton in a RadioGroup has been selected.
+	/// Send when a RadioButton in a RadioGroup has been selected.
 	TERMUXGUI_EVENT_SELECTED = 13,
-    /// Send when an option is selected in a Spinner or a tab in a TabLayout.
+	/// Send when an option is selected in a Spinner or a tab in a TabLayout.
 	TERMUXGUI_EVENT_ITEM_SELECTED = 14,
-    /// Send when the user presses the back button.
-    TERMUXGUI_EVENT_BACK = 15,
-    /// Send when Javascript or the user tries to navigate to a different page in a WebView.
-    TERMUXGUI_EVENT_WEBVIEW_NAVIGATION = 16,
-    /// Send when a WebView encounters a HTTP error when fetching a resource.
-    TERMUXGUI_EVENT_WEBVIEW_HTTP_ERROR = 17,
-    /// Send when a WebView encounters an internal error when fetching a resource, like a SSL error loss of connection.
-    TERMUXGUI_EVENT_WEBVIEW_ERROR = 18,
-    /// Send when a WebView rednerer was destroyed by the system, resulting in the corresponding WebView being removed.
-    TERMUXGUI_EVENT_WEBVIEW_DESTROYED = 19,
-    /// Send when the loading progress in a WebView updates.
-    TERMUXGUI_EVENT_WEBVIEW_PROGRESS = 20,
-    /// Send when Javascript tries to print to the console in a WebView.
-    TERMUXGUI_EVENT_WEBVIEW_CONSOLE = 21,
-    /// Send when the airplane mode changes.
+	/// Send when the user presses the back button.
+	TERMUXGUI_EVENT_BACK = 15,
+	/// Send when Javascript or the user tries to navigate to a different page in a WebView.
+	TERMUXGUI_EVENT_WEBVIEW_NAVIGATION = 16,
+	/// Send when a WebView encounters a HTTP error when fetching a resource.
+	TERMUXGUI_EVENT_WEBVIEW_HTTP_ERROR = 17,
+	/// Send when a WebView encounters an internal error when fetching a resource, like a SSL error loss of connection.
+	TERMUXGUI_EVENT_WEBVIEW_ERROR = 18,
+	/// Send when a WebView renderer was destroyed by the system, resulting in the corresponding WebView being removed.
+	TERMUXGUI_EVENT_WEBVIEW_DESTROYED = 19,
+	/// Send when the loading progress in a WebView updates.
+	TERMUXGUI_EVENT_WEBVIEW_PROGRESS = 20,
+	/// Send when Javascript tries to print to the console in a WebView.
+	TERMUXGUI_EVENT_WEBVIEW_CONSOLE = 21,
+	/// Send when the airplane mode changes.
 	TERMUXGUI_EVENT_AIRPLANE = 22,
-    /// Send when the locale changes.
+	/// Send when the locale changes.
 	TERMUXGUI_EVENT_LOCALE = 23,
-    /// Send when the timezone changes.
+	/// Send when the timezone changes.
 	TERMUXGUI_EVENT_TIMEZONE = 24,
-    /// Send when the screen is turned off.
+	/// Send when the screen is turned off.
 	TERMUXGUI_EVENT_SCREEN_OFF = 25,
-    /// Send when the screen is turned on.
+	/// Send when the screen is turned on.
 	TERMUXGUI_EVENT_SCREEN_ON = 26,
-    /// Send when the user leaves an Activity.
+	/// Send when the user leaves an Activity.
 	TERMUXGUI_EVENT_USER_LEAVE_HINT = 27,
-    /// Send when an Activity enters or loaves picture-in-picture mode
+	/// Send when an Activity enters or loaves picture-in-picture mode
 	TERMUXGUI_EVENT_PIP = 28,
-    /// Send when a click is registered in a remote layout.
+	/// Send when a click is registered in a remote layout.
 	TERMUXGUI_EVENT_REMOTE_CLICK = 29,
-    /// Send when a notification is clicked.
+	/// Send when a notification is clicked.
 	TERMUXGUI_EVENT_NOTIFICATION = 30,
-    /// Send when a notification is swiped away by the user.
+	/// Send when a notification is swiped away by the user.
 	TERMUXGUI_EVENT_NOTIFICATION_DISMISSED = 31,
-    /// Send when a notification action is clicked.
+	/// Send when a notification action is clicked.
 	TERMUXGUI_EVENT_NOTIFICATION_ACTION = 32,
-    /// Send when a scale gesture was made on an overlay Activity.
+	/// Send when a scale gesture was made on an overlay Activity.
 	TERMUXGUI_EVENT_OVERLAY_SCALE = 33,
+	/// A key was pressed when an ImageView or GLSurfaceView with soft keyboard support was focused.
+	TERMUXGUI_EVENT_KEY = 34,
 	
-    /// Send when an exception happens in the plugin.
+	/// Send when an exception happens in the plugin.
 	TERMUXGUI_EVENT_DEBUG_EXCEPTION = 1000,
 } termuxgui_event_type;
 
@@ -288,19 +294,75 @@ typedef enum {
  * @brief Possible causes for touch events.
  */
 typedef enum {
-    /// Send when the first pointer touches.
+	/// Send when the first pointer touches.
 	TERMUXGUI_TOUCH_DOWN = 0,
-    /// Send when the last pointer goes up.
+	/// Send when the last pointer goes up.
 	TERMUXGUI_TOUCH_UP = 1,
-    /// Send when an additional pointer touches.
+	/// Send when an additional pointer touches.
 	TERMUXGUI_TOUCH_POINTER_DOWN = 2,
-    /// Send when an additional pointer goes up.
+	/// Send when an additional pointer goes up.
 	TERMUXGUI_TOUCH_POINTER_UP = 3,
-    /// Like `TOUCH_UP`, but the gesture was cancelled.
+	/// Like `TOUCH_UP`, but the gesture was cancelled.
 	TERMUXGUI_TOUCH_CANCEL = 4,
-    /// Send when pointers have been moved.
+	/// Send when pointers have been moved.
 	TERMUXGUI_TOUCH_MOVE = 5,
 } termuxgui_touch_action;
+
+/**
+ * @brief All supported key modifiers.
+ */
+typedef enum {
+	TERMUXGUI_MOD_NONE = 0,
+	TERMUXGUI_MOD_LSHIFT = 1,
+	TERMUXGUI_MOD_RSHIFT = 2,
+	TERMUXGUI_MOD_LCTRL = 4,
+	TERMUXGUI_MOD_RCTRL = 8,
+	TERMUXGUI_MOD_ALT = 16,
+	TERMUXGUI_MOD_FN = 32,
+	TERMUXGUI_MOD_CAPS_LOCK = 64,
+	TERMUXGUI_MOD_ALT_GR = 128,
+	TERMUXGUI_MOD_NUM_LOCK = 256,
+} termuxgui_key_modifier;
+
+
+/**
+ * @brief All possible View visibility states.
+ */
+typedef enum {
+	/// Completely visible.
+	TERMUXGUI_VIS_VISIBLE = 0,
+	/// Invisible, but takes up it's space in the layout.
+	TERMUXGUI_VIS_HIDDEN = 1,
+	/// Invisible and takes up no space in the layout.
+	TERMUXGUI_VIS_GONE = 3,
+} termuxgui_view_visibility;
+
+
+/**
+ * @brief All supported size units.
+ * 
+ * See <a href="https://developer.android.com/guide/topics/resources/more-resources.html#Dimension">the Android documentation</a> for more information.
+ * 
+ */
+typedef enum {
+	/// density-pixels unit
+	TERMUXGUI_UNIT_DP = 0,
+	/// scale-pixels unit
+	TERMUXGUI_UNIT_SP = 1,
+	/// pixels unit
+	TERMUXGUI_UNIT_PX = 2,
+	/// millimeters unit
+	TERMUXGUI_UNIT_MM = 3,
+	/// inches unit
+	TERMUXGUI_UNIT_IN = 4,
+	/// points unit
+	TERMUXGUI_UNIT_PT = 5,
+} termuxgui_size_unit;
+
+
+
+
+
 
 
 /**
@@ -318,44 +380,44 @@ typedef struct {
 typedef struct {
 	/// The event type specifies which entry in the union is valid.
 	termuxgui_event_type type;
-    /// Most events are specific to an Activity. In that case, this field isn't NULL
+	/// Most events are specific to an Activity. In that case, this field isn't NULL
 	termuxgui_activity activity;
 	union {
 		/**
 		 * @brief Whether the Activity is finishing.<br>
-         * Valid for: `TERMUXGUI_EVENT_PAUSE`, `TERMUXGUI_EVENT_STOP` and `TERMUXGUI_EVENT_DESTROY`.
+		 * Valid for: `TERMUXGUI_EVENT_PAUSE`, `TERMUXGUI_EVENT_STOP` and `TERMUXGUI_EVENT_DESTROY`.
 		 */
 		bool finishing;
 		/// Valid for `TERMUXGUI_EVENT_CONFIG`.
 		termuxgui_activity_configuration configuration;
 		/// Valid for `TERMUXGUI_EVENT_CLICK`.
 		struct {
-            /// The id of the View.
+			/// The id of the View.
 			int id;
 			/// For ImageView only.
 			int x;
-            /// For ImageView only.
-            int y;
+			/// For ImageView only.
+			int y;
 			/// For CheckBox, Switch and ToggleButton.
 			bool set;
 		} click;
-        /// Valid for `TERMUXGUI_EVENT_LONG_CLICK`.
+		/// Valid for `TERMUXGUI_EVENT_LONG_CLICK`.
 		struct {
-            /// The id of the View.
+			/// The id of the View.
 			int id;
 		} longClick;
-        /// Valid for `TERMUXGUI_EVENT_FOCUS`.
+		/// Valid for `TERMUXGUI_EVENT_FOCUS`.
 		struct {
-            /// The id of the View.
+			/// The id of the View.
 			int id;
-            /// Whether the View now has focus or not.
+			/// Whether the View now has focus or not.
 			bool focus;
 		} focus;
-        /// Valid for `TERMUXGUI_EVENT_TOUCH`.
+		/// Valid for `TERMUXGUI_EVENT_TOUCH`.
 		struct {
-            /// The id of the View.
+			/// The id of the View.
 			int id;
-            /// The type of touch event.
+			/// The type of touch event.
 			termuxgui_touch_action action;
 			/**
 			 * The pointers of the touch event.<br>
@@ -363,123 +425,132 @@ typedef struct {
 			 */
 			// TODO use static memory for pointer array, but watch out for overflows
 			termuxgui_touch_pointer** pointers;
-            /// index of the pointer added or removed.
+			/// index of the pointer added or removed.
 			uint32_t index;
-            /// Timestamp of the event.
+			/// Timestamp of the event.
 			uint64_t time;
 		} touch;
-        /// Valid for `TERMUXGUI_EVENT_TEXT`.
+		/// Valid for `TERMUXGUI_EVENT_TEXT`.
 		struct {
-            /// The id of the TextView.
+			/// The id of the TextView.
 			int id;
 			/// The new text of the TextView
-            // TODO use static memory here.
+			// TODO use static memory here.
 			char* text;
 		} text;
-        /// Valid for `TERMUXGUI_EVENT_REFRESH`.
+		/// Valid for `TERMUXGUI_EVENT_REFRESH`.
 		struct {
-            /// The id of the SwipeRefreshLayout.
+			/// The id of the SwipeRefreshLayout.
 			int id;
 		} refresh;
-        /// Valid for `TERMUXGUI_EVENT_SELECTED`.
+		/// Valid for `TERMUXGUI_EVENT_SELECTED`.
 		struct {
-            /// The id of the RadioGroup.
+			/// The id of the RadioGroup.
 			int id;
-            /// The id of the selected RadioButton.
+			/// The id of the selected RadioButton.
 			int selected;
 		} selected;
-        /// Valid for `TERMUXGUI_EVENT_ITEM_SELECTED`.
+		/// Valid for `TERMUXGUI_EVENT_ITEM_SELECTED`.
 		struct {
-            /// The id of the Spinner or TabLayout.
+			/// The id of the Spinner or TabLayout.
 			int id;
 			/// The index of the selected element or tab, starting at 0.
 			int selected;
 		} itemSelected;
-        /// Valid for `TERMUXGUI_EVENT_WEBVIEW_NAVIGATION`.
-        struct {
-            /// The id of the WebView.
-            int id;
-            /// The URL that was tried to navigate to.
-            //TODO use static memory here
-            char* url;
-        } webNavigation;
-        /// Valid for `TERMUXGUI_EVENT_WEBVIEW_HTTP_ERROR`.
-        struct {
-            /// The id of the WebView.
-            int id;
-            /// The URL the HTTP error came from.
-            //TODO use static memory here
-            char* url;
-            /// The HTTP error code.
-            int code;
-        } webHTTPError;
-        /// Valid for `TERMUXGUI_EVENT_WEBVIEW_ERROR`.
-        struct {
-            /// The id of the WebView.
-            int id;
-            /// The URL the error was encountered with.
-            //TODO use static memory here
-            char* url;
-        } webError;
-        /// Valid for `TERMUXGUI_EVENT_WEBVIEW_DESTROYED`.
-        struct {
-            /// The id of the WebView.
-            int id;
-        } webDestroyed;
-        /// Valid for `TERMUXGUI_EVENT_WEBVIEW_PROGRESS`.
-        struct {
-            /// The id of the WebView.
-            int id;
-            /// The progress of the site loading in percent.
-            int progress;
-        } webProgress;
-        /// Valid for `TERMUXGUI_EVENT_WEBVIEW_CONSOLE`.
-        struct {
-            /// The id of the WebView.
-            int id;
-            /// The console message.
-            //TODO use static memory here
-            char* msg;
-        } webConsole;
-        /**
-         * @brief The current state of airplane mode.<br>
-         * Valid for `TERMUXGUI_EVENT_AIRPLANE`.
-         */
-		bool airplane;
-        /**
-         * @brief The current locale.<br>
-         * Valid for `TERMUXGUI_EVENT_LOCALE`.
-         */
-		const char* locale;
-        /**
-         * @brief The current timezone.<br>
-         * Valid for `TERMUXGUI_EVENT_TIMEZONE`.
-         */
-		const char* timezone;
-        /// Valid for `TERMUXGUI_EVENT_PIP`.
+		/// Valid for `TERMUXGUI_EVENT_WEBVIEW_NAVIGATION`.
 		struct {
-            /// The current state of picture-in-picture mode.
+			/// The id of the WebView.
+			int id;
+			/// The URL that was tried to navigate to.
+			//TODO use static memory here
+			char* url;
+		} webNavigation;
+		/// Valid for `TERMUXGUI_EVENT_WEBVIEW_HTTP_ERROR`.
+		struct {
+			/// The id of the WebView.
+			int id;
+			/// The URL the HTTP error came from.
+			//TODO use static memory here
+			char* url;
+			/// The HTTP error code.
+			int code;
+		} webHTTPError;
+		/// Valid for `TERMUXGUI_EVENT_WEBVIEW_ERROR`.
+		struct {
+			/// The id of the WebView.
+			int id;
+			/// The URL the error was encountered with.
+			//TODO use static memory here
+			char* url;
+		} webError;
+		/// Valid for `TERMUXGUI_EVENT_WEBVIEW_DESTROYED`.
+		struct {
+			/// The id of the WebView.
+			int id;
+		} webDestroyed;
+		/// Valid for `TERMUXGUI_EVENT_WEBVIEW_PROGRESS`.
+		struct {
+			/// The id of the WebView.
+			int id;
+			/// The progress of the site loading in percent.
+			int progress;
+		} webProgress;
+		/// Valid for `TERMUXGUI_EVENT_WEBVIEW_CONSOLE`.
+		struct {
+			/// The id of the WebView.
+			int id;
+			/// The console message.
+			//TODO use static memory here
+			char* msg;
+		} webConsole;
+		/**
+		 * @brief The current state of airplane mode.<br>
+		 * Valid for `TERMUXGUI_EVENT_AIRPLANE`.
+		 */
+		bool airplane;
+		/**
+		 * @brief The current locale.<br>
+		 * Valid for `TERMUXGUI_EVENT_LOCALE`.
+		 */
+		const char* locale;
+		/**
+		 * @brief The current timezone.<br>
+		 * Valid for `TERMUXGUI_EVENT_TIMEZONE`.
+		 */
+		const char* timezone;
+		/// Valid for `TERMUXGUI_EVENT_PIP`.
+		struct {
+			/// The current state of picture-in-picture mode.
 			bool pip;
 		} pip;
-        /// Valid for `TERMUXGUI_EVENT_REMOTE_CLICK`.
+		/// Valid for `TERMUXGUI_EVENT_REMOTE_CLICK`.
 		struct {
-            /// The id of the remote layout.
+			/// The id of the remote layout.
 			int rid;
-            /// The id of the View.
+			/// The id of the View.
 			int id;
 		} remoteClick;
-        /// Valid for `TERMUXGUI_EVENT_NOTIFICATION_ACTION`.
+		/// Valid for `TERMUXGUI_EVENT_NOTIFICATION_ACTION`.
 		struct {
-            /// The id of the notification.
+			/// The id of the notification.
 			int id;
-            /// The index of the action, starting at 0.
+			/// The index of the action, starting at 0.
 			int action;
 		} action;
-        /// Valid for `TERMUXGUI_EVENT_OVERLAY_SCALE`.
-        struct {
-            /// The new distance between the 2 pointers.
-            float span;
-        } overlayScale;
+		/// Valid for `TERMUXGUI_EVENT_OVERLAY_SCALE`.
+		struct {
+			/// The new distance between the 2 pointers.
+			float span;
+		} overlayScale;
+		/// Valid for `TERMUXGUI_EVENT_KEY`.
+		struct {
+			/// The active modifiers.
+			termuxgui_key_modifier mod;
+			/// Currently unused.
+			uint32_t code;
+			/// The unicode code point.
+			uint32_t codePoint;
+		} key;
 		/**
 		 * @brief Valid for `TERMUXGUI_EVENT_DEBUG_EXCEPTION`.<br>
 		 * Note: If not NULL, this has to be freed with free()
@@ -500,6 +571,8 @@ typedef struct {
  * ### Errors
  *  - TERMUXGUI_ERR_SYSTEM: The socket creation failed.
  *  - TERMUXGUI_ERR_CONNECTION_LOST: The timeout was exceeded.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param[out] c The newly created connection, if no error occurred.
  * @return The error code.
@@ -512,6 +585,8 @@ termuxgui_err termuxgui_connection_create(termuxgui_connection* c);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
  * @param[out] v The version code
@@ -525,6 +600,8 @@ termuxgui_err termuxgui_get_version(termuxgui_connection c, int* v);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
  * @param text The text to display.
@@ -540,6 +617,8 @@ termuxgui_err termuxgui_toast(termuxgui_connection c, char* text, bool l);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
  * @return The error code.
@@ -552,6 +631,8 @@ termuxgui_err termuxgui_turn_screen_on(termuxgui_connection c);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
  * @param locked A pointer where the status should be put.
@@ -566,6 +647,8 @@ termuxgui_err termuxgui_is_locked(termuxgui_connection c, bool* locked);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
  * @return The error code.
@@ -578,6 +661,12 @@ termuxgui_err termuxgui_request_unlock(termuxgui_connection c);
  * @brief Closes a connection and frees the resources (all objects created with the connection still have to be destroyed).
  * All open Activities will be closed by the plugin automatically.
  * 
+ * @details
+ * ### Errors
+ *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ * 
  * @param c The connection to close.
  */
 void termuxgui_connection_destroy(termuxgui_connection c);
@@ -585,16 +674,18 @@ void termuxgui_connection_destroy(termuxgui_connection c);
 
 
 /**
- * @briefCreates a new Activity.
+ * @brief Creates a new Activity.
  * 
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
  * @param[out] a A pointer to the Activity to be created.
  * @param type The type the Activity should be.
- * @param t The Task in which to put the Activity. use `NULL` for a new Task.
+ * @param t The Task in which to put the Activity. Use `NULL` for a new Task.
  * @param intercept Whether or not to intercept back button events. See `termuxgui_activity_intercept_back_button` for more information.
  * @return The error code.
  */
@@ -607,6 +698,9 @@ termuxgui_err termuxgui_activity_create(termuxgui_connection c, termuxgui_activi
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param[out] t The Task of the Activity.
@@ -623,6 +717,9 @@ termuxgui_err termuxgui_activity_get_task(termuxgui_activity a, termuxgui_task* 
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @return The error code.
@@ -636,6 +733,9 @@ termuxgui_err termuxgui_activity_task_to_back(termuxgui_activity a);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param status_bar_color The color for the status bar.
@@ -654,6 +754,9 @@ termuxgui_err termuxgui_activity_set_theme(termuxgui_activity a, uint32_t status
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param img The image in PNG or JPEG format.
@@ -670,6 +773,9 @@ termuxgui_err termuxgui_activity_set_task_description(termuxgui_activity a, void
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param num Numerator of the aspect ratio.
@@ -685,6 +791,9 @@ termuxgui_err termuxgui_activity_set_pip_params(termuxgui_activity a, unsigned i
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param pip Whether picture-in-picture mode should be enabled or disabled.
@@ -699,6 +808,9 @@ termuxgui_err termuxgui_activity_set_pip_mode(termuxgui_activity a, bool pip);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param automatic Whether to automatically go into picture-in-picture mode.
@@ -713,6 +825,9 @@ termuxgui_err termuxgui_activity_set_pip_mode_auto(termuxgui_activity a, bool au
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param mode How the Activity should react.
@@ -727,6 +842,9 @@ termuxgui_err termuxgui_activity_set_input_mode(termuxgui_activity a, termuxgui_
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param keep Whether to keep the screen on or not.
@@ -741,6 +859,9 @@ termuxgui_err termuxgui_activity_set_keep_screen_on(termuxgui_activity a, bool k
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param o The new orientation.
@@ -755,6 +876,9 @@ termuxgui_err termuxgui_activity_set_orientation(termuxgui_activity a, termuxgui
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param x The x position in pixels.
@@ -770,6 +894,9 @@ termuxgui_err termuxgui_activity_set_position(termuxgui_activity a, unsigned int
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param[out] conf The configuration is put here.
@@ -784,6 +911,9 @@ termuxgui_err termuxgui_activity_get_configuration(termuxgui_activity a, termuxg
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @return The error code.
@@ -797,6 +927,9 @@ termuxgui_err termuxgui_activity_hide_soft_keyboard(termuxgui_activity a);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity.
  * @param intercept Whether to intercept the back button press.
@@ -813,6 +946,8 @@ termuxgui_err termuxgui_activity_intercept_back_button(termuxgui_activity a, boo
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param a The Activity.
  * @return The error code.
@@ -828,6 +963,8 @@ termuxgui_err termuxgui_activity_destroy(termuxgui_activity a);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param t
  * @return The error code.
@@ -840,6 +977,8 @@ termuxgui_err termuxgui_task_to_front(termuxgui_task t);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param t The Task.
  * @return The error code.
@@ -849,6 +988,11 @@ termuxgui_err termuxgui_task_finish(termuxgui_task t);
 
 /**
  * @brief Frees the memory of the Task. The Task will not be closed.
+ * 
+ * @details
+ * ### Errors
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ * 
  * @param t The Task.
  */
 void termuxgui_task_destroy(termuxgui_task t);
@@ -868,6 +1012,9 @@ void termuxgui_task_destroy(termuxgui_task t);
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -884,6 +1031,9 @@ termuxgui_err termuxgui_create_linear_layout(termuxgui_activity a, termuxgui_vie
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -899,6 +1049,9 @@ termuxgui_err termuxgui_create_frame_layout(termuxgui_activity a, termuxgui_view
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -914,6 +1067,9 @@ termuxgui_err termuxgui_create_swipe_refresh_layout(termuxgui_activity a, termux
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -932,6 +1088,9 @@ termuxgui_err termuxgui_create_text_view(termuxgui_activity a, termuxgui_view* v
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -939,10 +1098,9 @@ termuxgui_err termuxgui_create_text_view(termuxgui_activity a, termuxgui_view* v
  * @param text The initial text. NULL is the same as the empty string.
  * @param type The input type. This adjusts the soft keyboard to show relevant keys.
  * @param noline By default a line is shown under the text in an EditText. This parameter can be used to prevent that.
- * @param blockInput Currently unused.
  * @return termuxgui_err 
  */
-termuxgui_err termuxgui_create_edit_text(termuxgui_activity a, termuxgui_view* v, termuxgui_view parent, const char* text, termuxgui_edit_text_type type, bool noLine, bool blockInput);
+termuxgui_err termuxgui_create_edit_text(termuxgui_activity a, termuxgui_view* v, termuxgui_view parent, const char* text, termuxgui_edit_text_type type, bool noLine);
 
 
 /**
@@ -951,6 +1109,9 @@ termuxgui_err termuxgui_create_edit_text(termuxgui_activity a, termuxgui_view* v
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -967,6 +1128,9 @@ termuxgui_err termuxgui_create_button(termuxgui_activity a, termuxgui_view* v, t
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -982,6 +1146,9 @@ termuxgui_err termuxgui_create_image_view(termuxgui_activity a, termuxgui_view* 
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -997,6 +1164,9 @@ termuxgui_err termuxgui_create_space(termuxgui_activity a, termuxgui_view* v, te
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1014,6 +1184,9 @@ termuxgui_err termuxgui_create_nested_scroll_view(termuxgui_activity a, termuxgu
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1031,6 +1204,9 @@ termuxgui_err termuxgui_create_horizontal_scroll_view(termuxgui_activity a, term
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1046,6 +1222,9 @@ termuxgui_err termuxgui_create_radio_group(termuxgui_activity a, termuxgui_view*
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1063,6 +1242,9 @@ termuxgui_err termuxgui_create_radio_button(termuxgui_activity a, termuxgui_view
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1080,6 +1262,9 @@ termuxgui_err termuxgui_create_checkbox(termuxgui_activity a, termuxgui_view* v,
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1096,6 +1281,9 @@ termuxgui_err termuxgui_create_toggle_button(termuxgui_activity a, termuxgui_vie
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1112,6 +1300,9 @@ termuxgui_err termuxgui_create_switch(termuxgui_activity a, termuxgui_view* v, t
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1127,6 +1318,9 @@ termuxgui_err termuxgui_create_spinner(termuxgui_activity a, termuxgui_view* v, 
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1142,6 +1336,9 @@ termuxgui_err termuxgui_create_progress_bar(termuxgui_activity a, termuxgui_view
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1157,6 +1354,9 @@ termuxgui_err termuxgui_create_tab_layout(termuxgui_activity a, termuxgui_view* 
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
@@ -1174,6 +1374,9 @@ termuxgui_err termuxgui_create_grid_layout(termuxgui_activity a, termuxgui_view*
  * @details
  * ### Errors
  *  - TERMUXGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TERMUXGUI_ERR_NOMEM: Not enough memory.
+ *  - TERMUXGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TERMUXGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
  * 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.

@@ -7,9 +7,11 @@
 #include "GUIProt0.pb.h"
 
 #include <termuxgui/exceptions.hpp>
+#include <termuxgui/event.hpp>
 #include <stdint.h>
 
 #include <array>
+#include <mutex>
 
 namespace tgui::impl {
 	
@@ -27,17 +29,20 @@ namespace tgui::impl {
 		
 		void readMessage(google::protobuf::MessageLite& m);
 		
-		/**
-		 * Blocks until an Event is available and returns it.
-		 * You should always use auto when storing the Event, for compatibility with future protocol versions that use a different type.
-		 * 
-		 * @return The next Event.
-		 */
+		
 		proto0::Event receiveEvent();
+		
+		bool checkEvent();
 		
 		
 		
 	private:
+		
+		Connection(const Connection& c) = delete;
+		Connection(const Connection&& c) = delete;
+		Connection& operator=(const Connection& c) = delete;
+		Connection& operator=(const Connection&& c) = delete;
+		
 		int mainfd, eventfd;
 		
 		class SocketInputStream : public google::protobuf::io::ZeroCopyInputStream {
@@ -66,7 +71,7 @@ namespace tgui::impl {
 			int fd = -1;
 		private:
 			std::array<uint8_t, BUFFERSIZE> buffer;
-            int lastsize = 0;
+			int lastsize = 0;
 			bool err = false;
 			int64_t count = 0;
 			int again = 0;
@@ -89,6 +94,8 @@ namespace tgui::impl {
 			
 			virtual ~SocketOutputStream();
 			
+			void flush();
+			
 			
 			// https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.io.zero_copy_stream#ZeroCopyOutputStream
 			virtual bool Next(void** data, int* size) override;
@@ -110,13 +117,14 @@ namespace tgui::impl {
 			
 		};
 		
+		std::mutex inMutex;
+		std::mutex outMutex;
+		std::mutex eventMutex;
+		
 		SocketInputStream in;
 		SocketOutputStream out;
 		SocketInputStream event;
 		
-		google::protobuf::io::CodedInputStream inC{&in};
-		google::protobuf::io::CodedInputStream eventC{&event};
-		google::protobuf::io::CodedOutputStream outC{&out};
 		
 		
 	};

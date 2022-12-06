@@ -18,13 +18,12 @@ git clone "https://github.com/tareksander/termux-gui-c-bindings.git" # clone the
 cd termux-gui-c-bindings # go into the repository
 cmake . -DCMAKE_INSTALL_PREFIX="$PREFIX" # configure cmake with the Termux prefix
 make install # install
-
 ```
 
 
 ### As a package (on device only)
 
-Run `pkg install termux-gui-c` once the packages is included in the repositories.
+Run `pkg install termux-gui-c` once the package is included in the repositories.
 
 
 ## Usage
@@ -32,6 +31,11 @@ Run `pkg install termux-gui-c` once the packages is included in the repositories
 ### On device or using the [termux-packages repo](https://github.com/termux/termux-packages)
 
 Just use it like a normal C/C++ library.
+
+
+### From source
+
+Include this repository as a submodule or otherwise
 
 ## License
 
