@@ -4,7 +4,7 @@
 #include "termuxgui/exceptions.hpp"
 
 namespace tgui::impl {
-	Activity::Activity(std::shared_ptr<Connection> c, proto0::NewActivityRequest::ActivityType type, bool interceptBackButton, Task task) : c{c}, t{task} {
+	Activity::Activity(std::shared_ptr<Connection> c, proto0::NewActivityRequest::ActivityType type, bool interceptBackButton, Task task) : wc{c}, t{task} {
 		proto0::NewActivityRequest req;
 		req.set_tid(task);
 		req.set_type(type);
@@ -23,6 +23,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::finish() {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::FinishActivityRequest req;
 		req.set_aid(a);
 		proto0::Method m;
@@ -37,6 +38,7 @@ namespace tgui::impl {
 	
 	
 	proto0::Configuration Activity::getConfiguration() {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::GetConfigurationRequest req;
 		req.set_aid(a);
 		proto0::Method m;
@@ -52,6 +54,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::hideSoftKeyboard() {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::HideSoftKeyboardRequest req;
 		req.set_aid(a);
 		proto0::Method m;
@@ -66,6 +69,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::interceptBackButton(bool intercept) {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::InterceptBackButtonRequest req;
 		req.set_aid(a);
 		req.set_intercept(intercept);
@@ -81,6 +85,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::keepScreenOn(bool on) {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::KeepScreenOnRequest req;
 		req.set_aid(a);
 		req.set_on(on);
@@ -96,6 +101,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::moveToBack() {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::MoveTaskToBackRequest req;
 		req.set_aid(a);
 		proto0::Method m;
@@ -110,6 +116,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::requestUnlock() {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::RequestUnlockRequest req;
 		req.set_aid(a);
 		proto0::Method m;
@@ -125,12 +132,24 @@ namespace tgui::impl {
 	
 	
 	void Activity::sendOverlayEvents(bool send) {
-		
+		auto c = Connection::connectionOrThrow(wc);
+		proto0::SendOverlayTouchEventRequest req;
+		req.set_aid(a);
+		req.set_send(send);
+		proto0::Method m;
+		*m.mutable_sendoverlaytouch() = req;
+		c->sendMethodMessage(m);
+		proto0::SendOverlayTouchEventResponse res;
+		c->readMessage(res);
+		if (! res.success()) {
+			throw MethodError();
+		}
 	}
 	
 	
 	
 	void Activity::setInputMode(proto0::SetInputModeRequest::InputMode mode) {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::SetInputModeRequest req;
 		req.set_aid(a);
 		req.set_mode(mode);
@@ -148,6 +167,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::setOrientation(proto0::Orientation o) {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::SetOrientationRequest req;
 		req.set_aid(a);
 		req.set_orientation(o);
@@ -165,6 +185,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::setPiPMode(bool pip) {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::SetPiPModeRequest req;
 		req.set_aid(a);
 		req.set_pip(pip);
@@ -182,6 +203,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::setPiPModeAuto(bool pipAuto) {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::SetPiPModeAutoRequest req;
 		req.set_aid(a);
 		req.set_pip(pipAuto);
@@ -199,6 +221,7 @@ namespace tgui::impl {
 	
 	
 	void Activity::setPiPParams(int numerator, int denominator) {
+		auto c = Connection::connectionOrThrow(wc);
 		proto0::SetPiPParamsRequest req;
 		req.set_aid(a);
 		req.set_num(numerator);
@@ -217,20 +240,59 @@ namespace tgui::impl {
 	
 	
 	void Activity::setPosition(int x, int y) {
-		
+		auto c = Connection::connectionOrThrow(wc);
+		proto0::SetPositionRequest req;
+		req.set_aid(a);
+		req.set_x(x);
+		req.set_y(y);
+		proto0::Method m;
+		*m.mutable_setposition() = req;
+		c->sendMethodMessage(m);
+		proto0::SetPositionResponse res;
+		c->readMessage(res);
+		if (! res.success()) {
+			throw MethodError();
+		}
 	}
 	
 	
 	
 	
 	void Activity::setTaskDescription(std::string label, const void* img, size_t imgSize) {
-		
+		auto c = Connection::connectionOrThrow(wc);
+		proto0::SetTaskDescriptionRequest req;
+		req.set_aid(a);
+		req.set_label(label);
+		req.set_img(img, imgSize);
+		proto0::Method m;
+		*m.mutable_settaskdescription() = req;
+		c->sendMethodMessage(m);
+		proto0::SetTaskDescriptionResponse res;
+		c->readMessage(res);
+		if (! res.success()) {
+			throw MethodError();
+		}
 	}
 	
 	
 	
 	void Activity::setTheme(Color primaryColor, Color accentColor, Color windowBackground, Color statusBarColor, Color textColor) {
-		
+		auto c = Connection::connectionOrThrow(wc);
+		proto0::SetThemeRequest req;
+		req.set_aid(a);
+		req.set_colorprimary(primaryColor);
+		req.set_coloraccent(accentColor);
+		req.set_windowbackground(windowBackground);
+		req.set_statusbarcolor(statusBarColor);
+		req.set_textcolor(textColor);
+		proto0::Method m;
+		*m.mutable_settheme() = req;
+		c->sendMethodMessage(m);
+		proto0::SetThemeResponse res;
+		c->readMessage(res);
+		if (! res.success()) {
+			throw MethodError();
+		}
 	}
 	
 	

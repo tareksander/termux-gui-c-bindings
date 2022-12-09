@@ -12,6 +12,14 @@ namespace tgui::impl {
 	class Activity {
 		public:
 		
+		inline static std::shared_ptr<Activity> activityOrThrow(const std::weak_ptr<Activity>& p) {
+			auto shared = p.lock();
+			if (shared == nullptr) {
+				throw tgui::ActivityDestroyedException();
+			}
+			return shared;
+		}
+		
 		Activity(std::shared_ptr<Connection> c, proto0::NewActivityRequest::ActivityType type, bool interceptBackButton, Task task);
 		
 		
@@ -98,7 +106,7 @@ namespace tgui::impl {
 		Activity() = delete;
 		
 		
-		std::shared_ptr<Connection> c;
+		std::shared_ptr<Connection> wc;
 		Task t;
 		AID a;
 		

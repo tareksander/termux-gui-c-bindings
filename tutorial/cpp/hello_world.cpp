@@ -9,6 +9,7 @@ int main(int argc, char** argv) {
     tgui::Connection c;
 	
     tgui::Activity a{c};
+	a.setPiPModeAuto(true);
     
 	while (true) {
 		tgui::Event e;

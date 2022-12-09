@@ -18,7 +18,13 @@ namespace tgui::impl {
 	class Connection {
 	public:
 		
-		
+		inline static std::shared_ptr<Connection> connectionOrThrow(const std::weak_ptr<Connection>& p) {
+			auto shared = p.lock();
+			if (shared == nullptr) {
+				throw tgui::ConnectionClosedException();
+			}
+			return shared;
+		}
 		
 		Connection();
 		~Connection();

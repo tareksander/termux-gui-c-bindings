@@ -22,6 +22,16 @@ namespace tgui {
 	class ConnectionTimeoutException : public TermuxGUIException {};
 	
 	/**
+	 * @brief You tried to use an object from a connection that is already closed.
+	 */
+	class ConnectionClosedException : public TermuxGUIException {};
+	
+	/**
+	 * @brief You tried to use an object from an Activity that is already destroyed.
+	 */
+	class ActivityDestroyedException : public TermuxGUIException {};
+	
+	/**
 	 * @brief The plugin doesn't have the same UID as the program, meaning the connection can't be trusted.
 	 */
 	class PluginUIDException : public TermuxGUIException {};
