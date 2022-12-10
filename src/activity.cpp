@@ -1,6 +1,7 @@
 #include "termuxgui/activity.hpp"
 
 #include "impl/activity.hpp"
+#include "impl/types.hpp"
 #include "rethrow.h"
 
 #include "GUIProt0.pb.h"
@@ -92,103 +93,132 @@ namespace tgui {
 	Activity::~Activity() {}
 	
 	void Activity::finish() {
-		a->finish();
+		rethrow<void(void)>([&] {
+			a->finish();
+		})();
 	}
 	
 	
 	Configuration Activity::getConfiguration() {
-		auto pc = a->getConfiguration();
-		auto c = Configuration();
-		
-		return c;
+		return rethrow<Configuration(void)>([&] {
+			return impl::ConfigurationPBToPublic(a->getConfiguration());
+		})();
 	}
 	
 	
 	void Activity::hideSoftKeyboard() {
-		a->hideSoftKeyboard();
+		rethrow<void(void)>([&] {
+			a->hideSoftKeyboard();
+		})();
 	}
 	
 	
 	
 	void Activity::interceptBackButton(bool intercept) {
-		a->interceptBackButton(intercept);
+		rethrow<void(void)>([&] {
+			a->interceptBackButton(intercept);
+		})();
 	}
 	
 	
 	void Activity::keepScreenOn(bool on) {
-		a->keepScreenOn(on);
+		rethrow<void(void)>([&] {
+			a->keepScreenOn(on);
+		})();
 	}
 	
 	
 	
 	void Activity::moveToBack() {
-		a->moveToBack();
+		rethrow<void(void)>([&] {
+			a->moveToBack();
+		})();
 	}
 	
 	
 	
 	void Activity::requestUnlock() {
-		a->requestUnlock();
+		rethrow<void(void)>([&] {
+			a->requestUnlock();
+		})();
 	}
 	
 	
 	
 	void Activity::sendOverlayEvents(bool send) {
-		a->sendOverlayEvents(send);
+		rethrow<void(void)>([&] {
+			a->sendOverlayEvents(send);
+		})();
 	}
 	
 	
 	
 	void Activity::setInputMode(InputMode m) {
-		a->setInputMode(publicToPBMode(m));
+		rethrow<void(void)>([&] {
+			a->setInputMode(publicToPBMode(m));
+		})();
 	}
 	
 	
 	
 	
 	void Activity::setOrientation(Orientation o) {
-		a->setOrientation(publicToPBOrientation(o));
+		rethrow<void(void)>([&] {
+			a->setOrientation(publicToPBOrientation(o));
+		})();
 	}
 	
 	
 	
 	
 	void Activity::setPiPMode(bool pip) {
-		a->setPiPMode(pip);
+		rethrow<void(void)>([&] {
+			a->setPiPMode(pip);
+		})();
 	}
 	
 	
 	
 	
 	void Activity::setPiPModeAuto(bool pipAuto) {
-		a->setPiPModeAuto(pipAuto);
+		rethrow<void(void)>([&] {
+			a->setPiPModeAuto(pipAuto);
+		})();
 	}
 	
 	
 	
 	
 	void Activity::setPiPParams(int numerator, int denominator) {
-		a->setPiPParams(numerator, denominator);
+		rethrow<void(void)>([&] {
+			a->setPiPParams(numerator, denominator);
+		})();
 	}
 	
 	
 	
 	
 	void Activity::setPosition(int x, int y) {
-		a->setPosition(x, y);
+		rethrow<void(void)>([&] {
+			a->setPosition(x, y);
+		})();
 	}
 	
 	
 	
 	
 	void Activity::setTaskDescription(std::string label, const void* img, size_t imgSize) {
-		a->setTaskDescription(label, img, imgSize);
+		rethrow<void(void)>([&] {
+			a->setTaskDescription(label, img, imgSize);
+		})();
 	}
 	
 	
 	
 	void Activity::setTheme(Color primaryColor, Color accentColor, Color windowBackground, Color statusBarColor, Color textColor) {
-		a->setTheme(primaryColor, accentColor, windowBackground, statusBarColor, textColor);
+		rethrow<void(void)>([&] {
+			a->setTheme(primaryColor, accentColor, windowBackground, statusBarColor, textColor);
+		})();
 	}
 	
 	

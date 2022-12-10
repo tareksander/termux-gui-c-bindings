@@ -2,6 +2,8 @@
 
 #include <variant>
 #include <memory>
+#include <vector>
+#include <string>
 
 #include <stdint.h>
 
@@ -45,80 +47,145 @@ namespace tgui {
 			bool finishing;
 		};
 		struct Config {
-			
-			
+			/// @brief The id of the Activity.
+			AID a;
+			Configuration config;
 		};
 		struct Click {
-			
-			
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
+			/// @brief Whether the View is checked, for CheckBox, RadioButton and Switch
+			bool set;
 		};
 		struct LongClick {
-			
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
 		};
 		struct Focus {
-			
-			
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
+			/// @brief Whether the View now has focus.
+			bool focus;
 		};
 		struct Touch {
-			
-			
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
+			enum class Action {
+				DOWN = 0,
+				UP = 1,
+				POINTER_DOWN = 2,
+				POINTER_UP = 3,
+				CANCEL = 4,
+				MOVE = 5,
+			};
+			Action action;
+			struct Pointer {
+				int x;
+				int y;
+				int id;
+			};
+			std::vector<std::vector<Pointer>> events;
 		};
 		struct Text {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
-			
+			std::string text;
 		};
 		struct Refresh {
-			
-			
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 		};
 		struct Selected {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
-			
+			int selected;
 		};
 		struct ItemSelected {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
-			
+			int selected;
 		};
 		struct Back {
-			
-			
+			/// @brief The id of the Activity.
+			AID a;
 		};
 		struct WebViewNavigation {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
-			
+			std::string url;
 		};
 		struct WebViewHTTPError {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
+			std::string url;
 			
+			int code;
 		};
 		struct WebViewError {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
-			
+			std::string url;
 		};
 		struct WebViewDestroyed {
-			
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
 		};
 		struct WebViewProgress {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
-			
+			unsigned int progress;
 		};
 		struct WebViewConsole {
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
-			
+			std::string msg;
 		};
 		struct AirplaneMode {
-			
-			
+			bool active;
 		};
 		struct Locale {
-			
-			
+			std::string locale;
 		};
 		struct Timezone {
-			
-			
+			std::string tz;
 		};
 		struct ScreenOff {
 			
@@ -129,38 +196,44 @@ namespace tgui {
 			
 		};
 		struct UserLeaveHint {
-			
+			/// @brief The id of the Activity.
+			AID a;
 			
 		};
 		struct PiP {
+			/// @brief The id of the Activity.
+			AID a;
 			
-			
+			bool pip;
 		};
 		struct RemoteClick {
-			
+			RID rid;
+			unsigned int id;
 			
 		};
 		struct Notification {
-			
+			unsigned int id;
 			
 		};
 		struct NotificationDismissed {
-			
+			unsigned int id;
 			
 		};
 		struct NotificationAction {
-			
-			
+			unsigned int id;
+			unsigned int action;
 		};
 		struct OverlayScale {
+			/// @brief The id of the Activity.
+			AID a;
 			
-			
+			float span;
 		};
 		struct Key {
 			/**
 			 * @brief All supported key modifiers.
 			 */
-			enum Modifier {
+			enum Modifier : unsigned int {
 				MOD_NONE = 0,
 				MOD_LSHIFT = 1,
 				MOD_RSHIFT = 2,
@@ -172,11 +245,17 @@ namespace tgui {
 				MOD_ALT_GR = 128,
 				MOD_NUM_LOCK = 256,
 			};
+			/// @brief The id of the Activity the View is in.
+			AID a;
+			/// @brief The id of the View
+			VID v;
 			
+			uint32_t code;
+			Modifier mod;
+			uint32_t codePoint;
 		};
 		struct DebugException {
-			
-			
+			std::string stacktrace;
 		};
 		
 		

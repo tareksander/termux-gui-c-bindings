@@ -57,13 +57,13 @@ namespace tgui {
 		/// The current Activity orientation. Only `LANDSCAPE`, `REVERSE_LANDSCAPE`, `PORTRAIT`, `REVERSE_PORTRAIT` and `UNSPECIFIED` are possible values.
 		Orientation orientation;
 		/// Whether the soft keyboard is currently shown.
-		bool keyboard_hidden;
+		bool keyboardHidden;
 		/// The current Activity width in dp.
-		unsigned int screen_width;
+		int screenWidth;
 		/// The current Activity height in dp.
-		unsigned int screen_height;
+		int screenHeight;
 		/// The current font scale.
-		double font_scale;
+		double fontScale;
 		/// The display density, such that screenwidth * density = screenwidth_in_px.
 		double density;
 	};
@@ -71,7 +71,15 @@ namespace tgui {
 	
 	/// @brief Activity id type
 	using AID = int32_t;
+	
+	using VID = int32_t;
+	
+	using RID = uint32_t;
+	
+	
 	using Task = int32_t;
+	
+	
 	using Color = uint32_t;
 	
 	

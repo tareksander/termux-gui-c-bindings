@@ -37,7 +37,7 @@ namespace tgui::impl {
 	}
 	
 	
-	proto0::Configuration Activity::getConfiguration() {
+	proto0::Configuration Activity::getConfiguration() const {
 		auto c = Connection::connectionOrThrow(wc);
 		proto0::GetConfigurationRequest req;
 		req.set_aid(a);

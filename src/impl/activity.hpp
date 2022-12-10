@@ -27,7 +27,7 @@ namespace tgui::impl {
 		void finish();
 		
 		
-		proto0::Configuration getConfiguration();
+		proto0::Configuration getConfiguration() const;
 		
 		
 		void hideSoftKeyboard();
@@ -89,11 +89,11 @@ namespace tgui::impl {
 		
 		
 		
-		AID aid() {
+		AID aid() const {
 			return a;
 		}
 		
-		Task tid() {
+		Task tid() const {
 			return t;
 		}
 		
