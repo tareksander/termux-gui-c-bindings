@@ -1,6 +1,8 @@
 #pragma once
 
 #include <stdint.h>
+#include <variant>
+
 
 namespace tgui {
 	
@@ -8,39 +10,39 @@ namespace tgui {
 	 * @brief Specifies the orientation you can set an Activity to.
 	 * 
 	 */
-	enum class Orientation{
+	enum class Orientation : uint8_t {
 		/// Lets the system choose the orientation.
-		UNSPECIFIED = 0,
+		unspecified = 0,
 		/// The same orientation as the Activity behind in the Activity stack.
-		BEHIND = 1,
+		behind = 1,
 		/// Orientation determined by the orientation sensor. All 4 orientations are possible.
-		FULL_SENSOR = 2,
+		fullSensor = 2,
 		/// Respect the users option to lock the rotation, but allow all 4 possible rotations if enabled.
-		FULL_USER = 3,
+		fullUser = 3,
 		/// Lock the orientation to landscape. 
-		LANDSCAPE = 4,
+		landscape = 4,
 		/// Lock the orientation to the current one.
-		LOCKED = 5,
+		locked = 5,
 		/// Ignore the orientation sensor.
-		NOSENSOR = 6,
+		noSensor = 6,
 		/// Lock the orientation to portrait.
-		PORTRAIT = 7,
+		portrait = 7,
 		/// Lock the orientation to the opposite landscape mode.
-		REVERSE_LANDSCAPE = 8,
+		reverseLandscape = 8,
 		/// Lock the orientation to the opposite portrait mode.
-		REVERSE_PORTRAIT = 9,
+		reversePortrait = 9,
 		/// Determine the orientation with the sensor.
-		SENSOR = 10,
+		sensor = 10,
 		/// Use landscape, but can be changed with the sensor.
-		SENSOR_LANDSCAPE = 11,
+		sensorLandscape = 11,
 		/// Use portrait, but can be changed with the sensor.
-		SENSOR_PORTRAIT = 12,
+		sensorPortrait = 12,
 		/// Use the users preferred orientation.
-		USER = 13,
+		user = 13,
 		/// Use landscape, but can be changed with the sensor if the user allowed it.
-		USER_LANDSCAPE = 14,
+		userLandscape = 14,
 		///Use portrait, but can be changed with the sensor if the user allowed it.
-		USER_PORTRAIT = 15,
+		userPortrait = 15,
 	};
 	
 	
@@ -54,7 +56,7 @@ namespace tgui {
 		char country[3];
 		/// The 2 letter language code. A NULL terminator is included for convenience.
 		char language[3];
-		/// The current Activity orientation. Only `LANDSCAPE`, `REVERSE_LANDSCAPE`, `PORTRAIT`, `REVERSE_PORTRAIT` and `UNSPECIFIED` are possible values.
+		/// The current Activity orientation. Only `landscape`, `reverseLandscape`, `portrait`, `reversePortrait` and `unspecified` are possible values.
 		Orientation orientation;
 		/// Whether the soft keyboard is currently shown.
 		bool keyboardHidden;
@@ -68,35 +70,54 @@ namespace tgui {
 		double density;
 	};
 	
-	enum class Gravity {
-		CENTER = 0,
-		LEFT_TOP = 1,
-		RIGHT_BOTTOM = 2,
+	enum class Gravity : uint8_t {
+		center = 0,
+		leftTop = 1,
+		rightBottom = 2,
 	};
 	
 	
-	enum class Direction {
-		ALL = 0,
-		TOP = 1,
-		LEFT = 2,
-		BOTTOM = 3,
-		RIGHT = 4,
+	enum class Direction : uint8_t {
+		all = 0,
+		top = 1,
+		left = 2,
+		bottom = 3,
+		right = 4,
+	};
+	
+	enum class Importance : uint8_t {
+		normal = 0,
+		min = 1,
+		low = 2,
+		high = 3,
+		max = 4,
+	};
+	
+	enum class LockState : uint8_t {
+		unknown = 0,
+		locked = 1,
+		unlocked = 2,
 	};
 	
 	
 	
 	/// @brief Activity id type
-	using AID = int32_t;
+	using Aid = int32_t;
 	
-	using VID = int32_t;
+	using Vid = int32_t;
 	
-	using RID = uint32_t;
+	using Rid = uint32_t;
 	
 	
 	using Task = int32_t;
 	
 	
 	using Color = uint32_t;
+	
+	enum class ViewSizeConstant {
+		matchParent = 0,
+		wrapContent = 1,
+	};
 	
 	
 	
@@ -107,19 +128,19 @@ namespace tgui {
 		 * See <a href="https://developer.android.com/guide/topics/resources/more-resources.html#Dimension">the Android documentation</a> for more information.
 		 * 
 		 */
-		enum class Unit {
+		enum class Unit : uint8_t {
 			/// density-pixels unit
-			DP = 0,
+			dp = 0,
 			/// scale-pixels unit
-			SP = 1,
+			sp = 1,
 			/// pixels unit
-			PX = 2,
+			px = 2,
 			/// millimeters unit
-			MM = 3,
+			mm = 3,
 			/// inches unit
-			IN = 4,
+			in = 4,
 			/// points unit
-			PT = 5,
+			pt = 5,
 		};
 		
 		float value;
@@ -127,16 +148,18 @@ namespace tgui {
 	};
 	
 	
+	using ViewSize = std::variant<Size, ViewSizeConstant>;
+	
 	/**
 	 * @brief All possible View visibility states.
 	 */
-	enum class Visibility {
+	enum class Visibility : uint8_t {
 		/// Completely visible.
-		VISIBLE = 0,
+		visible = 0,
 		/// Invisible, but takes up it's space in the layout.
-		HIDDEN = 1,
+		hidden = 1,
 		/// Invisible and takes up no space in the layout.
-		GONE = 3,
+		gone = 3,
 	};
 	
 	

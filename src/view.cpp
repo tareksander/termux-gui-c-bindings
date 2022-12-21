@@ -4,7 +4,7 @@
 
 namespace tgui {
 	
-	VID View::getID() {
+	Vid View::getID() {
 		return v->id;
 	}
 	

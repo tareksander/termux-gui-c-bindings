@@ -10,7 +10,7 @@ namespace tgui::impl {
 	class View final {
 		public:
 		
-		View(std::shared_ptr<Activity> a, tgui::VID id);
+		View(std::shared_ptr<Activity> a, tgui::Vid id);
 		
 		
 		void setLinearLayoutParams(float weight = -1, int position = 0);
@@ -55,7 +55,7 @@ namespace tgui::impl {
 		
 		
 		
-		const tgui::VID id;
+		const tgui::Vid id;
 		const std::weak_ptr<Activity> wa;
 		
 		private:

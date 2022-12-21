@@ -154,7 +154,7 @@ namespace tgui {
 	}
 	
 	
-	AID Activity::getID() {
+	Aid Activity::getID() {
 		return a->aid();
 	}
 	

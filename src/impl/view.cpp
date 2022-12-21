@@ -5,7 +5,7 @@
 namespace tgui::impl {
 	
 	
-	View::View(std::shared_ptr<Activity> a, tgui::VID id) : id{id}, wa{a} {}
+	View::View(std::shared_ptr<Activity> a, tgui::Vid id) : id{id}, wa{a} {}
 	
 	
 	void View::setLinearLayoutParams(float weight, int position) {

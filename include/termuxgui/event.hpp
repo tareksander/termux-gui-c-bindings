@@ -18,74 +18,74 @@ namespace tgui {
 	namespace Events {
 		struct Create {
 			/// @brief The id of the created Activity.
-			AID a;
+			Aid a;
 		};
 		struct Start {
 			/// @brief The id of the started Activity.
-			AID a;
+			Aid a;
 		};
 		struct Resume {
 			/// @brief The id of the resumed Activity.
-			AID a;
+			Aid a;
 		};
 		struct Pause {
 			/// @brief The id of the paused Activity.
-			AID a;
+			Aid a;
 			/// @brief Whether the Activity is finishing. Only accurate for Destroy.
 			bool finishing;
 		};
 		struct Stop {
 			/// @brief The id of the stopped Activity.
-			AID a;
+			Aid a;
 			/// @brief Whether the Activity is finishing. Only accurate for Destroy.
 			bool finishing;
 		};
 		struct Destroy {
 			/// @brief The id of the destroyed Activity.
-			AID a;
+			Aid a;
 			/// @brief Whether the Activity is finishing. Only accurate for Destroy.
 			bool finishing;
 		};
 		struct Config {
 			/// @brief The id of the Activity.
-			AID a;
+			Aid a;
 			Configuration config;
 		};
 		struct Click {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			/// @brief Whether the View is checked, for CheckBox, RadioButton and Switch
 			bool set;
 		};
 		struct LongClick {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 		};
 		struct Focus {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			/// @brief Whether the View now has focus.
 			bool focus;
 		};
 		struct Touch {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
-			enum class Action {
-				DOWN = 0,
-				UP = 1,
-				POINTER_DOWN = 2,
-				POINTER_UP = 3,
-				CANCEL = 4,
-				MOVE = 5,
+			Vid v;
+			enum class Action : uint8_t {
+				down = 0,
+				up = 1,
+				pointerDown = 2,
+				pointerUp = 3,
+				cancel = 4,
+				move = 5,
 			};
 			Action action;
 			struct Pointer {
@@ -97,51 +97,51 @@ namespace tgui {
 		};
 		struct Text {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			std::string text;
 		};
 		struct Refresh {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 		};
 		struct Selected {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			int selected;
 		};
 		struct ItemSelected {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			int selected;
 		};
 		struct Back {
 			/// @brief The id of the Activity.
-			AID a;
+			Aid a;
 		};
 		struct WebViewNavigation {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			std::string url;
 		};
 		struct WebViewHTTPError {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			std::string url;
 			
@@ -149,32 +149,32 @@ namespace tgui {
 		};
 		struct WebViewError {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			std::string url;
 		};
 		struct WebViewDestroyed {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 		};
 		struct WebViewProgress {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			unsigned int progress;
 		};
 		struct WebViewConsole {
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			std::string msg;
 		};
@@ -197,17 +197,17 @@ namespace tgui {
 		};
 		struct UserLeaveHint {
 			/// @brief The id of the Activity.
-			AID a;
+			Aid a;
 			
 		};
 		struct PiP {
 			/// @brief The id of the Activity.
-			AID a;
+			Aid a;
 			
 			bool pip;
 		};
 		struct RemoteClick {
-			RID rid;
+			Rid rid;
 			unsigned int id;
 			
 		};
@@ -225,7 +225,7 @@ namespace tgui {
 		};
 		struct OverlayScale {
 			/// @brief The id of the Activity.
-			AID a;
+			Aid a;
 			
 			float span;
 		};
@@ -233,22 +233,22 @@ namespace tgui {
 			/**
 			 * @brief All supported key modifiers.
 			 */
-			enum Modifier : unsigned int {
-				MOD_NONE = 0,
-				MOD_LSHIFT = 1,
-				MOD_RSHIFT = 2,
-				MOD_LCTRL = 4,
-				MOD_RCTRL = 8,
-				MOD_ALT = 16,
-				MOD_FN = 32,
-				MOD_CAPS_LOCK = 64,
-				MOD_ALT_GR = 128,
-				MOD_NUM_LOCK = 256,
+			enum class Modifier : uint32_t {
+				none = 0,
+				lShift = 1,
+				rShift = 2,
+				lCtrl = 4,
+				rCtrl = 8,
+				alt = 16,
+				fn = 32,
+				capsLock = 64,
+				altGr = 128,
+				numLock = 256,
 			};
 			/// @brief The id of the Activity the View is in.
-			AID a;
+			Aid a;
 			/// @brief The id of the View
-			VID v;
+			Vid v;
 			
 			uint32_t code;
 			Modifier mod;
@@ -269,8 +269,12 @@ namespace tgui {
 		
 		
 		
-		
-		
+		inline Key::Modifier operator|(Key::Modifier lhs, Key::Modifier rhs) {
+			return static_cast<Key::Modifier>(static_cast<uint32_t>(lhs) | static_cast<uint32_t>(rhs));
+		}
+		inline Key::Modifier operator&(Key::Modifier lhs, Key::Modifier rhs) {
+			return static_cast<Key::Modifier>(static_cast<uint32_t>(lhs) & static_cast<uint32_t>(rhs));
+		}
 	}
 	
 	using Event = std::variant<std::monostate,

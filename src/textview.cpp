@@ -14,7 +14,7 @@ namespace tgui {
 	TextView::TextView(Activity& a, View* parent, std::string text, bool selectableText, bool clickableLinks) {
 		rethrow<void(void)>([&] {
 			auto c = impl::Connection::connectionOrThrow(a.a->wc);
-			VID p = -1;
+			Vid p = -1;
 			if (parent != nullptr) {
 				p = parent->getID();
 			}

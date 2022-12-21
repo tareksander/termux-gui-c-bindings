@@ -21,57 +21,58 @@ namespace tgui::impl {
 	
 	
 	static inline const std::unordered_map<tgui::Activity::Type, tgui::proto0::NewActivityRequest::ActivityType> ActivityTypePublicToPB = {
-		{tgui::Activity::Type::NORMAL, tgui::proto0::NewActivityRequest::normal},
-		{tgui::Activity::Type::DIALOG, tgui::proto0::NewActivityRequest::dialog},
-		{tgui::Activity::Type::DIALOG_CANCEL_OUTSIDE, tgui::proto0::NewActivityRequest::dialogCancelOutside},
-		{tgui::Activity::Type::PIP, tgui::proto0::NewActivityRequest::pip},
-		{tgui::Activity::Type::LOCKSCREEN, tgui::proto0::NewActivityRequest::lockscreen},
-		{tgui::Activity::Type::OVERLAY, tgui::proto0::NewActivityRequest::overlay},
+		{tgui::Activity::Type::normal, tgui::proto0::NewActivityRequest::normal},
+		{tgui::Activity::Type::dialog, tgui::proto0::NewActivityRequest::dialog},
+		{tgui::Activity::Type::dialogCancelOutside, tgui::proto0::NewActivityRequest::dialogCancelOutside},
+		{tgui::Activity::Type::pip, tgui::proto0::NewActivityRequest::pip},
+		{tgui::Activity::Type::lockscreen, tgui::proto0::NewActivityRequest::lockscreen},
+		{tgui::Activity::Type::overlay, tgui::proto0::NewActivityRequest::overlay},
 	};
 	static inline const std::unordered_map<tgui::proto0::NewActivityRequest::ActivityType, tgui::Activity::Type> ActivityTypePBToPublic = invert(ActivityTypePublicToPB);
 	
 	
 	static inline const std::unordered_map<tgui::Activity::InputMode, tgui::proto0::SetInputModeRequest::InputMode> InputModePublicToPB = {
-		{tgui::Activity::InputMode::PAN, tgui::proto0::SetInputModeRequest::pan},
-		{tgui::Activity::InputMode::RESIZE, tgui::proto0::SetInputModeRequest::resize},
+		{tgui::Activity::InputMode::pan, tgui::proto0::SetInputModeRequest::pan},
+		{tgui::Activity::InputMode::resize, tgui::proto0::SetInputModeRequest::resize},
 	};
 	static inline const std::unordered_map<tgui::proto0::SetInputModeRequest::InputMode, tgui::Activity::InputMode> InputModePBToPublic = invert(InputModePublicToPB);
 	
 	
 	
 	static inline const std::unordered_map<tgui::Orientation, tgui::proto0::Orientation> OrientationPublicToPB = {
-		{tgui::Orientation::BEHIND, tgui::proto0::behind},
-		{tgui::Orientation::FULL_SENSOR, tgui::proto0::fullSensor},
-		{tgui::Orientation::FULL_USER, tgui::proto0::fullUser},
-		{tgui::Orientation::LANDSCAPE, tgui::proto0::landscape},
-		{tgui::Orientation::LOCKED, tgui::proto0::locked},
-		{tgui::Orientation::NOSENSOR, tgui::proto0::nosensor},
-		{tgui::Orientation::PORTRAIT, tgui::proto0::portrait},
-		{tgui::Orientation::REVERSE_LANDSCAPE, tgui::proto0::reverseLandscape},
-		{tgui::Orientation::REVERSE_PORTRAIT, tgui::proto0::reversePortrait},
-		{tgui::Orientation::SENSOR, tgui::proto0::sensor},
-		{tgui::Orientation::SENSOR_LANDSCAPE, tgui::proto0::sensorLandscape},
-		{tgui::Orientation::SENSOR_PORTRAIT, tgui::proto0::sensorPortrait},
-		{tgui::Orientation::USER, tgui::proto0::user},
-		{tgui::Orientation::USER_LANDSCAPE, tgui::proto0::userLandscape},
-		{tgui::Orientation::USER_PORTRAIT, tgui::proto0::userPortrait},
+		{tgui::Orientation::unspecified, tgui::proto0::unspecified},
+		{tgui::Orientation::behind, tgui::proto0::behind},
+		{tgui::Orientation::fullSensor, tgui::proto0::fullSensor},
+		{tgui::Orientation::fullUser, tgui::proto0::fullUser},
+		{tgui::Orientation::landscape, tgui::proto0::landscape},
+		{tgui::Orientation::locked, tgui::proto0::locked},
+		{tgui::Orientation::noSensor, tgui::proto0::nosensor},
+		{tgui::Orientation::portrait, tgui::proto0::portrait},
+		{tgui::Orientation::reverseLandscape, tgui::proto0::reverseLandscape},
+		{tgui::Orientation::reversePortrait, tgui::proto0::reversePortrait},
+		{tgui::Orientation::sensor, tgui::proto0::sensor},
+		{tgui::Orientation::sensorLandscape, tgui::proto0::sensorLandscape},
+		{tgui::Orientation::sensorPortrait, tgui::proto0::sensorPortrait},
+		{tgui::Orientation::user, tgui::proto0::user},
+		{tgui::Orientation::userLandscape, tgui::proto0::userLandscape},
+		{tgui::Orientation::userPortrait, tgui::proto0::userPortrait},
 	};
 	static inline const std::unordered_map<tgui::proto0::Orientation, tgui::Orientation> OrientationPBToPublic = invert(OrientationPublicToPB);
 	
 	static inline const std::unordered_map<tgui::Gravity, tgui::proto0::SetGravityRequest::Gravity> GravityPublicToPB = {
-		{tgui::Gravity::CENTER, tgui::proto0::SetGravityRequest::CENTER},
-		{tgui::Gravity::LEFT_TOP, tgui::proto0::SetGravityRequest::LEFTTOP},
-		{tgui::Gravity::RIGHT_BOTTOM, tgui::proto0::SetGravityRequest::RIGHTBOTTOM},
+		{tgui::Gravity::center, tgui::proto0::SetGravityRequest::CENTER},
+		{tgui::Gravity::leftTop, tgui::proto0::SetGravityRequest::LEFTTOP},
+		{tgui::Gravity::rightBottom, tgui::proto0::SetGravityRequest::RIGHTBOTTOM},
 	};
 	static inline const std::unordered_map<tgui::proto0::SetGravityRequest::Gravity, tgui::Gravity> GravityPBToPublic = invert(GravityPublicToPB);
 	
 	
 	static inline const std::unordered_map<tgui::Direction, tgui::proto0::Direction> DirectionPublicToPB = {
-		{tgui::Direction::ALL, tgui::proto0::ALL},
-		{tgui::Direction::TOP, tgui::proto0::TOP},
-		{tgui::Direction::LEFT, tgui::proto0::LEFT},
-		{tgui::Direction::BOTTOM, tgui::proto0::BOTTOM},
-		{tgui::Direction::RIGHT, tgui::proto0::RIGHT},
+		{tgui::Direction::all, tgui::proto0::ALL},
+		{tgui::Direction::top, tgui::proto0::TOP},
+		{tgui::Direction::left, tgui::proto0::LEFT},
+		{tgui::Direction::bottom, tgui::proto0::BOTTOM},
+		{tgui::Direction::right, tgui::proto0::RIGHT},
 		
 	};
 	static inline const std::unordered_map<tgui::proto0::Direction, tgui::Direction> DirectionPBToPublic = invert(DirectionPublicToPB);

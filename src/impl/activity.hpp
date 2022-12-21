@@ -89,7 +89,7 @@ namespace tgui::impl {
 		
 		
 		
-		AID aid() const {
+		Aid aid() const {
 			return a;
 		}
 		
@@ -108,7 +108,7 @@ namespace tgui::impl {
 		
 		
 		Task t;
-		AID a;
+		Aid a;
 		
 	};
 	

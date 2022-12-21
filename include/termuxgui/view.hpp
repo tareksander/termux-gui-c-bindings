@@ -16,7 +16,7 @@ namespace tgui {
 		
 		
 		
-		VID getID();
+		Vid getID();
 		
 		
 		protected:

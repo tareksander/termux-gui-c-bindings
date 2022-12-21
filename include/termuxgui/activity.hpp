@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <stdint.h>
 
 #include "connection.hpp"
 #include "types.hpp"
@@ -21,23 +22,23 @@ namespace tgui {
 	class Activity final {
 		public:
 		
-		enum class Type {
-			NORMAL = 0,
-			DIALOG = 1,
-			DIALOG_CANCEL_OUTSIDE = 2,
-			PIP = 3,
-			LOCKSCREEN = 4,
-			OVERLAY = 5,
+		enum class Type : uint8_t {
+			normal = 0,
+			dialog = 1,
+			dialogCancelOutside = 2,
+			pip = 3,
+			lockscreen = 4,
+			overlay = 5,
 		};
 		
-		enum class InputMode {
-			PAN = 0,
-    		RESIZE = 1,
+		enum class InputMode : uint8_t {
+			pan = 0,
+    		resize = 1,
 		};
 		
 		
 		
-		Activity(Connection& c, Type type = Type::NORMAL, bool interceptBackButton = false, Task task = -1);
+		Activity(Connection& c, Type type = Type::normal, bool interceptBackButton = false, Task task = -1);
 		virtual ~Activity();
 		
 		
@@ -139,7 +140,7 @@ namespace tgui {
 		Task getTask();
 		
 		
-		AID getID();
+		Aid getID();
 		
 		
 		private:
