@@ -85,7 +85,7 @@ namespace tgui {
 		
 	private:
 		
-		std::shared_ptr<impl::Connection> c;
+		const std::shared_ptr<impl::Connection> c;
 		
 		friend class Activity;
 	};

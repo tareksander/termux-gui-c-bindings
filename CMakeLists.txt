@@ -11,10 +11,10 @@ protobuf_generate_cpp(PROTOSRC PROTOHDR GUIProt0.proto)
 include_directories(BEFORE SYSTEM include)
 
 
-set(sources connection.cpp activity.cpp termuxgui_c.cpp)
+set(sources connection.cpp activity.cpp termuxgui_c.cpp view.cpp textview.cpp)
 list(TRANSFORM sources PREPEND "src/")
 
-set(impl connection.cpp activity.cpp bind.c)
+set(impl connection.cpp activity.cpp view.cpp viewgroup.cpp textview.cpp bind.c)
 list(TRANSFORM impl PREPEND "src/impl/")
 
 add_custom_target(docs COMMAND doxygen)
@@ -25,7 +25,6 @@ target_link_libraries(termuxgui ${Protobuf_LIBRARIES})
 
 install(TARGETS termuxgui LIBRARY)
 install(DIRECTORY include/ TYPE INCLUDE)
-#install(FILES ${PROTOHDR} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/termuxgui/GUIProt0.pb.h)
 
 
 add_executable(hello_world_cpp EXCLUDE_FROM_ALL tutorial/cpp/hello_world.cpp)

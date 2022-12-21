@@ -52,7 +52,7 @@ namespace tgui {
 		 * 
 		 * @return The configuration.
 		 */
-		Configuration getConfiguration();
+		Configuration getConfiguration() const;
 		
 		
 		/**
@@ -144,9 +144,11 @@ namespace tgui {
 		
 		private:
 		
-		std::shared_ptr<impl::Activity> a;
+		const std::shared_ptr<impl::Activity> a;
 		Activity() = delete;
 		
+		
+		friend class TextView;
 	};
 	
 	

@@ -44,10 +44,10 @@ namespace tgui::impl {
 		
 	private:
 		
-		Connection(const Connection& c) = delete;
-		Connection(const Connection&& c) = delete;
-		Connection& operator=(const Connection& c) = delete;
-		Connection& operator=(const Connection&& c) = delete;
+		Connection(const Connection&) = delete;
+		Connection(const Connection&&) = delete;
+		Connection& operator=(const Connection&) = delete;
+		Connection& operator=(const Connection&&) = delete;
 		
 		int mainfd, eventfd;
 		

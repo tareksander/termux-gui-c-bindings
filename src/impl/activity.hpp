@@ -97,16 +97,16 @@ namespace tgui::impl {
 			return t;
 		}
 		
+		const std::weak_ptr<Connection> wc;
 		
 		private:
-		Activity(const Activity& c) = delete;
-		Activity(const Activity&& c) = delete;
-		Activity& operator=(const Activity& c) = delete;
-		Activity& operator=(const Activity&& c) = delete;
+		Activity(const Activity&) = delete;
+		Activity(const Activity&&) = delete;
+		Activity& operator=(const Activity&) = delete;
+		Activity& operator=(const Activity&&) = delete;
 		Activity() = delete;
 		
 		
-		std::shared_ptr<Connection> wc;
 		Task t;
 		AID a;
 		

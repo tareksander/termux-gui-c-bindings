@@ -58,14 +58,29 @@ namespace tgui::impl {
 	};
 	static inline const std::unordered_map<tgui::proto0::Orientation, tgui::Orientation> OrientationPBToPublic = invert(OrientationPublicToPB);
 	
+	static inline const std::unordered_map<tgui::Gravity, tgui::proto0::SetGravityRequest::Gravity> GravityPublicToPB = {
+		{tgui::Gravity::CENTER, tgui::proto0::SetGravityRequest::CENTER},
+		{tgui::Gravity::LEFT_TOP, tgui::proto0::SetGravityRequest::LEFTTOP},
+		{tgui::Gravity::RIGHT_BOTTOM, tgui::proto0::SetGravityRequest::RIGHTBOTTOM},
+	};
+	static inline const std::unordered_map<tgui::proto0::SetGravityRequest::Gravity, tgui::Gravity> GravityPBToPublic = invert(GravityPublicToPB);
+	
+	
+	static inline const std::unordered_map<tgui::Direction, tgui::proto0::Direction> DirectionPublicToPB = {
+		{tgui::Direction::ALL, tgui::proto0::ALL},
+		{tgui::Direction::TOP, tgui::proto0::TOP},
+		{tgui::Direction::LEFT, tgui::proto0::LEFT},
+		{tgui::Direction::BOTTOM, tgui::proto0::BOTTOM},
+		{tgui::Direction::RIGHT, tgui::proto0::RIGHT},
+		
+	};
+	static inline const std::unordered_map<tgui::proto0::Direction, tgui::Direction> DirectionPBToPublic = invert(DirectionPublicToPB);
 	
 	
 	
 	
 	
-	
-	
-	tgui::Configuration ConfigurationPBToPublic(const proto0::Configuration& c) {
+	static inline tgui::Configuration ConfigurationPBToPublic(const proto0::Configuration& c) {
 		return {
 				.dark_mode = c.darkmode(),
 				.country = { c.country().at(0), c.country().at(1), '\0' },

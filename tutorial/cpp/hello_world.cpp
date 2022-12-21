@@ -1,7 +1,11 @@
 
 #include <termuxgui/termuxgui.hpp>
 
+#include <termuxgui/textview.hpp>
+
 #include <unistd.h>
+
+#include <iostream>
 
 int main(int argc, char** argv) {
     
@@ -9,7 +13,8 @@ int main(int argc, char** argv) {
     tgui::Connection c;
 	
     tgui::Activity a{c};
-	a.setPiPModeAuto(true);
+	
+	tgui::TextView tv(a, nullptr, "Hello World!");
     
 	while (true) {
 		tgui::Event e;

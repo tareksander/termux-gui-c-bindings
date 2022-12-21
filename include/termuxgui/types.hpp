@@ -68,6 +68,22 @@ namespace tgui {
 		double density;
 	};
 	
+	enum class Gravity {
+		CENTER = 0,
+		LEFT_TOP = 1,
+		RIGHT_BOTTOM = 2,
+	};
+	
+	
+	enum class Direction {
+		ALL = 0,
+		TOP = 1,
+		LEFT = 2,
+		BOTTOM = 3,
+		RIGHT = 4,
+	};
+	
+	
 	
 	/// @brief Activity id type
 	using AID = int32_t;
@@ -121,6 +137,13 @@ namespace tgui {
 		HIDDEN = 1,
 		/// Invisible and takes up no space in the layout.
 		GONE = 3,
+	};
+	
+	
+	struct Point {
+		float x;
+		float y;
+		Point(float x, float y) : x{x}, y{y} {}
 	};
 	
 	

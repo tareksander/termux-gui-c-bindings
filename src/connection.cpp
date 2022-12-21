@@ -20,11 +20,10 @@
 #include "impl/types.hpp"
 #include "rethrow.h"
 
-tgui::Connection::Connection() {
-	c = rethrow<std::shared_ptr<impl::Connection>(void)>([&] () {
+tgui::Connection::Connection() : c{
+	rethrow<std::shared_ptr<impl::Connection>(void)>([&] () {
 		return std::make_shared<impl::Connection>();
-	})();
-}
+	})()} {}
 
 tgui::Connection::~Connection() {}
 
