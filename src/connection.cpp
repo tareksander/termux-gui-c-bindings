@@ -251,17 +251,14 @@ int tgui::Connection::getVersion() {
 }
 
 
-bool tgui::Connection::isLocked() {
-	return rethrow<bool(void)>([&] {
+tgui::LockState tgui::Connection::isLocked() {
+	return rethrow<LockState(void)>([&] {
 		proto0::Method m;
 		*m.mutable_islocked() = proto0::IsLockedRequest();
 		c->sendMethodMessage(m);
 		proto0::IsLockedResponse res;
 		c->readMessage(res);
-		if (! (res.locked() == proto0::IsLockedResponse::UNKNOWN)) {
-			throw MethodError();
-		}
-		return res.locked() == proto0::IsLockedResponse::LOCKED;
+		return impl::LockStatePBToPublic.at(res.locked());
 	})();
 }
 

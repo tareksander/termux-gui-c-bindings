@@ -59,7 +59,7 @@ namespace tgui {
 		 * 
 		 * @return Whether the screen is locked or not.
 		 */
-		bool isLocked();
+		LockState isLocked();
 		
 		
 		/**

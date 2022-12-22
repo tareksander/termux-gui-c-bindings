@@ -10,20 +10,29 @@ namespace tgui::impl {
 	class View final {
 		public:
 		
+		inline static std::shared_ptr<View> viewOrThrow(const std::weak_ptr<View>& p) {
+			auto shared = p.lock();
+			if (shared == nullptr) {
+				throw tgui::ViewDestroyedException();
+			}
+			return shared;
+		}
+		
+		
 		View(std::shared_ptr<Activity> a, tgui::Vid id);
 		
 		
-		void setLinearLayoutParams(float weight = -1, int position = 0);
+		void setLinearLayoutParams(float weight, int position);
 		
-		void setGridLayoutParams(int row, int col, int rowSize = 1, int colSize = 1,
-			proto0::SetGridLayoutParamsRequest::Alignment rowAlign = proto0::SetGridLayoutParamsRequest::CENTER,
-			proto0::SetGridLayoutParamsRequest::Alignment colAlign = proto0::SetGridLayoutParamsRequest::CENTER);
+		void setGridLayoutParams(int row, int col, int rowSize, int colSize,
+			proto0::SetGridLayoutParamsRequest::Alignment rowAlign,
+			proto0::SetGridLayoutParamsRequest::Alignment colAlign);
 		
 		void setLocation(proto0::Size::Unit unit, int x, int y, bool top);
 		
 		void setRelativeLayoutParams();
 		
-		void setVisibility(proto0::Visibility v);
+		void setVisibility(proto0::Visibility vis);
 		
 		void setWidth(proto0::ViewSize s);
 		
@@ -37,7 +46,7 @@ namespace tgui::impl {
 		
 		void setPadding(proto0::Size s, proto0::Direction dir);
 		
-		void setBackgroundColor(tgui::Color c);
+		void setBackgroundColor(tgui::Color col);
 		
 		void focus(bool forceSoft);
 		
