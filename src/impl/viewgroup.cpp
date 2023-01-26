@@ -4,10 +4,10 @@
 
 namespace tgui::impl {
 	
-	ViewGroup::ViewGroup(std::shared_ptr<View> v) : wv{v} {}
+	ViewGroup::ViewGroup(std::shared_ptr<View> v) : v{v} {}
 	
 	void ViewGroup::clearChildren() {
-		auto view = View::viewOrThrow(wv);
+		auto view = this->v;
 		auto a = Activity::activityOrThrow(view->wa);
 		auto c = Connection::connectionOrThrow(a->wc);
 		proto0::DeleteChildrenRequest req;

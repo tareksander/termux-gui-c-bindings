@@ -4,10 +4,10 @@
 
 namespace tgui::impl {
 	
-	TextView::TextView(std::shared_ptr<View> v) : wv{v} {}
+	TextView::TextView(std::shared_ptr<View> v) : v{v} {}
 	
 	void TextView::setTextColor(tgui::Color col) {
-		auto view = View::viewOrThrow(wv);
+		auto view = this->v;
 		auto a = Activity::activityOrThrow(view->wa);
 		auto c = Connection::connectionOrThrow(a->wc);
 		proto0::SetTextColorRequest req;
@@ -27,7 +27,7 @@ namespace tgui::impl {
 	}
 	
 	void TextView::setText(std::string text) {
-		auto view = View::viewOrThrow(wv);
+		auto view = this->v;
 		auto a = Activity::activityOrThrow(view->wa);
 		auto c = Connection::connectionOrThrow(a->wc);
 		proto0::SetTextRequest req;
@@ -48,7 +48,7 @@ namespace tgui::impl {
 	
 	void TextView::setGravity(proto0::SetGravityRequest::Gravity horizontal,
 			proto0::SetGravityRequest::Gravity vertical) {
-		auto view = View::viewOrThrow(wv);
+		auto view = this->v;
 		auto a = Activity::activityOrThrow(view->wa);
 		auto c = Connection::connectionOrThrow(a->wc);
 		proto0::SetGravityRequest req;
@@ -69,7 +69,7 @@ namespace tgui::impl {
 	}
 	
 	void TextView::setTextSize(proto0::Size s) {
-		auto view = View::viewOrThrow(wv);
+		auto view = this->v;
 		auto a = Activity::activityOrThrow(view->wa);
 		auto c = Connection::connectionOrThrow(a->wc);
 		proto0::SetTextSizeRequest req;
@@ -89,7 +89,7 @@ namespace tgui::impl {
 	}
 	
 	std::string TextView::getText() {
-		auto view = View::viewOrThrow(wv);
+		auto view = this->v;
 		auto a = Activity::activityOrThrow(view->wa);
 		auto c = Connection::connectionOrThrow(a->wc);
 		proto0::GetTextRequest req;

@@ -7,6 +7,7 @@
 #include "termuxgui/types.hpp"
 
 namespace tgui::impl {
+	class ViewGroup;
 	class View final {
 		public:
 		
@@ -63,9 +64,14 @@ namespace tgui::impl {
 		void sendTouchEvents(bool send);
 		
 		
+		inline bool isDestroyed() {
+			return destroyed;
+		}
+		
 		
 		const tgui::Vid id;
 		const std::weak_ptr<Activity> wa;
+		
 		
 		private:
 		View(const View&) = delete;
@@ -73,6 +79,8 @@ namespace tgui::impl {
 		View& operator=(const View&) = delete;
 		View& operator=(const View&&) = delete;
 		View() = delete;
+		
+		bool destroyed;
 		
 	};
 }

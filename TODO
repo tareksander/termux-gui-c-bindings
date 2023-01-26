@@ -1,9 +1,13 @@
 
+Only make an object-oriented richer API with state and event handlers and an event loop.
+The imperative API is too cumbersome for larger programs and C/C++ has true threading in contrast to python, so not blocking the main thread isn't important.
+
+
 0.1.0:
 [x] global methods
 [x] Activity methods
-[ ] generic View methods
-[ ] TextView
+[x] generic View methods
+[x] TextView
 [ ] ViewGroup
 [ ] LinearLayout
 [ ] FrameLayout

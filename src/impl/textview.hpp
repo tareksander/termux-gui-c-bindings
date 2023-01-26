@@ -25,7 +25,7 @@ namespace tgui::impl {
 		std::string getText();
 		
 		
-		const std::weak_ptr<View> wv;
+		const std::shared_ptr<View> v;
 		private:
 		TextView(const TextView&) = delete;
 		TextView(const TextView&&) = delete;

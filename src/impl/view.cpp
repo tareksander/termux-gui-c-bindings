@@ -1,5 +1,5 @@
 #include "view.hpp"
-
+#include "viewgroup.hpp"
 
 
 namespace tgui::impl {
@@ -174,6 +174,7 @@ namespace tgui::impl {
 		if (! res.success()) {
 			throw MethodError();
 		}
+		destroyed = true;
 	}
 	
 	void View::setMargin(proto0::Size s, proto0::Direction dir) {

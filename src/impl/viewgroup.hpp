@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include "activity.hpp"
 #include "connection.hpp"
@@ -17,7 +18,7 @@ namespace tgui::impl {
 		
 		
 		
-		const std::weak_ptr<View> wv;
+		const std::shared_ptr<View> v;
 		
 		private:
 		ViewGroup(const ViewGroup&) = delete;

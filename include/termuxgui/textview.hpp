@@ -3,6 +3,7 @@
 #include <memory>
 #include "view.hpp"
 #include "activity.hpp"
+#include "viewgroup.hpp"
 
 namespace tgui {
 	
@@ -13,14 +14,22 @@ namespace tgui {
 	class TextView : public View {
 		public:
 		
-		TextView(Activity& a, View* parent = nullptr, std::string text = "", bool selectableText = true, bool clickableLinks = false);
+		TextView(Activity& a, ViewGroup* parent = nullptr, std::string text = "", bool selectableText = true, bool clickableLinks = false);
 		
 		
 		virtual ~TextView();
 		
 		
 		
+		void setTextColor(tgui::Color col);
 		
+		void setText(std::string text);
+		
+		void setGravity(Gravity horizontal, Gravity vertical);
+		
+		void setTextSize(Size s);
+		
+		std::string getText();
 		
 		
 		

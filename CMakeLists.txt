@@ -11,7 +11,7 @@ protobuf_generate_cpp(PROTOSRC PROTOHDR GUIProt0.proto)
 include_directories(BEFORE SYSTEM include)
 
 
-set(sources connection.cpp activity.cpp termuxgui_c.cpp view.cpp textview.cpp)
+set(sources connection.cpp activity.cpp termuxgui_c.cpp view.cpp viewgroup.cpp textview.cpp)
 list(TRANSFORM sources PREPEND "src/")
 
 set(impl connection.cpp activity.cpp view.cpp viewgroup.cpp textview.cpp bind.c)
