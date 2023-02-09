@@ -35,6 +35,9 @@ target_link_libraries(hello_world_c termuxgui)
 add_executable(hello_activity_c EXCLUDE_FROM_ALL tutorial/c/hello_activity.c)
 target_link_libraries(hello_activity_c termuxgui)
 
+add_executable(hello_textview_c EXCLUDE_FROM_ALL tutorial/c/hello_textview.c)
+target_link_libraries(hello_textview_c termuxgui)
+
 add_executable(buffer_sdl_c EXCLUDE_FROM_ALL tutorial/c/buffer_sdl.c)
 target_include_directories(buffer_sdl_c PUBLIC ${SDL2_INCLUDE_DIRS})
 target_link_libraries(buffer_sdl_c termuxgui ${SDL2_LIBRARIES})

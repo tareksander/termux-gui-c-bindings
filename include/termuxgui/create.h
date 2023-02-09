@@ -46,7 +46,7 @@ tgui_err tgui_create_linear_layout(tgui_connection c, tgui_activity a, tgui_view
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_frame_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_frame_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 /**
@@ -65,7 +65,7 @@ tgui_err tgui_create_frame_layout(tgui_connection c, tgui_activity a, tgui_view*
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_swipe_refresh_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_swipe_refresh_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 /**
@@ -168,7 +168,7 @@ tgui_err tgui_create_image_view(tgui_connection c, tgui_activity a, tgui_view* v
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_space(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_space(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 /**
@@ -189,7 +189,7 @@ tgui_err tgui_create_space(tgui_connection c, tgui_activity a, tgui_view* v, con
  * @param noBar Whether to show the scrollbar.
  * @return tgui_err 
  */
-tgui_err tgui_create_nested_scroll_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool snapping, bool noBar);
+tgui_err tgui_create_nested_scroll_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool snapping, bool noBar, bool fillViewport);
 
 
 /**
@@ -210,7 +210,7 @@ tgui_err tgui_create_nested_scroll_view(tgui_connection c, tgui_activity a, tgui
  * @param noBar Whether to show the scrollbar.
  * @return tgui_err 
  */
-tgui_err tgui_create_horizontal_scroll_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool snapping, bool noBar);
+tgui_err tgui_create_horizontal_scroll_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool snapping, bool noBar, bool fillViewport);
 
 
 /**
@@ -229,7 +229,7 @@ tgui_err tgui_create_horizontal_scroll_view(tgui_connection c, tgui_activity a, 
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_radio_group(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_radio_group(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 /**
@@ -330,7 +330,7 @@ tgui_err tgui_create_switch(tgui_connection c, tgui_activity a, tgui_view* v, co
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_spinner(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_spinner(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 /**
@@ -349,7 +349,7 @@ tgui_err tgui_create_spinner(tgui_connection c, tgui_activity a, tgui_view* v, c
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_progress_bar(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_progress_bar(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 /**
@@ -368,7 +368,7 @@ tgui_err tgui_create_progress_bar(tgui_connection c, tgui_activity a, tgui_view*
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_tab_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_tab_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 /**
@@ -408,7 +408,7 @@ tgui_err tgui_create_grid_layout(tgui_connection c, tgui_activity a, tgui_view* 
  * @param parent The optional parent layout of the View.
  * @return tgui_err 
  */
-tgui_err tgui_create_web_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent);
+tgui_err tgui_create_web_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
 
 

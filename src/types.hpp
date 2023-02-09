@@ -121,10 +121,30 @@ namespace tgui {
 		
 	};
 	
+	
 	inline const std::unordered_map<tgui_buffer_format, int> BufferFormatBytesPerPixel = {
 		{TGUI_BUFFER_FORMAT_ARGB8888, 4},
 		
 	};
+	
+	
+	inline const std::unordered_map<tgui_edit_text_type, tgui::proto0::CreateEditTextRequest::Type> EditTextTypePublicToPB = {
+		{TGUI_EDIT_TEXT_TEXT, tgui::proto0::CreateEditTextRequest::text},
+		{TGUI_EDIT_TEXT_TEXT_MULTILINE, tgui::proto0::CreateEditTextRequest::textMultiLine},
+		{TGUI_EDIT_TEXT_PHONE, tgui::proto0::CreateEditTextRequest::phone},
+		{TGUI_EDIT_TEXT_DATE, tgui::proto0::CreateEditTextRequest::date},
+		{TGUI_EDIT_TEXT_TIME, tgui::proto0::CreateEditTextRequest::time},
+		{TGUI_EDIT_TEXT_DATETIME, tgui::proto0::CreateEditTextRequest::datetime},
+		{TGUI_EDIT_TEXT_NUMBER, tgui::proto0::CreateEditTextRequest::number},
+		{TGUI_EDIT_TEXT_NUMBER_DECIMAL, tgui::proto0::CreateEditTextRequest::numberDecimal},
+		{TGUI_EDIT_TEXT_NUMBER_PASSWORD, tgui::proto0::CreateEditTextRequest::numberPassword},
+		{TGUI_EDIT_TEXT_NUMBER_SIGNED, tgui::proto0::CreateEditTextRequest::numberSigned},
+		{TGUI_EDIT_TEXT_NUMBER_DECIMAL_SIGNED, tgui::proto0::CreateEditTextRequest::numberDecimalSigned},
+		{TGUI_EDIT_TEXT_TEXT_EMAIL_ADDRESS, tgui::proto0::CreateEditTextRequest::textEmailAddress},
+		{TGUI_EDIT_TEXT_TEXT_PASSWORD, tgui::proto0::CreateEditTextRequest::textPassword},
+	};
+	
+	
 	
 	
 	inline proto0::ViewSize ViewSizePublicToPB(const tgui_view_size& s) {

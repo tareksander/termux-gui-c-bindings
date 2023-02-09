@@ -60,7 +60,7 @@ int main() {
         }
         if (available) {
             
-            if (e.type == TGUI_EVENT_RESUME) {
+            if (e.type == TGUI_EVENT_CREATE) {
                 if (iv == -1) {
                     if (tgui_create_image_view(c, a, &iv, NULL, TGUI_VIS_VISIBLE, false) != 0) {
                         puts("error imageview\n");
@@ -85,9 +85,21 @@ int main() {
         }
         if (time(NULL) - start >= 10) break;
         if (iv != -1 && ! paused) {
+            int posOld;
+            if (prog < 400) {
+                posOld = prog;
+            } else {
+                posOld = 800 - prog;
+            }
+            const SDL_Rect rectOld = {
+                .x = posOld,
+                .y = posOld,
+                .w = 50,
+                .h = 50,
+            };
             prog++;
             prog = prog % 800;
-            SDL_FillRect(bs, NULL, 0xffffff);
+            SDL_FillRect(bs, &rectOld, 0xffffff);
             int pos;
             if (prog < 400) {
                 pos = prog;
