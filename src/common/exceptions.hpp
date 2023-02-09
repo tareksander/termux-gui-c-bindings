@@ -3,7 +3,7 @@
 #include <exception>
 #include <system_error>
 
-namespace tgui {
+namespace tgui::common {
 	
 	
 	/**

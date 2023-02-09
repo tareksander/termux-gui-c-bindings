@@ -15,6 +15,20 @@ The main difference is that the C++ API is object-oriented an the C one is not.
 ## <a name="ctut"></a>C Tutorial
 
 
+### Hello World
+
+Initializing the library, displaying "Hello World" and deinitializing.
+
+
+[hello_world.c](tutorial/c/hello_world.c)
+
+
+### Hello Activity
+
+Starting an Activity and exiting when it's closed.
+
+
+[hello_activity.c](tutorial/c/hello_activity.c)
 
 
 
@@ -24,7 +38,19 @@ The main difference is that the C++ API is object-oriented an the C one is not.
 
 
 
-## <a name="cpptut"></a>C++ Tutorial <!---->
+
+
+
+
+
+
+
+
+
+
+
+
+## <a name="cpptut"></a>C++ Tutorial
 
 
 

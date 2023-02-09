@@ -5,30 +5,50 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Protobuf REQUIRED)
+find_package(SDL2)
 include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
 protobuf_generate_cpp(PROTOSRC PROTOHDR GUIProt0.proto)
 
 include_directories(BEFORE SYSTEM include)
 
 
-set(sources connection.cpp activity.cpp termuxgui_c.cpp view.cpp viewgroup.cpp textview.cpp)
+set(sources connection.cpp activity.cpp create.cpp view.cpp remote.cpp event.cpp)
 list(TRANSFORM sources PREPEND "src/")
 
-set(impl connection.cpp activity.cpp view.cpp viewgroup.cpp textview.cpp bind.c)
-list(TRANSFORM impl PREPEND "src/impl/")
+set(common connection.cpp bind.c)
+list(TRANSFORM common PREPEND "src/common/")
 
 add_custom_target(docs COMMAND doxygen)
 
 
-add_library(termuxgui STATIC ${sources} ${impl} ${PROTOSRC} ${PROTOHDR})
+add_library(termuxgui STATIC ${sources} ${common} ${PROTOSRC} ${PROTOHDR})
 target_link_libraries(termuxgui ${Protobuf_LIBRARIES})
 
 install(TARGETS termuxgui LIBRARY)
 install(DIRECTORY include/ TYPE INCLUDE)
 
 
-add_executable(hello_world_cpp EXCLUDE_FROM_ALL tutorial/cpp/hello_world.cpp)
-target_link_libraries(hello_world_cpp termuxgui ${Protobuf_LIBRARIES})
+
+add_executable(hello_world_c EXCLUDE_FROM_ALL tutorial/c/hello_world.c)
+target_link_libraries(hello_world_c termuxgui)
+
+add_executable(hello_activity_c EXCLUDE_FROM_ALL tutorial/c/hello_activity.c)
+target_link_libraries(hello_activity_c termuxgui)
+
+add_executable(buffer_sdl_c EXCLUDE_FROM_ALL tutorial/c/buffer_sdl.c)
+target_include_directories(buffer_sdl_c PUBLIC ${SDL2_INCLUDE_DIRS})
+target_link_libraries(buffer_sdl_c termuxgui ${SDL2_LIBRARIES})
+
+#add_executable(imageview_mpv_c EXCLUDE_FROM_ALL tutorial/c/imageview_mpv.c)
+#target_link_libraries(imageview_mpv_c termuxgui mpv)
+
+
+
+
+
+
+
+
 
 
 

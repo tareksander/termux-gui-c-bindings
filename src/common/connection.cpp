@@ -1,11 +1,13 @@
 #include "connection.hpp"
 
+#include <arpa/inet.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <sys/wait.h>
 #include <poll.h>
+#include <sys/ioctl.h>
 
 #include <random>
 #include <string>
@@ -27,7 +29,7 @@ using namespace std;
 
 
 
-namespace tgui::impl {
+namespace tgui::common {
 	
 	
 	Connection::SocketInputStream::SocketInputStream() {}
@@ -317,7 +319,7 @@ namespace tgui::impl {
 				throw system_error(error_code(errno, system_category()));
 			}
 			event.fd = eventfd;
-		} catch (std::exception& e) {
+		} catch (const std::exception& e) {
 			if (mainfd != -1) {
 				close(mainfd);
 			}
@@ -328,22 +330,27 @@ namespace tgui::impl {
 		}
 	}
 	
-	Connection::~Connection() {
-	}
+	Connection::~Connection() {}
 	
 	
 	
 	void Connection::sendMethodMessage(tgui::proto0::Method& m) {
-		unique_lock l{outMutex};
+		unique_lock l{mainMutex};
 		if (! google::protobuf::util::SerializeDelimitedToZeroCopyStream(m, &out)) {
 			throw MessageWriteException();
 		}
 		out.flush();
 	}
 	
-	void Connection::readMessage(google::protobuf::MessageLite& m) {
-		unique_lock l{inMutex};
-		if (! google::protobuf::util::ParseDelimitedFromZeroCopyStream(&m, &in, NULL)) {
+
+	
+	void Connection::sendReadMessage(google::protobuf::MessageLite& send, google::protobuf::MessageLite& read) {
+		unique_lock l{mainMutex};
+		if (! google::protobuf::util::SerializeDelimitedToZeroCopyStream(send, &out)) {
+			throw MessageWriteException();
+		}
+		out.flush();
+		if (! google::protobuf::util::ParseDelimitedFromZeroCopyStream(&read, &in, NULL)) {
 			throw MessageReadException();
 		}
 	}
@@ -353,6 +360,16 @@ namespace tgui::impl {
 		unique_lock l{eventMutex};
 		tgui::proto0::Event e;
 		if (! google::protobuf::util::ParseDelimitedFromZeroCopyStream(&e, &event, NULL)) {
+			throw MessageReadException();
+		}
+		return e;
+	}
+	
+	std::unique_ptr<proto0::Event> Connection::pollEvent() {
+		unique_lock l{eventMutex};
+		if (! checkEvent()) return nullptr;
+		std::unique_ptr<proto0::Event> e = make_unique<proto0::Event>();
+		if (! google::protobuf::util::ParseDelimitedFromZeroCopyStream(e.get(), &event, NULL)) {
 			throw MessageReadException();
 		}
 		return e;
@@ -369,6 +386,61 @@ namespace tgui::impl {
 		}
 	}
 	
+	
+	Connection::Buffer Connection::addBuffer() {
+		unique_lock l{mainMutex};
+		Buffer b;
+		b.fd = -1; // set to an invalid value to signify if an fd was received or not
+		b.id = -1;
+		int32_t id;
+		{
+			char* buffer = (char*) &id;
+			int bytes = 4;
+			while (bytes > 0) {
+				int size = bytes;
+				void* data;
+				if (! in.Next(const_cast<const void**>(&data), &size)) {
+					return b;
+				}
+				memcpy(buffer, data, size);
+				buffer += size;
+				bytes -= size;
+			}
+			id = ntohl(id);
+		}
+		if (id < 0) {
+			return b;
+		}
+		
+		
+		// enough size for exactly one control message with one fd, so the excess fds are automatically closed
+		constexpr int CONTROLLEN = CMSG_SPACE(sizeof(int));
+		union {
+			cmsghdr _; // for alignment
+			char controlBuffer[CONTROLLEN];
+		} controlBufferUnion;
+		memset(&controlBufferUnion, 0, sizeof(controlBufferUnion)); // clear the buffer to be sure
+
+		uint8_t data;
+		iovec buffer{&data, 1};
+		msghdr receiveHeader{nullptr, 0, &buffer, 1, controlBufferUnion.controlBuffer, sizeof(controlBufferUnion.controlBuffer), 0};
+
+		int ret = recvmsg(mainfd, &receiveHeader, MSG_CMSG_CLOEXEC);
+		if (ret == -1) {
+			return b;
+		}
+		
+		for (struct cmsghdr* cmsg = CMSG_FIRSTHDR(&receiveHeader); cmsg != nullptr; cmsg = CMSG_NXTHDR(&receiveHeader, cmsg)) {
+			if (cmsg->cmsg_level == SOL_SOCKET && cmsg->cmsg_type == SCM_RIGHTS) {
+				int recfd;
+				memcpy(&recfd, CMSG_DATA(cmsg), sizeof(recfd));
+				b.fd = recfd;
+				break;
+			}
+		}
+		b.id = id;
+		return b;
+	}
 	
 }
 

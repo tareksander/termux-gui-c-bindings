@@ -35,7 +35,7 @@ Just use it like a normal C/C++ library.
 
 ### From source
 
-Include this repository as a submodule or otherwise
+Include this repository as a submodule or otherwise,
 
 ## License
 

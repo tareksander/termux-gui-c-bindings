@@ -6,22 +6,26 @@
 #include <google/protobuf/io/coded_stream.h>
 #include "GUIProt0.pb.h"
 
-#include <termuxgui/exceptions.hpp>
-#include <termuxgui/event.hpp>
+#include "exceptions.hpp"
 #include <stdint.h>
 
 #include <array>
 #include <mutex>
+#include <memory>
 
-namespace tgui::impl {
+namespace tgui::common {
 	
 	class Connection {
 	public:
+		struct Buffer {
+			int id, fd;
+		};
+		
 		
 		inline static std::shared_ptr<Connection> connectionOrThrow(const std::weak_ptr<Connection>& p) {
 			auto shared = p.lock();
 			if (shared == nullptr) {
-				throw tgui::ConnectionClosedException();
+				throw ConnectionClosedException();
 			}
 			return shared;
 		}
@@ -33,13 +37,17 @@ namespace tgui::impl {
 		
 		void sendMethodMessage(proto0::Method& m);
 		
-		void readMessage(google::protobuf::MessageLite& m);
+		
+		void sendReadMessage(google::protobuf::MessageLite& send, google::protobuf::MessageLite& read);
 		
 		
 		proto0::Event receiveEvent();
+		std::unique_ptr<proto0::Event> pollEvent();
+		
 		
 		bool checkEvent();
 		
+		Buffer addBuffer();
 		
 		
 	private:
@@ -123,8 +131,7 @@ namespace tgui::impl {
 			
 		};
 		
-		std::mutex inMutex;
-		std::mutex outMutex;
+		std::mutex mainMutex;
 		std::mutex eventMutex;
 		
 		SocketInputStream in;
