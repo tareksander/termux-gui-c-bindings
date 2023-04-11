@@ -11,7 +11,7 @@ extern "C" {
 
 
 /**
- * @brief 
+ * @brief Sets whether click events are send for a View.
  * 
  * @details
  * ### Errors
@@ -30,7 +30,7 @@ extern "C" {
 tgui_err tgui_send_click_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
 /**
- * @brief 
+ * @brief Sets whether long click events are send for a View.
  * 
  * @details
  * ### Errors
@@ -49,7 +49,7 @@ tgui_err tgui_send_click_event(tgui_connection c, tgui_activity a, tgui_view v, 
 tgui_err tgui_send_long_click_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
 /**
- * @brief 
+ * @brief Sets whether focus change events are send for a View.
  * 
  * @details
  * ### Errors
@@ -68,7 +68,7 @@ tgui_err tgui_send_long_click_event(tgui_connection c, tgui_activity a, tgui_vie
 tgui_err tgui_send_focus_change_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
 /**
- * @brief 
+ * @brief Sets whether touch events are send for a View.
  * 
  * @details
  * ### Errors
@@ -87,7 +87,7 @@ tgui_err tgui_send_focus_change_event(tgui_connection c, tgui_activity a, tgui_v
 tgui_err tgui_send_touch_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
 /**
- * @brief 
+ * @brief Sets whether text events are send for a View.
  * 
  * @details
  * ### Errors
@@ -106,7 +106,7 @@ tgui_err tgui_send_touch_event(tgui_connection c, tgui_activity a, tgui_view v, 
 tgui_err tgui_send_text_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
 /**
- * @brief 
+ * @brief Sets whether overlay touch events are send for a View.
  * 
  * @details
  * ### Errors

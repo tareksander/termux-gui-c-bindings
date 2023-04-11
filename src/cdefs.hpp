@@ -4,7 +4,7 @@
 #include <exception>
 
 #include "common/connection.hpp"
-#include "GUIProt0.pb.h"
+#include "includeproto.h"
 
 using namespace tgui;
 using namespace tgui::common;

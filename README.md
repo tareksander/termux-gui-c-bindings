@@ -3,7 +3,23 @@ A C/C++ library to interact with the Termux:GUI plugin.
 
 This is currently only a static library, so you only need to install it to compile software using it.
 
-[HTML Documentation](https://tareksander.github.io/termux-gui-c-bindings/html/index.html)
+[HTML Documentation](https://tareksander.github.io/termux-gui-c-bindings/html/index.html)  
+  
+[Tutorial](TUTORIAL.md)
+
+## Features
+
+[x] View creation  
+[x] Activity functions  
+[x] Task functions  
+[x] Global functions  
+[x] ImageView & Buffer  
+[x] Events  
+[ ] Event control  
+[ ] WebView  
+[ ] View functions  
+[ ] RemoteViews, Widgets, Notifications  
+
 
 
 ## Installation
@@ -13,7 +29,7 @@ This is currently only a static library, so you only need to install it to compi
 You have to clone the repository configure cmake and install:
 
 ```bash
-pkg install git build-essential libprotobuf-c-static protobuf # install git, clang, protobuf and cmake if not installed
+pkg install git build-essential protobuf-static # install git, clang, protobuf-static and cmake if not installed
 git clone "https://github.com/tareksander/termux-gui-c-bindings.git" # clone the repository
 cd termux-gui-c-bindings # go into the repository
 cmake . -DCMAKE_INSTALL_PREFIX="$PREFIX" # configure cmake with the Termux prefix
@@ -35,7 +51,7 @@ Just use it like a normal C/C++ library.
 
 ### From source
 
-Include this repository as a submodule or otherwise,
+Include this repository as a submodule or any other way.
 
 ## License
 

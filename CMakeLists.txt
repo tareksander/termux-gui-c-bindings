@@ -21,8 +21,15 @@ list(TRANSFORM common PREPEND "src/common/")
 add_custom_target(docs COMMAND doxygen)
 
 
-add_library(termuxgui STATIC ${sources} ${common} ${PROTOSRC} ${PROTOHDR})
-target_link_libraries(termuxgui ${Protobuf_LIBRARIES})
+add_library(termuxgui SHARED ${sources} ${common} ${PROTOSRC} ${PROTOHDR})
+if(DEFINED ENV{SHARED_BUILD})
+    target_link_libraries(termuxgui ${Protobuf_LIBRARIES})
+    target_compile_definitions(termuxgui PRIVATE SHARED_BUILD)
+else()
+    target_link_libraries(termuxgui libprotobuf.a)
+    target_link_options(termuxgui PRIVATE -Wl,--exclude-libs,ALL)
+endif()
+
 
 install(TARGETS termuxgui LIBRARY)
 install(DIRECTORY include/ TYPE INCLUDE)
@@ -42,8 +49,8 @@ add_executable(buffer_sdl_c EXCLUDE_FROM_ALL tutorial/c/buffer_sdl.c)
 target_include_directories(buffer_sdl_c PUBLIC ${SDL2_INCLUDE_DIRS})
 target_link_libraries(buffer_sdl_c termuxgui ${SDL2_LIBRARIES})
 
-#add_executable(imageview_mpv_c EXCLUDE_FROM_ALL tutorial/c/imageview_mpv.c)
-#target_link_libraries(imageview_mpv_c termuxgui mpv)
+add_executable(imageview_mpv_c EXCLUDE_FROM_ALL tutorial/c/imageview_mpv.c)
+target_link_libraries(imageview_mpv_c termuxgui mpv)
 
 
 

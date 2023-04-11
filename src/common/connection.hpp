@@ -4,7 +4,7 @@
 
 #include <google/protobuf/io/zero_copy_stream_impl.h>
 #include <google/protobuf/io/coded_stream.h>
-#include "GUIProt0.pb.h"
+#include "../includeproto.h"
 
 #include "exceptions.hpp"
 #include <stdint.h>
@@ -81,6 +81,7 @@ namespace tgui::common {
 			virtual bool Skip(int count) override;
 			virtual int64_t ByteCount() const override;
 			
+			void raiseError();
 			
 			int fd = -1;
 		private:

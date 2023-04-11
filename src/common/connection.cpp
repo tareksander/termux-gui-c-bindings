@@ -88,7 +88,9 @@ namespace tgui::common {
 	int64_t Connection::SocketInputStream::ByteCount() const {
 		return count;
 	}
-	
+	void Connection::SocketInputStream::raiseError() {
+		err = true;
+	}
 	
 	
 	Connection::SocketOutputStream::SocketOutputStream() {}
@@ -398,11 +400,10 @@ namespace tgui::common {
 			int bytes = 4;
 			while (bytes > 0) {
 				int size = bytes;
-				void* data;
-				if (! in.Next(const_cast<const void**>(&data), &size)) {
+				if (read(mainfd, buffer, size) <= 0) {
+					in.raiseError();
 					return b;
 				}
-				memcpy(buffer, data, size);
 				buffer += size;
 				bytes -= size;
 			}
@@ -427,6 +428,7 @@ namespace tgui::common {
 
 		int ret = recvmsg(mainfd, &receiveHeader, MSG_CMSG_CLOEXEC);
 		if (ret == -1) {
+			in.raiseError();
 			return b;
 		}
 		
