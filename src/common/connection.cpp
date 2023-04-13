@@ -400,10 +400,12 @@ namespace tgui::common {
 			int bytes = 4;
 			while (bytes > 0) {
 				int size = bytes;
-				if (read(mainfd, buffer, size) <= 0) {
+				int ret = read(mainfd, buffer, size);
+				if (ret <= 0) {
 					in.raiseError();
 					return b;
 				}
+				size = ret;
 				buffer += size;
 				bytes -= size;
 			}
