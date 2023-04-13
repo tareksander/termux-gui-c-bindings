@@ -65,6 +65,35 @@ extern "C" {
 		});
 	}
 	
+	tgui_err tgui_set_log_level(tgui_connection c, int level) {
+		return exceptionToError<tgui_err>([&]() {
+			proto0::Method m;
+			proto0::SetLogLevelRequest r = proto0::SetLogLevelRequest();
+			r.set_level(level);
+			*m.mutable_setloglevel() = r;
+			proto0::SetLogLevelResponse res;
+			c->c.sendReadMessage(m, res);
+			if (! res.success()) return TGUI_ERR_MESSAGE;
+			return TGUI_ERR_OK;
+		});
+	}
+	
+	tgui_err tgui_get_log(tgui_connection c, bool clear, char** log) {
+		return exceptionToError<tgui_err>([&]() {
+			*log = NULL;
+			proto0::Method m;
+			proto0::GetLogRequest r = proto0::GetLogRequest();
+			r.set_clear(clear);
+			*m.mutable_getlog() = r;
+			proto0::GetLogResponse res;
+			c->c.sendReadMessage(m, res);
+			if (! res.success()) return TGUI_ERR_MESSAGE;
+			*log = strdup(res.log().c_str());
+			if (*log == NULL) return TGUI_ERR_NOMEM;
+			return TGUI_ERR_OK;
+		});
+	}
+	
 	
 	tgui_err tgui_toast(tgui_connection c, const char* text, bool l) {
 		return exceptionToError<tgui_err>([&]() {

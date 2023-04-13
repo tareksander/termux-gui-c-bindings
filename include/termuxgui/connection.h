@@ -55,6 +55,40 @@ tgui_err tgui_connection_create(tgui_connection* c);
  */
 tgui_err tgui_get_version(tgui_connection c, int* v);
 
+
+/**
+ * @brief Sets the log level of the plugin. Can be used for debugging.
+ * 
+ * @details
+ * ### Errors
+ *  - TGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TGUI_ERR_NOMEM: Not enough memory.
+ *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
+ * 
+ * @param c The connection to use.
+ * @param level The requested log level, from 0 to 10 (inclusive).
+ * @return The error code.
+ */
+tgui_err tgui_set_log_level(tgui_connection c, int level);
+
+
+/**
+ * @brief Gets the log of the plugin. Can be used for debugging.
+ * 
+ * @details
+ * ### Errors
+ *  - TGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TGUI_ERR_NOMEM: Not enough memory.
+ *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
+ * 
+ * @param c The connection to use.
+ * @param clear Set to true if you want to clear the log after getting it.
+ * @param[out] log Gets set to a pointer to the retrieved log buffer if successful. Has to be freed with free().
+ * @return The error code.
+ */
+tgui_err tgui_get_log(tgui_connection c, bool clear, char** log);
+
+
 /**
  * @brief Sends a [toast](https://developer.android.com/guide/topics/ui/notifiers/toasts) using the connection.
  * 

@@ -272,6 +272,24 @@ tgui_err tgui_activity_hide_soft_keyboard(tgui_connection c, tgui_activity a);
 tgui_err tgui_activity_intercept_back_button(tgui_connection c, tgui_activity a, bool intercept);
 
 
+/**
+ * @brief Sets the secure flag for the Activity. Disables screenshots and shows a blank Activity in the task switcher if enabled.
+ * 
+ * @details
+ * ### Errors
+ *  - TGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TGUI_ERR_NOMEM: Not enough memory.
+ *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
+ * 
+ * @param c The connection to use.
+ * @param a The Activity.
+ * @param secure The secure flag setting.
+ * @return The error code.
+ */
+tgui_err tgui_activity_set_secure(tgui_connection c, tgui_activity a, bool secure);
+
+
 
 
 /**

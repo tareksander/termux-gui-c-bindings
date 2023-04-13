@@ -227,6 +227,21 @@ extern "C" {
 		});
 	}
 	
+	tgui_err tgui_activity_set_secure(tgui_connection c, tgui_activity a, bool secure) {
+		return exceptionToError<tgui_err>([&]() {
+			proto0::Method m;
+			proto0::SetSecureFlagRequest r;
+			r.set_aid(a);
+			r.set_secure(secure);
+			*m.mutable_setsecure() = r;
+			
+			proto0::SetSecureFlagResponse res;
+			c->c.sendReadMessage(m, res);
+			if (! res.success()) return TGUI_ERR_MESSAGE;
+			return TGUI_ERR_OK;
+		});
+	}
+	
 	tgui_err tgui_task_to_front(tgui_connection c, tgui_task t) {
 		return exceptionToError<tgui_err>([&]() {
 			proto0::Method m;
