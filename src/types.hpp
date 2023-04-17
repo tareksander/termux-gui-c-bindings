@@ -145,7 +145,23 @@ namespace tgui {
 	};
 	
 	
+	inline const std::unordered_map<tgui_grid_alignment, tgui::proto0::SetGridLayoutParamsRequest::Alignment> GridAlignmentPublicToPB = {
+		{TGUI_GRID_CENTER, tgui::proto0::SetGridLayoutParamsRequest::CENTER},
+		{TGUI_GRID_TOP, tgui::proto0::SetGridLayoutParamsRequest::TOP},
+		{TGUI_GRID_BOTTOM, tgui::proto0::SetGridLayoutParamsRequest::BOTTOM},
+		{TGUI_GRID_LEFT, tgui::proto0::SetGridLayoutParamsRequest::LEFT},
+		{TGUI_GRID_RIGHT, tgui::proto0::SetGridLayoutParamsRequest::RIGHT},
+		{TGUI_GRID_BASELINE, tgui::proto0::SetGridLayoutParamsRequest::BASELINE},
+		{TGUI_GRID_FILL, tgui::proto0::SetGridLayoutParamsRequest::FILL},
+	};
 	
+	
+	inline proto0::Size SizePublicToPB(const tgui_size& s) {
+		proto0::Size ps;
+		ps.set_unit(UnitPublicToPB.at(s.unit));
+		ps.set_value(s.value);
+		return ps;
+	}
 	
 	inline proto0::ViewSize ViewSizePublicToPB(const tgui_view_size& s) {
 		proto0::ViewSize ret;
@@ -154,10 +170,7 @@ namespace tgui {
 		} else if (s.type == TGUI_VIEW_WRAP_CONTENT) {
 			ret.set_constant(proto0::ViewSize::WRAP_CONTENT);
 		} else {
-			proto0::Size ps;
-			ps.set_unit(UnitPublicToPB.at(s.value.unit));
-			ps.set_value(s.value.value);
-			*ret.mutable_size() = ps;
+			*ret.mutable_size() = SizePublicToPB(s.value);
 		}
 		return ret;
 	}

@@ -11,7 +11,7 @@ extern "C" {
 
 
 /**
- * @brief 
+ * @brief Sets whether an EditText shows the cursor or not.
  * 
  * @details
  * ### Errors
@@ -24,14 +24,15 @@ extern "C" {
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param show Whether to show the cursor or not.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_show_cursor(tgui_connection c, tgui_activity a, tgui_view v, bool show);
 
 
 
 /**
- * @brief 
+ * @brief Sets the parameters for a View in a LinearLayout.
  * 
  * @details
  * ### Errors
@@ -44,13 +45,15 @@ tgui_err tgui_show_cursor(tgui_connection c, tgui_activity a, tgui_view v, bool 
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param weight The layout weight. Use a negative number to keep the current weight.
+ * @param position the position in the View. Use 0 to keep the position.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_linear_params(tgui_connection c, tgui_activity a, tgui_view v, float weight, int position);
 
 
 /**
- * @brief 
+ * @brief Sets the parameters for a View in a GridLayout.
  * 
  * @details
  * ### Errors
@@ -63,14 +66,20 @@ tgui_err tgui_linear_params(tgui_connection c, tgui_activity a, tgui_view v, flo
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param row The row position.
+ * @param col. The column position.
+ * @param row_size How many rows the View occupies.
+ * @param col_size How many columns the View occupies.
+ * @param row_align The alignment in the row.
+ * @param col_align The alignment in the column.
+ * @return tgui_err The error code. 
  */
-tgui_err tgui_grid_params(tgui_connection c, tgui_activity a, tgui_view v, tgui_grid_alignment row_align, tgui_grid_alignment col_align);
+tgui_err tgui_grid_params(tgui_connection c, tgui_activity a, tgui_view v, size_t row, size_t col, size_t row_size, size_t col_size, tgui_grid_alignment row_align, tgui_grid_alignment col_align);
 
 
 
 /**
- * @brief 
+ * @brief Sets the location of the View manually. Useful for FrameLayout. Can also make it display on top of its siblings.
  * 
  * @details
  * ### Errors
@@ -83,13 +92,17 @@ tgui_err tgui_grid_params(tgui_connection c, tgui_activity a, tgui_view v, tgui_
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param unit The unit for x and y.
+ * @param x The horizontal position.
+ * @param y The vertical position.
+ * @param top Set to true if you want to move the View on top of its siblings.
+ * @return tgui_err The error code. 
  */
-tgui_err tgui_view_location(tgui_connection c, tgui_activity a, tgui_view v, tgui_size_unit unit, float x, float y);
+tgui_err tgui_view_location(tgui_connection c, tgui_activity a, tgui_view v, tgui_size_unit unit, float x, float y, bool top);
 
 
 /**
- * @brief 
+ * @brief Sets the parameters for a View in a RelativeLayout. NOT IMPLEMENTED!
  * 
  * @details
  * ### Errors
@@ -102,13 +115,13 @@ tgui_err tgui_view_location(tgui_connection c, tgui_activity a, tgui_view v, tgu
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_relative_params(tgui_connection c, tgui_activity a, tgui_view v);
 
 
 /**
- * @brief 
+ * @brief Sets the visibility of a View.
  * 
  * @details
  * ### Errors
@@ -121,13 +134,14 @@ tgui_err tgui_relative_params(tgui_connection c, tgui_activity a, tgui_view v);
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param vis The visibility.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_visibility(tgui_connection c, tgui_activity a, tgui_view v, tgui_view_visibility vis);
 
 
 /**
- * @brief 
+ * @brief Sets the width of a View.
  * 
  * @details
  * ### Errors
@@ -140,13 +154,14 @@ tgui_err tgui_visibility(tgui_connection c, tgui_activity a, tgui_view v, tgui_v
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param width The width.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_width(tgui_connection c, tgui_activity a, tgui_view v, tgui_view_size width);
 
 
 /**
- * @brief 
+ * @brief Sets the height of a View.
  * 
  * @details
  * ### Errors
@@ -159,12 +174,13 @@ tgui_err tgui_set_width(tgui_connection c, tgui_activity a, tgui_view v, tgui_vi
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param height The height.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_height(tgui_connection c, tgui_activity a, tgui_view v, tgui_view_size height);
 
 /**
- * @brief 
+ * @brief Gets the dimensions of a View.
  * 
  * @details
  * ### Errors
@@ -177,13 +193,16 @@ tgui_err tgui_set_height(tgui_connection c, tgui_activity a, tgui_view v, tgui_v
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param unit The unit of the returned dimensions.
+ * @param[out] width If successful, will contain the View width in the desired unit.
+ * @param[out] height If successful, will contain the View height in the desired unit.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_get_dimensions(tgui_connection c, tgui_activity a, tgui_view v, tgui_size_unit unit, float* width, float* height);
 
 
 /**
- * @brief 
+ * @brief Deletes a View.
  * 
  * @details
  * ### Errors
@@ -196,13 +215,13 @@ tgui_err tgui_get_dimensions(tgui_connection c, tgui_activity a, tgui_view v, tg
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_delete_view(tgui_connection c, tgui_activity a, tgui_view v);
 
 
 /**
- * @brief 
+ * @brief Deletes the children of a View.
  * 
  * @details
  * ### Errors
@@ -215,14 +234,14 @@ tgui_err tgui_delete_view(tgui_connection c, tgui_activity a, tgui_view v);
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_delete_children(tgui_connection c, tgui_activity a, tgui_view v);
 
 
 
 /**
- * @brief 
+ * @brief Sets the margins for a View.
  * 
  * @details
  * ### Errors
@@ -235,13 +254,15 @@ tgui_err tgui_delete_children(tgui_connection c, tgui_activity a, tgui_view v);
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param size The margin size.
+ * @param dir The direction(s) to apply the margin.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_margin(tgui_connection c, tgui_activity a, tgui_view v, tgui_size size, tgui_direction dir);
 
 
 /**
- * @brief 
+ * @brief Sets the padding for a View.
  * 
  * @details
  * ### Errors
@@ -254,13 +275,15 @@ tgui_err tgui_set_margin(tgui_connection c, tgui_activity a, tgui_view v, tgui_s
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param size The padding size.
+ * @param dir The direction(s) to apply the padding.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_padding(tgui_connection c, tgui_activity a, tgui_view v, tgui_size size, tgui_direction dir);
 
 
 /**
- * @brief 
+ * @brief Sets the background color of a View.
  * 
  * @details
  * ### Errors
@@ -273,14 +296,15 @@ tgui_err tgui_set_padding(tgui_connection c, tgui_activity a, tgui_view v, tgui_
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param color The color.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_background_color(tgui_connection c, tgui_activity a, tgui_view v, tgui_color color);
 
 
 
 /**
- * @brief 
+ * @brief Sets the text color of a View.
  * 
  * @details
  * ### Errors
@@ -293,13 +317,14 @@ tgui_err tgui_background_color(tgui_connection c, tgui_activity a, tgui_view v, 
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param color The text color.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_text_color(tgui_connection c, tgui_activity a, tgui_view v, tgui_color color);
 
 
 /**
- * @brief 
+ * @brief Sets the progress of a ProgressBar
  * 
  * @details
  * ### Errors
@@ -312,13 +337,14 @@ tgui_err tgui_text_color(tgui_connection c, tgui_activity a, tgui_view v, tgui_c
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param progress The progress from 0 to 100(inclusive).
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_progress(tgui_connection c, tgui_activity a, tgui_view v, unsigned char progress);
 
 
 /**
- * @brief 
+ * @brief Set whether a SwipeRefreshLayout is in the refreshing state.
  * 
  * @details
  * ### Errors
@@ -331,13 +357,14 @@ tgui_err tgui_progress(tgui_connection c, tgui_activity a, tgui_view v, unsigned
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param refreshing The refreshing state.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_refreshing(tgui_connection c, tgui_activity a, tgui_view v, bool refreshing);
 
 
 /**
- * @brief 
+ * @brief Sets the Text of a View.
  * 
  * @details
  * ### Errors
@@ -350,13 +377,14 @@ tgui_err tgui_refreshing(tgui_connection c, tgui_activity a, tgui_view v, bool r
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param text The text.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_text(tgui_connection c, tgui_activity a, tgui_view v, const char* text);
 
 
 /**
- * @brief 
+ * @brief Sets the gravity of the text in a View.
  * 
  * @details
  * ### Errors
@@ -369,13 +397,15 @@ tgui_err tgui_set_text(tgui_connection c, tgui_activity a, tgui_view v, const ch
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param horizontal The horizontal gravity.
+ * @param vertical The vertical gravity.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_gravity(tgui_connection c, tgui_activity a, tgui_view v, tgui_gravity horizontal, tgui_gravity vertical);
 
 
 /**
- * @brief 
+ * @brief Sets the text size of a View.
  * 
  * @details
  * ### Errors
@@ -388,13 +418,14 @@ tgui_err tgui_set_gravity(tgui_connection c, tgui_activity a, tgui_view v, tgui_
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param size The text size.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_text_size(tgui_connection c, tgui_activity a, tgui_view v, tgui_size size);
 
 
 /**
- * @brief 
+ * @brief Gets the text of a View.
  * 
  * @details
  * ### Errors
@@ -408,14 +439,14 @@ tgui_err tgui_text_size(tgui_connection c, tgui_activity a, tgui_view v, tgui_si
  * @param a The Activity the View is in.
  * @param v The View.
  * @param[out] text The text of the View. When successful, this has to be freed with free().
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_get_text(tgui_connection c, tgui_activity a, tgui_view v, char** text);
 
 
 
 /**
- * @brief 
+ * @brief Sets whether a View is checked.
  * 
  * @details
  * ### Errors
@@ -428,14 +459,15 @@ tgui_err tgui_get_text(tgui_connection c, tgui_activity a, tgui_view v, char** t
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param checked The new checked status.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_checked(tgui_connection c, tgui_activity a, tgui_view v, bool checked);
 
 
 
 /**
- * @brief 
+ * @brief Sets the focus to a View.
  * 
  * @details
  * ### Errors
@@ -448,13 +480,14 @@ tgui_err tgui_set_checked(tgui_connection c, tgui_activity a, tgui_view v, bool 
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param force_soft If true, forces the software keyboard to open.
+ * @return tgui_err The error code. 
  */
-tgui_err tgui_focus(tgui_connection c, tgui_activity a, tgui_view v, bool focus);
+tgui_err tgui_focus(tgui_connection c, tgui_activity a, tgui_view v, bool force_soft);
 
 
 /**
- * @brief 
+ * @brief Gets the scroll position of a View.
  * 
  * @details
  * ### Errors
@@ -467,13 +500,16 @@ tgui_err tgui_focus(tgui_connection c, tgui_activity a, tgui_view v, bool focus)
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param unit The unit for x and y.
+ * @param[out] x The x scroll position.
+ * @param[out] y The y scroll position.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_get_scroll_position(tgui_connection c, tgui_activity a, tgui_view v, tgui_size_unit unit, float* x, float* y);
 
 
 /**
- * @brief 
+ * @brief Sets the scroll position for a View.
  * 
  * @details
  * ### Errors
@@ -486,13 +522,16 @@ tgui_err tgui_get_scroll_position(tgui_connection c, tgui_activity a, tgui_view 
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param x The x scroll position.
+ * @param y The y scroll position.
+ * @param smooth Whether to jump or scroll smoothly.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_scroll_position(tgui_connection c, tgui_activity a, tgui_view v, tgui_size x, tgui_size y, bool smooth);
 
 
 /**
- * @brief 
+ * @brief Sets the list of a Spinner.
  * 
  * @details
  * ### Errors
@@ -506,13 +545,13 @@ tgui_err tgui_set_scroll_position(tgui_connection c, tgui_activity a, tgui_view 
  * @param a The Activity the View is in.
  * @param v The View.
  * @param[in] list A NULL terminated list of pointers to strings.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_list(tgui_connection c, tgui_activity a, tgui_view v, const char* const* list);
 
 
 /**
- * @brief 
+ * @brief Sets the image of an ImageView.
  * 
  * @details
  * ### Errors
@@ -525,7 +564,9 @@ tgui_err tgui_set_list(tgui_connection c, tgui_activity a, tgui_view v, const ch
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param img The image data in PGN/JPEG.
+ * @param length The length of the image data.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_image(tgui_connection c, tgui_activity a, tgui_view v, const void* img, size_t length);
 
@@ -543,7 +584,7 @@ tgui_err tgui_set_image(tgui_connection c, tgui_activity a, tgui_view v, const v
  * 
  * @param c The connection to use.
  * @param[in] buffer A buffer with the width and height fields > 0 and a valid format field. The data, id and fd fields are filled out if successful.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_add_buffer(tgui_connection c, tgui_buffer* buffer);
 
@@ -562,13 +603,13 @@ tgui_err tgui_add_buffer(tgui_connection c, tgui_buffer* buffer);
  * 
  * 
  * @param c The connection to use.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_delete_buffer(tgui_connection c, tgui_buffer* buffer);
 
 
 /**
- * @brief 
+ * @brief Blits a buffer in the plugin, making the image available to ImageViews on the next refresh.
  * 
  * @details
  * ### Errors
@@ -580,13 +621,13 @@ tgui_err tgui_delete_buffer(tgui_connection c, tgui_buffer* buffer);
  * 
  * @param c The connection to use.
  * @param[in] buffer The buffer to blit.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_blit_buffer(tgui_connection c, const tgui_buffer* buffer);
 
 
 /**
- * @brief 
+ * @brief Sets an ImageVIew to display the contents of a buffer.
  * 
  * @details
  * ### Errors
@@ -600,14 +641,14 @@ tgui_err tgui_blit_buffer(tgui_connection c, const tgui_buffer* buffer);
  * @param a The Activity the View is in.
  * @param v The View.
  * @param[in] buffer The buffer to set.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_buffer(tgui_connection c, tgui_activity a, tgui_view v, const tgui_buffer* buffer);
 
 
 
 /**
- * @brief 
+ * @brief Refreshes an ImageView after blitting the contents of its buffer.
  * 
  * @details
  * ### Errors
@@ -620,13 +661,13 @@ tgui_err tgui_set_buffer(tgui_connection c, tgui_activity a, tgui_view v, const 
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_refresh_image_view(tgui_connection c, tgui_activity a, tgui_view v);
 
 
 /**
- * @brief 
+ * @brief Selects a tab in a TabLayout.
  * 
  * @details
  * ### Errors
@@ -639,13 +680,14 @@ tgui_err tgui_refresh_image_view(tgui_connection c, tgui_activity a, tgui_view v
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param index The tab to select.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_select_tab(tgui_connection c, tgui_activity a, tgui_view v, unsigned int index);
 
 
 /**
- * @brief 
+ * @brief Selects an item in a Spinner.
  * 
  * @details
  * ### Errors
@@ -658,14 +700,15 @@ tgui_err tgui_select_tab(tgui_connection c, tgui_activity a, tgui_view v, unsign
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param index The item to select.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_select_item(tgui_connection c, tgui_activity a, tgui_view v, unsigned int index);
 
 
 
 /**
- * @brief 
+ * @brief Sets whether a View is clickable by the user.
  * 
  * @details
  * ### Errors
@@ -678,7 +721,8 @@ tgui_err tgui_select_item(tgui_connection c, tgui_activity a, tgui_view v, unsig
  * @param c The connection to use.
  * @param a The Activity the View is in.
  * @param v The View.
- * @return tgui_err 
+ * @param clickable The new clickable state.
+ * @return tgui_err The error code. 
  */
 tgui_err tgui_set_clickable(tgui_connection c, tgui_activity a, tgui_view v, bool clickable);
 

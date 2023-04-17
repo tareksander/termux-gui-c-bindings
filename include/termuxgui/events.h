@@ -25,7 +25,7 @@ extern "C" {
  * @param a The Activity the View is in.
  * @param v The View.
  * @param send Set to true if you want to get the event, false if not.
- * @return tgui_err 
+ * @return The error code. 
  */
 tgui_err tgui_send_click_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
@@ -44,7 +44,7 @@ tgui_err tgui_send_click_event(tgui_connection c, tgui_activity a, tgui_view v, 
  * @param a The Activity the View is in.
  * @param v The View.
  * @param send Set to true if you want to get the event, false if not.
- * @return tgui_err 
+ * @return The error code. 
  */
 tgui_err tgui_send_long_click_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
@@ -63,7 +63,7 @@ tgui_err tgui_send_long_click_event(tgui_connection c, tgui_activity a, tgui_vie
  * @param a The Activity the View is in.
  * @param v The View.
  * @param send Set to true if you want to get the event, false if not.
- * @return tgui_err 
+ * @return The error code. 
  */
 tgui_err tgui_send_focus_change_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
@@ -82,7 +82,7 @@ tgui_err tgui_send_focus_change_event(tgui_connection c, tgui_activity a, tgui_v
  * @param a The Activity the View is in.
  * @param v The View.
  * @param send Set to true if you want to get the event, false if not.
- * @return tgui_err 
+ * @return The error code. 
  */
 tgui_err tgui_send_touch_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
@@ -101,12 +101,12 @@ tgui_err tgui_send_touch_event(tgui_connection c, tgui_activity a, tgui_view v, 
  * @param a The Activity the View is in.
  * @param v The View.
  * @param send Set to true if you want to get the event, false if not.
- * @return tgui_err 
+ * @return The error code. 
  */
 tgui_err tgui_send_text_event(tgui_connection c, tgui_activity a, tgui_view v, bool send);
 
 /**
- * @brief Sets whether overlay touch events are send for a View.
+ * @brief Sets whether overlay touch events are send for an Activity.
  * 
  * @details
  * ### Errors
@@ -114,12 +114,11 @@ tgui_err tgui_send_text_event(tgui_connection c, tgui_activity a, tgui_view v, b
  *  - TGUI_ERR_NOMEM: Not enough memory.
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  *  - TGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
- *  - TGUI_ERR_VIEW_INVALID: Invalid view type.
  * 
  * @param c The connection to use.
- * @param a The Activity the View is in.
+ * @param a The overlay Activity.
  * @param send Set to true if you want to get the event, false if not.
- * @return tgui_err 
+ * @return The error code. 
  */
 tgui_err tgui_send_overlay_touch_event(tgui_connection c, tgui_activity a, bool send);
 

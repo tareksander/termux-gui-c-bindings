@@ -10,6 +10,23 @@ using namespace tgui;
 using namespace tgui::common;
 
 
+#define VIEW_METHOD_PRE(name) \
+return exceptionToError<tgui_err>([&]() {\
+proto0::Method m;\
+proto0::name ## Request r;\
+proto0::View pv;\
+pv.set_aid(a);\
+pv.set_id(v);\
+*r.mutable_v() = pv;
+
+#define VIEW_METHOD_POST(name) \
+proto0::name ## Response res;\
+c->c.sendReadMessage(m, res);\
+if (! res.success()) return TGUI_ERR_MESSAGE;\
+return TGUI_ERR_OK;\
+});
+
+
 
 struct tgui_connection_ {
 	Connection c;

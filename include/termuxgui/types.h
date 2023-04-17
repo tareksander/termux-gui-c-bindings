@@ -42,6 +42,18 @@ typedef int32_t tgui_view;
 
 
 /**
+ * @brief Represents a RemoteView layout.
+ */
+typedef int32_t tgui_remote_layout;
+
+
+/**
+ * @brief Represents a notification.
+ */
+typedef int32_t tgui_notification;
+
+
+/**
  * @brief An RGBA8888 color code.
  * 
  * RR is the least significant byte. In a hex literal, write `0xaabbggrr`.
