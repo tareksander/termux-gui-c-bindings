@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['orientation_279',['orientation',['../structtermuxgui__activity__configuration.html#a00fa5013a68850b14432a83e5c2be7ab',1,'termuxgui_activity_configuration']]],
-  ['overlayscale_280',['overlayScale',['../structtermuxgui__event.html#af9454cc02d6d3c89d641de592bb68d72',1,'termuxgui_event']]]
+  ['key_0',['key',['../structtgui__event.html#ad7447d30af34299257ad35389f0c347d',1,'tgui_event']]],
+  ['keyboard_5fhidden_1',['keyboard_hidden',['../structtgui__activity__configuration.html#a7bcb9acd794fd77aa8ed59fa6c6b29d9',1,'tgui_activity_configuration']]]
 ];

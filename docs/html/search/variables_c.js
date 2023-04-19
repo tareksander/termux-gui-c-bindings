@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['text_293',['text',['../structtermuxgui__event.html#a97591a986fcbebc673c532f94309277a',1,'termuxgui_event::text()'],['../structtermuxgui__event.html#ae1d5d7e23a49bab20c39ef3574d6a0c9',1,'termuxgui_event::text()']]],
-  ['time_294',['time',['../structtermuxgui__event.html#afc7d36a9606c2f16ae78a27432dfde4d',1,'termuxgui_event']]],
-  ['timezone_295',['timezone',['../structtermuxgui__event.html#af0394eda0db132b7fabe1726e4864542',1,'termuxgui_event']]],
-  ['touch_296',['touch',['../structtermuxgui__event.html#acad79c702c3cabc9721e8baa38f3a3af',1,'termuxgui_event']]],
-  ['type_297',['type',['../structtermuxgui__event.html#a6a3bd7a2e9a38a102f6341db5444476e',1,'termuxgui_event']]]
+  ['ongoing_0',['ongoing',['../structtgui__notification__create__info.html#a03066b25524396350d9bec28fe92d110',1,'tgui_notification_create_info']]],
+  ['orientation_1',['orientation',['../structtgui__activity__configuration.html#a1649c2f0bb8768d6e0da1c45b94bf4f6',1,'tgui_activity_configuration']]],
+  ['overlayscale_2',['overlayScale',['../structtgui__event.html#a5196f298c9f34e3b63344f58dc941b2f',1,'tgui_event']]]
 ];

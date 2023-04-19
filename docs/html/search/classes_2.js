@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pluginuidexception_205',['PluginUIDException',['../classtgui_1_1PluginUIDException.html',1,'tgui']]],
-  ['protocolunavailableexception_206',['ProtocolUnavailableException',['../classtgui_1_1ProtocolUnavailableException.html',1,'tgui']]]
+  ['connection_0',['Connection',['../classtgui_1_1common_1_1Connection.html',1,'tgui::common']]],
+  ['connectionclosedexception_1',['ConnectionClosedException',['../classtgui_1_1common_1_1ConnectionClosedException.html',1,'tgui::common']]],
+  ['connectiontimeoutexception_2',['ConnectionTimeoutException',['../classtgui_1_1common_1_1ConnectionTimeoutException.html',1,'tgui::common']]]
 ];

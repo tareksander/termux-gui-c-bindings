@@ -1,5 +1,12 @@
 #pragma once
 
+/**
+ * @file
+ * @brief This file contains all functions related to View creation.
+ * 
+ * 
+ */
+
 #include "types.h"
 
 

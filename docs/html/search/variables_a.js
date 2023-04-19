@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['refresh_284',['refresh',['../structtermuxgui__event.html#a3684815c7c4e897b44305b1331753a33',1,'termuxgui_event']]],
-  ['remoteclick_285',['remoteClick',['../structtermuxgui__event.html#afc3a58be12730b20cf3379082af1141b',1,'termuxgui_event']]],
-  ['rid_286',['rid',['../structtermuxgui__event.html#aaa8a6ec7e9f51ad8c8abd54f521782f9',1,'termuxgui_event']]]
+  ['mod_0',['mod',['../structtgui__event.html#a834f1988aada2b94b81243ad49666ba0',1,'tgui_event']]],
+  ['msg_1',['msg',['../structtgui__event.html#a4ca4737cdebf36531a3714a786e111c6',1,'tgui_event']]]
 ];

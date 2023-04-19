@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['finishing_268',['finishing',['../structtermuxgui__event.html#af93ea049c5c1d6af94b63566bda7cfa1',1,'termuxgui_event']]],
-  ['focus_269',['focus',['../structtermuxgui__event.html#aca242e206984e13a98529fdc4612c3b6',1,'termuxgui_event::focus()'],['../structtermuxgui__event.html#a1fc20f66dda95ea2834048d822382129',1,'termuxgui_event::focus()']]],
-  ['font_5fscale_270',['font_scale',['../structtermuxgui__activity__configuration.html#adec88cc3416ec64470a6d1a11e8f958b',1,'termuxgui_activity_configuration']]]
+  ['dark_5fmode_0',['dark_mode',['../structtgui__activity__configuration.html#a08627d361b4c39ceb77b6aee82a9bdac',1,'tgui_activity_configuration']]],
+  ['data_1',['data',['../structtgui__buffer.html#a10c827c263b609cb167a1e574f0f1cac',1,'tgui_buffer']]],
+  ['density_2',['density',['../structtgui__activity__configuration.html#ab358c7a2dad989c205f0157ee230b344',1,'tgui_activity_configuration']]]
 ];

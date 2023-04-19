@@ -1,5 +1,13 @@
 #pragma once
 
+
+/**
+ * @file
+ * @brief This file contains all functions related to event control.
+ * 
+ * 
+ */
+
 #include "types.h"
 
 

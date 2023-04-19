@@ -11,7 +11,8 @@
  * Functions that get only value types, a tgui_connection or const pointers can be called concurrently.
  * Functions that get mutable pointers to different memory locations can be called concurrently.
  * One exception is tgui_connection_destroy, make sure no other thread uses the connection before calling.
- * 
+ * <br><br>
+ * See the included headers for documentation of the related functions.
  * 
  */
 

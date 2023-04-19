@@ -1,5 +1,12 @@
 #pragma once
 
+/**
+ * @file
+ * @brief This file contains all functions related to the connection object, as well as global methods requiring no Activities.
+ * 
+ * 
+ */
+
 #include "types.h"
 
 

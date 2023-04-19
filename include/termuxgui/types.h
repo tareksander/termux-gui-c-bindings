@@ -1,5 +1,12 @@
 #pragma once
 
+/**
+ * @file
+ * @brief This file contains the types used for all the functions.
+ * 
+ * 
+ */
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>

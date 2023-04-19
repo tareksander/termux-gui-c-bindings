@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['dark_5fmode_266',['dark_mode',['../structtermuxgui__activity__configuration.html#a16778889f4eff95ef656b850b7698b23',1,'termuxgui_activity_configuration']]],
-  ['density_267',['density',['../structtermuxgui__activity__configuration.html#a96f6b6240b6f3740b96edc05c7db2b8e',1,'termuxgui_activity_configuration']]]
+  ['channel_0',['channel',['../structtgui__notification__create__info.html#a60063f8fb31170f4ed2974d8bafd4ad1',1,'tgui_notification_create_info']]],
+  ['click_1',['click',['../structtgui__event.html#a4e8a7ac8f1e68ec19afdfd4e5f07b488',1,'tgui_event']]],
+  ['code_2',['code',['../structtgui__event.html#a3bda0e36131d7b27244ea2f24558c208',1,'tgui_event::code()'],['../structtgui__event.html#ade4609d85f5d4146becd051d78c027ce',1,'tgui_event::code()']]],
+  ['codepoint_3',['codePoint',['../structtgui__event.html#a397f9afcb0fd488c55f1420e567ce5a6',1,'tgui_event']]],
+  ['configuration_4',['configuration',['../structtgui__event.html#a16e4054faacc54d3c27093a5c5c6374f',1,'tgui_event']]],
+  ['country_5',['country',['../structtgui__activity__configuration.html#a33edf43b12deda4dcf2f049f871e00b0',1,'tgui_activity_configuration']]]
 ];
