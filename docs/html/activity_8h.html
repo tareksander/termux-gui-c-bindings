@@ -215,7 +215,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">c</td><td>The connection to use. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">a</td><td>A pointer to the Activity to be created. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">type</td><td>The type the Activity should be. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">t</td><td>The Task in which to put the Activity. Use <code>NULL</code> for a new Task. After calling it will contain the Task the Activity was created in. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">t</td><td>The Task in which to put the Activity. Use <code>NULL</code> if you never need the Task. After calling it will contain the Task the Activity was created in. Use -1 as a value to create a new Task and get the new Task as a value. Overlay Activities never have a Task. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">intercept</td><td>Whether or not to intercept back button events. See <code>tgui_activity_intercept_back_button</code> for more information. </td></tr>
   </table>
   </dd>
