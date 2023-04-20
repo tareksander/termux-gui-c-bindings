@@ -28,7 +28,7 @@ extern "C" {
  * @param c The connection to use.
  * @param[out] a A pointer to the Activity to be created.
  * @param type The type the Activity should be.
- * @param[inout] t The Task in which to put the Activity. Use `NULL` for a new Task. After calling it will contain the Task the Activity was created in.
+ * @param[inout] t The Task in which to put the Activity. Use `NULL` if you never need the Task. After calling it will contain the Task the Activity was created in. Use -1 as a value to create a new Task and get the new Task as a value. Overlay Activities never have a Task.
  * @param intercept Whether or not to intercept back button events. See `tgui_activity_intercept_back_button` for more information.
  * @return The error code.
  */

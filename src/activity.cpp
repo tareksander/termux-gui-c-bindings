@@ -19,6 +19,10 @@ extern "C" {
 			proto0::NewActivityResponse res;
 			c->c.sendReadMessage(m, res);
 			if (res.aid() == -1) return TGUI_ERR_MESSAGE;
+			if (t != NULL && *t == -1) {
+				*t = res.tid();
+			}
+			*a = res.aid();
 			return TGUI_ERR_OK;
 		});
 	}
