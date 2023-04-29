@@ -417,6 +417,24 @@ tgui_err tgui_create_grid_layout(tgui_connection c, tgui_activity a, tgui_view* 
  */
 tgui_err tgui_create_web_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
 
+/**
+ * @brief Creates a SurfaceView for hardware-accelerated rendering.
+ * 
+ * @details
+ * ### Errors
+ *  - TGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TGUI_ERR_NOMEM: Not enough memory.
+ *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
+ * 
+ * @param c The connection to use.
+ * @param a The Activity the new View should be in.
+ * @param[out] v The new View.
+ * @param parent The optional parent layout of the View.
+ * @param keyboard Whether the ImageView should get events from the keyboard.
+ * @return tgui_err The error code. 
+ */
+tgui_err tgui_create_surface_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool keyboard);
 
 
 

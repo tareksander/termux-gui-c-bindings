@@ -27,6 +27,26 @@ return TGUI_ERR_OK;\
 });
 
 
+#define METHOD_PRE(name) \
+return exceptionToError<tgui_err>([&]() {\
+proto0::Method m;\
+proto0::name ## Request r;
+
+#define METHOD_POST(name) \
+proto0::name ## Response res;\
+c->c.sendReadMessage(m, res);\
+if (! res.success()) return TGUI_ERR_MESSAGE;\
+return TGUI_ERR_OK;\
+});
+
+#define METHOD_POST_NONSTANDARD(name) \
+proto0::name ## Response res;\
+c->c.sendReadMessage(m, res);
+
+#define METHOD_POST_NONSTANDARD2() \
+return TGUI_ERR_OK;\
+});
+
 
 struct tgui_connection_ {
 	Connection c;

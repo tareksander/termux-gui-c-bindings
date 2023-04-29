@@ -156,6 +156,41 @@ namespace tgui {
 	};
 	
 	
+	inline const std::unordered_map<tgui_inset, tgui::proto0::ConfigureInsetsRequest::Bars> BarsPublicToPB = {
+		{TGUI_INSET_NONE, tgui::proto0::ConfigureInsetsRequest::NO_BAR},
+		{TGUI_INSET_NAVIGATION_BAR, tgui::proto0::ConfigureInsetsRequest::NAVIGATION_BAR},
+		{TGUI_INSET_STATUS_BAR, tgui::proto0::ConfigureInsetsRequest::STATUS_BAR},
+		{TGUI_INSET_BOTH, tgui::proto0::ConfigureInsetsRequest::BOTH_BARS},
+	};
+	inline const std::unordered_map<tgui::proto0::ConfigureInsetsRequest::Bars, tgui_inset> BarsPBToPublic = invert(BarsPublicToPB);
+	
+	inline const std::unordered_map<tgui_inset_behaviour, tgui::proto0::ConfigureInsetsRequest::BarBehaviour> BarBehaviourPublicToPB = {
+		{TGUI_INSET_BEHAVIOUR_DEFAULT, tgui::proto0::ConfigureInsetsRequest::BAR_BEHAVIOUR_DEFAULT},
+		{TGUI_INSET_BEHAVIOUR_TRANSIENT, tgui::proto0::ConfigureInsetsRequest::BAR_BEHAVIOUR_TRANSIENT},
+	};
+	
+	
+	
+	inline const std::unordered_map<tgui_hardware_buffer_format, tgui::proto0::CreateHardwareBufferRequest::Format> HardwareBufferFormatPublicToPB = {
+		{TGUI_HARDWARE_BUFFER_FORMAT_RGBA8888, tgui::proto0::CreateHardwareBufferRequest::RGBA8888},
+		{TGUI_HARDWARE_BUFFER_FORMAT_RGBX8888, tgui::proto0::CreateHardwareBufferRequest::RGBX8888},
+		{TGUI_HARDWARE_BUFFER_FORMAT_RGB888, tgui::proto0::CreateHardwareBufferRequest::RGB888},
+		{TGUI_HARDWARE_BUFFER_FORMAT_RGB565, tgui::proto0::CreateHardwareBufferRequest::RGB565},
+	};
+	
+	inline const std::unordered_map<tgui_hardware_buffer_cpu_frequency, tgui::proto0::CreateHardwareBufferRequest::CPUUsage> HardwareBufferCPUPublicToPB = {
+		{TGUI_HARDWARE_BUFFER_CPU_NEVER, tgui::proto0::CreateHardwareBufferRequest::never},
+		{TGUI_HARDWARE_BUFFER_CPU_RARELY, tgui::proto0::CreateHardwareBufferRequest::rarely},
+		{TGUI_HARDWARE_BUFFER_CPU_OFTEN, tgui::proto0::CreateHardwareBufferRequest::often},
+	};
+	
+	
+	inline const std::unordered_map<tgui_surface_view_dimension_mismatch, tgui::proto0::SurfaceViewConfigRequest::OnDimensionMismatch> DimensionMismatchPublicToPB = {
+		{TGUI_MISMATCH_STICK_TOPLEFT, tgui::proto0::SurfaceViewConfigRequest::STICK_TOPLEFT},
+		{TGUI_MISMATCH_CENTER_AXIS, tgui::proto0::SurfaceViewConfigRequest::CENTER_AXIS}
+	};
+	
+	
 	inline proto0::Size SizePublicToPB(const tgui_size& s) {
 		proto0::Size ps;
 		ps.set_unit(UnitPublicToPB.at(s.unit));

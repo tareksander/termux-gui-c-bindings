@@ -15,11 +15,11 @@ This is currently only a static library, so you only need to install it to compi
 [x] Global functions  
 [x] ImageView & Buffer  
 [x] Events  
-[ ] Event control  
-[ ] WebView  
-[ ] View functions  
-[ ] RemoteViews, Widgets, Notifications  
-
+[x] Event control  
+[x] WebView  
+[x] View functions  
+[x] RemoteViews, Widgets, Notifications  
+[x] GLES2 accelerated rendering with SurfaceView
 
 
 ## Installation

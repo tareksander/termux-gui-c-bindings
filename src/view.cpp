@@ -270,18 +270,14 @@ extern "C" {
 	
 	tgui_err tgui_add_buffer(tgui_connection c, tgui_buffer* buffer) {
 		return exceptionToError<tgui_err>([&]() {
-			proto0::Method m;
 			proto0::AddBufferRequest r;
 			r.set_f(tgui::BufferFormatPublicToPB.at(buffer->format));
 			r.set_width(buffer->width);
 			r.set_height(buffer->height);
-			*m.mutable_addbuffer() = r;
 			
 			int size = buffer->width * buffer->height * tgui::BufferFormatBytesPerPixel.at(buffer->format);
 			
-			c->c.sendMethodMessage(m);
-			
-			tgui::common::Connection::Buffer b = c->c.addBuffer();
+			tgui::common::Connection::Buffer b = c->c.addBuffer(r);
 			
 			if (b.fd == -1) {
 				return TGUI_ERR_MESSAGE;

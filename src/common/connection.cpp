@@ -338,12 +338,15 @@ namespace tgui::common {
 	
 	void Connection::sendMethodMessage(tgui::proto0::Method& m) {
 		unique_lock l{mainMutex};
+		sendMethodMessageNoLock(m);
+	}
+	
+	void Connection::sendMethodMessageNoLock(tgui::proto0::Method& m) {
 		if (! google::protobuf::util::SerializeDelimitedToZeroCopyStream(m, &out)) {
 			throw MessageWriteException();
 		}
 		out.flush();
 	}
-	
 
 	
 	void Connection::sendReadMessage(google::protobuf::MessageLite& send, google::protobuf::MessageLite& read) {
@@ -389,11 +392,49 @@ namespace tgui::common {
 	}
 	
 	
-	Connection::Buffer Connection::addBuffer() {
+	int32_t Connection::receiveHardwareBuffer(const proto0::CreateHardwareBufferRequest& r, int (*recv)(int fd, AHardwareBuffer**), AHardwareBuffer** hb) {
+		unique_lock l{mainMutex};
+		{
+			proto0::Method m;
+			*m.mutable_createhardwarebuffer() = r;
+			sendMethodMessageNoLock(m);
+		}
+		int32_t id;
+		{
+			char* buffer = (char*) &id;
+			int bytes = 4;
+			while (bytes > 0) {
+				int size = bytes;
+				int ret = read(mainfd, buffer, size);
+				if (ret <= 0) {
+					in.raiseError();
+					return -1;
+				}
+				size = ret;
+				buffer += size;
+				bytes -= size;
+			}
+			id = ntohl(id);
+		}
+		if (id >= 0) {
+			if (recv(mainfd, hb) != 0) {
+				return -1;
+			}
+		}
+		return id;
+	}
+	
+	
+	Connection::Buffer Connection::addBuffer(const proto0::AddBufferRequest& r) {
 		unique_lock l{mainMutex};
 		Buffer b;
 		b.fd = -1; // set to an invalid value to signify if an fd was received or not
 		b.id = -1;
+		{
+			proto0::Method m;
+			*m.mutable_addbuffer() = r;
+			sendMethodMessageNoLock(m);
+		}
 		int32_t id;
 		{
 			char* buffer = (char*) &id;

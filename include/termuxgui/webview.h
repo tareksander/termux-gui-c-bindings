@@ -26,11 +26,12 @@ extern "C" {
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @param allow Whether to enable or disable Javascript execution.
  * @return The error code. 
  */
-tgui_err tgui_webview_allow_javascript(tgui_connection c, tgui_view v, bool allow);
+tgui_err tgui_webview_allow_javascript(tgui_connection c, tgui_activity a, tgui_view v, bool allow);
 
 
 /**
@@ -43,11 +44,12 @@ tgui_err tgui_webview_allow_javascript(tgui_connection c, tgui_view v, bool allo
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @param allow Whether to enable or disable content:// URIs.
  * @return The error code. 
  */
-tgui_err tgui_webview_allow_content_uri(tgui_connection c, tgui_view v, bool allow);
+tgui_err tgui_webview_allow_content_uri(tgui_connection c, tgui_activity a, tgui_view v, bool allow);
 
 
 /**
@@ -60,12 +62,13 @@ tgui_err tgui_webview_allow_content_uri(tgui_connection c, tgui_view v, bool all
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @param data The data as a base64 encoded string.
  * @param mime The MIME type of the data. Usually "text/html".
  * @return The error code. 
  */
-tgui_err tgui_webview_set_data(tgui_connection c, tgui_view v, const char* data, const char* mime);
+tgui_err tgui_webview_set_data(tgui_connection c, tgui_activity a, tgui_view v, const char* data, const char* mime);
 
 
 /**
@@ -78,11 +81,12 @@ tgui_err tgui_webview_set_data(tgui_connection c, tgui_view v, const char* data,
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @param uri The URI to load.
  * @return The error code. 
  */
-tgui_err tgui_webview_load_uri(tgui_connection c, tgui_view v, const char* uri);
+tgui_err tgui_webview_load_uri(tgui_connection c, tgui_activity a, tgui_view v, const char* uri);
 
 
 /**
@@ -95,11 +99,12 @@ tgui_err tgui_webview_load_uri(tgui_connection c, tgui_view v, const char* uri);
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @param allow Whether to enable or disable navigation by the user.
  * @return The error code. 
  */
-tgui_err tgui_webview_allow_navigation(tgui_connection c, tgui_view v, bool allow);
+tgui_err tgui_webview_allow_navigation(tgui_connection c, tgui_activity a, tgui_view v, bool allow);
 
 
 /**
@@ -112,10 +117,11 @@ tgui_err tgui_webview_allow_navigation(tgui_connection c, tgui_view v, bool allo
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @return The error code. 
  */
-tgui_err tgui_webview_go_back(tgui_connection c, tgui_view v);
+tgui_err tgui_webview_go_back(tgui_connection c, tgui_activity a, tgui_view v);
 
 
 /**
@@ -128,10 +134,11 @@ tgui_err tgui_webview_go_back(tgui_connection c, tgui_view v);
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @return The error code. 
  */
-tgui_err tgui_webview_go_forward(tgui_connection c, tgui_view v);
+tgui_err tgui_webview_go_forward(tgui_connection c, tgui_activity a, tgui_view v);
 
 
 /**
@@ -144,11 +151,12 @@ tgui_err tgui_webview_go_forward(tgui_connection c, tgui_view v);
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 
  * @param c The connection to use.
+ * @param a The Activity the View is in.
  * @param v The WebView id.
  * @param source The Javascript source you want to execute.
  * @return The error code. 
  */
-tgui_err tgui_webview_eval_js(tgui_connection c, tgui_view v, const char* source);
+tgui_err tgui_webview_eval_js(tgui_connection c, tgui_activity a, tgui_view v, const char* source);
 
 
 

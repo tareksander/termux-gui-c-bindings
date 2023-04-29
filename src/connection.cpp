@@ -360,14 +360,31 @@ extern "C" {
 			event.key.code = e.code();
 			event.key.codePoint = e.codepoint();
 			event.key.mod = static_cast<tgui_key_modifier>(e.modifiers());
-		} else if (ev.event_case() == Event::kException) {
-			const ExceptionDebugEvent& e = ev.exception();
-			event.type = TGUI_EVENT_DEBUG_EXCEPTION;
-			event.stacktrace = strdup(e.stacktrace().c_str());
-			if (event.stacktrace == NULL) {
-				throw std::system_error(std::error_code(errno, std::system_category()));
-			}
-		} else {
+		} else if (ev.event_case() == Event::kFrameComplete) {
+			const SurfaceViewFrameCompleteEvent& e = ev.framecomplete();
+			event.type = TGUI_EVENT_FRAME_COMPLETE;
+			event.activity = e.v().aid();
+			event.frame.id = e.v().id();
+			event.frame.timestamp = e.timestamp();
+		} else if (ev.event_case() == Event::kVolume) {
+			const VolumeKeyEvent& e = ev.volume();
+			event.type = TGUI_EVENT_VOLUME;
+			event.activity = e.aid();
+			event.volume.released = e.released();
+			event.volume.volume_up = e.key() == VolumeKeyEvent::VOLUME_UP;
+		} else if (ev.event_case() == Event::kInset) {
+			const InsetEvent& e = ev.inset();
+			event.type = TGUI_EVENT_INSET;
+			event.activity = e.aid();
+			event.inset.current_inset = BarsPBToPublic.at(e.visible());
+		} else if (ev.event_case() == Event::kSurfaceChanged) {
+			const SurfaceViewSurfaceChangedEvent& e = ev.surfacechanged();
+			event.type = TGUI_EVENT_SURFACE_CHANGED;
+			event.activity = e.v().aid();
+			event.surfaceChanged.id = e.v().id();
+			event.surfaceChanged.width = e.width();
+			event.surfaceChanged.height = e.height();
+		}  else {
 			return TGUI_ERR_MESSAGE;
 		}
 		return TGUI_ERR_OK;
@@ -437,12 +454,6 @@ extern "C" {
 				if (event.webConsole.msg != NULL) {
 					free(event.webConsole.msg);
 					event.webConsole.msg = NULL;
-				}
-				break;
-			case TGUI_EVENT_DEBUG_EXCEPTION:
-				if (event.stacktrace != NULL) {
-					free(event.stacktrace);
-					event.stacktrace = NULL;
 				}
 				break;
 			default:

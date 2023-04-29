@@ -26,4 +26,4 @@
 #include "remote.h"
 #include "notification.h"
 #include "events.h"
-
+#include "hardware_buffer.h"

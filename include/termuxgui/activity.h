@@ -280,6 +280,45 @@ tgui_err tgui_activity_intercept_back_button(tgui_connection c, tgui_activity a,
 
 
 /**
+ * @brief Sets whether the user pressing the volume buttons should change the volume or send an event instead.
+ * 
+ * @details
+ * ### Errors
+ *  - TGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TGUI_ERR_NOMEM: Not enough memory.
+ *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
+ * 
+ * @param c The connection to use.
+ * @param a The Activity.
+ * @param intercept_up Whether to intercept the volume up press.
+ * @param intercept_down Whether to intercept the volume down press.
+ * @return The error code.
+ */
+tgui_err tgui_activity_intercept_volume_buttons(tgui_connection c, tgui_activity a, bool intercept_up, bool intercept_down);
+
+
+/**
+ * @brief 
+ * 
+ * @details
+ * ### Errors
+ *  - TGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TGUI_ERR_NOMEM: Not enough memory.
+ *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
+ *  - TGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.
+ * 
+ * @param c The connection to use.
+ * @param a The Activity.
+ * @param visible The insets that should be visible.
+ * @param behaviour How the insets will behave on user input.
+ * @return The error code.
+ */
+tgui_err tgui_activity_configure_insets(tgui_connection c, tgui_activity a, tgui_inset visible, tgui_inset_behaviour behaviour);
+
+
+
+/**
  * @brief Sets the secure flag for the Activity. Disables screenshots and shows a blank Activity in the task switcher if enabled.
  * 
  * @details

@@ -13,6 +13,9 @@
 #include <mutex>
 #include <memory>
 
+
+typedef struct AHardwareBuffer AHardwareBuffer;
+
 namespace tgui::common {
 	
 	class Connection {
@@ -34,8 +37,13 @@ namespace tgui::common {
 		~Connection();
 		
 		
+		int32_t receiveHardwareBuffer(const proto0::CreateHardwareBufferRequest& r, int (*recv)(int fd, AHardwareBuffer**), AHardwareBuffer** hb);
+		
+		
 		
 		void sendMethodMessage(proto0::Method& m);
+		
+		void sendMethodMessageNoLock(proto0::Method& m);
 		
 		
 		void sendReadMessage(google::protobuf::MessageLite& send, google::protobuf::MessageLite& read);
@@ -47,7 +55,7 @@ namespace tgui::common {
 		
 		bool checkEvent();
 		
-		Buffer addBuffer();
+		Buffer addBuffer(const proto0::AddBufferRequest& r);
 		
 		
 	private:

@@ -91,7 +91,9 @@ typedef enum {
 	/// An exception was thrown in the C++ part that could not be mapped to other errors.
 	TGUI_ERR_EXCEPTION = 6,
 	/// The View used was invalid or of a wrong type.
-	TGUI_ERR_VIEW_INVALID = 3,
+	TGUI_ERR_VIEW_INVALID = 7,
+	/// The Android API level is too low for the function.
+	TGUI_ERR_API_LEVEL = 8,
 	
 	/// Maximum value for future binary compatibility.
 	TGUI_ERR_MAX = 1000,
@@ -303,9 +305,15 @@ typedef enum {
 	TGUI_EVENT_OVERLAY_SCALE = 33,
 	/// A key was pressed when an ImageView or GLSurfaceView with soft keyboard support was focused.
 	TGUI_EVENT_KEY = 34,
+	/// A SurfaceView has completed rendering a frame.
+	TGUI_EVENT_FRAME_COMPLETE = 35,
+	/// A volume button press was intercepted.
+	TGUI_EVENT_VOLUME = 36,
+	/// The inset status of an Activity changed (status or navigation bar).
+	TGUI_EVENT_INSET = 37,
+	/// The Surface of a SurfaceView changed size.
+	TGUI_EVENT_SURFACE_CHANGED = 38,
 	
-	/// Send when an exception happens in the plugin.
-	TGUI_EVENT_DEBUG_EXCEPTION = 1000,
 	
 	/// Maximum value for future binary compatibility.
 	TGUI_EVENT_TYPE_MAX = 1 << 31,
@@ -562,7 +570,77 @@ typedef struct {
 } tgui_touch_pointer;
 
 
+/// @brief The types of insets of an Activity that can be shown or hidden.
+typedef enum {
+	TGUI_INSET_NONE = 0,
+	TGUI_INSET_NAVIGATION_BAR = 1,
+	TGUI_INSET_STATUS_BAR = 2,
+	TGUI_INSET_BOTH = 3,
+} tgui_inset;
 
+
+/// @brief How the insets of an Activity will behave to user interaction.
+typedef enum {
+	/// @brief Make the insets visible again on a swipe from the edge.
+	TGUI_INSET_BEHAVIOUR_DEFAULT = 0,
+	/// @brief Make the insets temporarily and transparently visible on a swipe from the edge.
+	TGUI_INSET_BEHAVIOUR_TRANSIENT = 1,
+} tgui_inset_behaviour;
+
+
+
+/// Available hardware buffer formats.
+typedef enum {
+	/*
+    Corresponding to AHARDWAREBUFFER_FORMAT_R8G8B8A8_UNORM.
+     */
+	TGUI_HARDWARE_BUFFER_FORMAT_RGBA8888 = 0,
+	/*
+    Corresponding to AHARDWAREBUFFER_FORMAT_R8G8B8X8_UNORM.
+     */
+	TGUI_HARDWARE_BUFFER_FORMAT_RGBX8888 = 1,
+	/*
+    Corresponding to AHARDWAREBUFFER_FORMAT_R8G8B8_UNORM.
+     */
+	TGUI_HARDWARE_BUFFER_FORMAT_RGB888 = 2,
+	/*
+    Corresponding to AHARDWAREBUFFER_FORMAT_R5G6B5_UNORM.
+     */
+	TGUI_HARDWARE_BUFFER_FORMAT_RGB565 = 3,
+} tgui_hardware_buffer_format;
+
+
+/// How often the CPU will access the buffer.
+typedef enum {
+	TGUI_HARDWARE_BUFFER_CPU_NEVER = 0,
+	TGUI_HARDWARE_BUFFER_CPU_RARELY = 1,
+	TGUI_HARDWARE_BUFFER_CPU_OFTEN = 2,
+} tgui_hardware_buffer_cpu_frequency;
+
+
+
+
+// forward declaration, so the header doesn't need to be included
+typedef struct AHardwareBuffer AHardwareBuffer;
+
+/// Wrapper for AHardwareBuffer.
+typedef struct {
+	/// The buffer id in the plugin.
+	int32_t id;
+	/// The actual AHardwareBuffer.
+	AHardwareBuffer* buffer;
+} tgui_hardware_buffer;
+
+
+/**
+ * How a SurfaceView responds to incorrectly sized buffers.
+ */
+typedef enum {
+	/// The buffer is attached at the top/left edge of the SurfaceView.
+	TGUI_MISMATCH_STICK_TOPLEFT = 0,
+	/// The buffer is centered on the axis.
+	TGUI_MISMATCH_CENTER_AXIS = 1,
+} tgui_surface_view_dimension_mismatch;
 
 
 /**
@@ -735,11 +813,34 @@ typedef struct {
 			/// The unicode code point.
 			uint32_t codePoint;
 		} key;
-		/**
-		 * @brief Valid for `TGUI_EVENT_DEBUG_EXCEPTION`.
-		 */
-		char* stacktrace;
-		
+		/// Valid for `TGUI_EVENT_FRAME_COMPLETE`.
+		struct {
+			/// @brief The id of the view.
+			int id;
+			/// The timestamp of the frame.
+			uint64_t timestamp;
+		} frame;
+		/// Valid for `TGUI_EVENT_VOLUME`.
+		struct {
+			/// Whether the event is for the up or down volume button.
+			bool volume_up;
+			/// Whether the button is pressed or released. Multiple repeating events come for a long press.
+			bool released;
+		} volume;
+		/// Valid for `TGUI_EVENT_INSET`.
+		struct {
+			/// The system insets (bars) that are now showing.
+			tgui_inset current_inset;
+		} inset;
+		/// Valid for `TGUI_EVENT_SURFACE_CHANGED`.
+		struct {
+			/// @brief The id of the view.
+			int id;
+			/// The new width of the Surface.
+			uint32_t width;
+			/// The new height of the Surface.
+			uint32_t height;
+		} surfaceChanged;
 		/// For future ABI compatibility, to force double alignment and bigger size
 		double _dummy[20];
 	};

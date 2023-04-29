@@ -231,6 +231,27 @@ extern "C" {
 		});
 	}
 	
+	
+	tgui_err tgui_activity_intercept_volume_buttons(tgui_connection c, tgui_activity a, bool intercept_up, bool intercept_down) {
+		METHOD_PRE(InterceptVolumeButton)
+		r.set_aid(a);
+		r.set_interceptup(intercept_up);
+		r.set_interceptdown(intercept_down);
+		*m.mutable_interceptvolume() = r;
+		METHOD_POST(InterceptVolumeButton)
+	}
+	
+	
+	tgui_err tgui_activity_configure_insets(tgui_connection c, tgui_activity a, tgui_inset visible, tgui_inset_behaviour behaviour) {
+		METHOD_PRE(ConfigureInsets)
+		r.set_aid(a);
+		r.set_shown(BarsPublicToPB.at(visible));
+		r.set_behaviour(BarBehaviourPublicToPB.at(behaviour));
+		*m.mutable_configinsets() = r;
+		METHOD_POST(ConfigureInsets)
+	}
+	
+	
 	tgui_err tgui_activity_set_secure(tgui_connection c, tgui_activity a, bool secure) {
 		return exceptionToError<tgui_err>([&]() {
 			proto0::Method m;

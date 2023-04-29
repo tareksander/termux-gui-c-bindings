@@ -201,5 +201,14 @@ extern "C" {
 	}
 	
 	
+	tgui_err tgui_create_surface_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool keyboard) {
+		CREATE_VIEW_PRE(SurfaceView)
+		r.set_keyboard(keyboard);
+		*m.mutable_createsurfaceview() = r;
+		CREATE_VIEW_POST(SurfaceView)
+	}
+	
+	
+	
 }
 

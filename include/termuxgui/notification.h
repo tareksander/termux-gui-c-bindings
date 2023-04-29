@@ -98,6 +98,12 @@ typedef struct {
      * 
      */
     const char** actions;
+	
+	/**
+     * @brief The length of the actions array.
+     * 
+     */
+    const size_t actions_length;
 } tgui_notification_create_info;
 
 
@@ -155,9 +161,10 @@ tgui_err tgui_notification_create_big_text(tgui_connection c, tgui_notification*
  * @param content The notification content.
  * @param[in] img The image data.
  * @param img_length The length of the image data.
+ * @param thumbnail Whether to show a thumbnail when the notification is folded up.
  * @return The error code. 
  */
-tgui_err tgui_notification_big_image(tgui_connection c, tgui_notification* n, const tgui_notification_create_info* info, const char* title, const char* content, const void* img, size_t img_length);
+tgui_err tgui_notification_big_image(tgui_connection c, tgui_notification* n, const tgui_notification_create_info* info, const char* title, const char* content, const void* img, size_t img_length, bool thumbnail);
 
 
 /**
