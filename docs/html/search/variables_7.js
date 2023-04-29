@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['msg_278',['msg',['../structtermuxgui__event.html#a3e2f92aa1ae56bfcd1564198c577d122',1,'termuxgui_event']]]
+  ['height_0',['height',['../structtgui__buffer.html#ae7d20b38bb45c82ba00276723588fd1d',1,'tgui_buffer::height()'],['../structtgui__event.html#abedc2504f8d870dbda9b1fd9a2a5fc9c',1,'tgui_event::height()']]]
 ];

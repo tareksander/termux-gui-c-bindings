@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keyboard_5fhidden_274',['keyboard_hidden',['../structtermuxgui__activity__configuration.html#a80f71295a51bac2d78567fe036817766',1,'termuxgui_activity_configuration']]]
+  ['events_0',['events',['../structtgui__event.html#ab485f2430c02d27ad247066506ee9bab',1,'tgui_event']]]
 ];

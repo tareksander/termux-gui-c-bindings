@@ -1,14 +1,11 @@
 var annotated_dup =
 [
-    [ "tgui", "namespacetgui.html", [
-      [ "Connection", "classtgui_1_1Connection.html", "classtgui_1_1Connection" ],
-      [ "ProtocolUnavailableException", "classtgui_1_1ProtocolUnavailableException.html", null ],
-      [ "ConnectionTimeoutException", "classtgui_1_1ConnectionTimeoutException.html", null ],
-      [ "PluginUIDException", "classtgui_1_1PluginUIDException.html", null ],
-      [ "MessageReadException", "classtgui_1_1MessageReadException.html", null ],
-      [ "MessageWriteException", "classtgui_1_1MessageWriteException.html", null ]
-    ] ],
-    [ "termuxgui_activity_configuration", "structtermuxgui__activity__configuration.html", "structtermuxgui__activity__configuration" ],
-    [ "termuxgui_event", "structtermuxgui__event.html", "structtermuxgui__event" ],
-    [ "termuxgui_touch_pointer", "structtermuxgui__touch__pointer.html", "structtermuxgui__touch__pointer" ]
+    [ "tgui_activity_configuration", "structtgui__activity__configuration.html", "structtgui__activity__configuration" ],
+    [ "tgui_buffer", "structtgui__buffer.html", "structtgui__buffer" ],
+    [ "tgui_event", "structtgui__event.html", "structtgui__event" ],
+    [ "tgui_hardware_buffer", "structtgui__hardware__buffer.html", "structtgui__hardware__buffer" ],
+    [ "tgui_notification_create_info", "structtgui__notification__create__info.html", "structtgui__notification__create__info" ],
+    [ "tgui_size", "structtgui__size.html", "structtgui__size" ],
+    [ "tgui_touch_pointer", "structtgui__touch__pointer.html", "structtgui__touch__pointer" ],
+    [ "tgui_view_size", "structtgui__view__size.html", "structtgui__view__size" ]
 ];

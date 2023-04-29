@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['webconsole_193',['webConsole',['../structtermuxgui__event.html#a6bd375c7b1ae45d5ecba5b0371aeef92',1,'termuxgui_event']]],
-  ['webdestroyed_194',['webDestroyed',['../structtermuxgui__event.html#a0200997510f31fa098aef00571a89a4a',1,'termuxgui_event']]],
-  ['weberror_195',['webError',['../structtermuxgui__event.html#a6f90856bdc20f61b9ccb55258c9fe6d8',1,'termuxgui_event']]],
-  ['webhttperror_196',['webHTTPError',['../structtermuxgui__event.html#ae9f5c39d2eecf2184f65fa4c5fb0b271',1,'termuxgui_event']]],
-  ['webnavigation_197',['webNavigation',['../structtermuxgui__event.html#abd33db4ed5183d671350bdb99b9f72fe',1,'termuxgui_event']]],
-  ['webprogress_198',['webProgress',['../structtermuxgui__event.html#ab1ef709d6394a638c210fd2255f3aecb',1,'termuxgui_event']]]
+  ['pip_0',['pip',['../structtgui__event.html#aaba68b899e5abfda648d2ff958fed1bf',1,'tgui_event::pip()'],['../structtgui__event.html#a34bac681f90026994caa79b0eb3f5f99',1,'tgui_event::pip()']]],
+  ['pointers_1',['pointers',['../structtgui__event.html#a427529be37be5516648508b579189ded',1,'tgui_event']]],
+  ['progress_2',['progress',['../structtgui__event.html#a0767b70079715f7c26671c4345434340',1,'tgui_event']]]
 ];

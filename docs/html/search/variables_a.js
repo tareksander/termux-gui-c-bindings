@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['refresh_284',['refresh',['../structtermuxgui__event.html#a3684815c7c4e897b44305b1331753a33',1,'termuxgui_event']]],
-  ['remoteclick_285',['remoteClick',['../structtermuxgui__event.html#afc3a58be12730b20cf3379082af1141b',1,'termuxgui_event']]],
-  ['rid_286',['rid',['../structtermuxgui__event.html#aaa8a6ec7e9f51ad8c8abd54f521782f9',1,'termuxgui_event']]]
+  ['language_0',['language',['../structtgui__activity__configuration.html#abd7aa37c2f025360590c6519f1d79235',1,'tgui_activity_configuration']]],
+  ['locale_1',['locale',['../structtgui__event.html#a427cb192d6f8336ff10d89126cf2a55d',1,'tgui_event']]],
+  ['longclick_2',['longClick',['../structtgui__event.html#ab9a96ec9f776872aaa6cd9b547357864',1,'tgui_event']]]
 ];
