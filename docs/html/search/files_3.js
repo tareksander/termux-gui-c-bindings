@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notification_2eh_0',['notification.h',['../notification_8h.html',1,'']]]
+  ['hardware_5fbuffer_2eh_0',['hardware_buffer.h',['../hardware__buffer_8h.html',1,'']]]
 ];

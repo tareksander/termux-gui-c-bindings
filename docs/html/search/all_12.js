@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['value_0',['value',['../structtgui__size.html#a200f8102d4a53ae9327b17a3312543a2',1,'tgui_size::value()'],['../structtgui__view__size.html#a98dce489e6a312f73d964789273ea6cd',1,'tgui_view_size::value()']]],
-  ['views_2eh_1',['views.h',['../views_8h.html',1,'']]]
+  ['unit_0',['unit',['../structtgui__size.html#a46da24552228c6d9db40679d84dee041',1,'tgui_size']]],
+  ['update_1',['update',['../structtgui__notification__create__info.html#aa0ebdf5b94f6b833a751eed3ff0c52ff',1,'tgui_notification_create_info']]],
+  ['url_2',['url',['../structtgui__event.html#ad5fa21967e375e03dffe6b55a959c723',1,'tgui_event']]]
 ];

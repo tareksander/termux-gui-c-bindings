@@ -9,5 +9,6 @@ var structtgui__notification__create__info =
     [ "icon", "structtgui__notification__create__info.html#aa370e7cfd07a8b6bc0e634817ccb4b3f", null ],
     [ "icon_length", "structtgui__notification__create__info.html#aa9c698309e7020fdf2c272cde6faabc5", null ],
     [ "importance", "structtgui__notification__create__info.html#a54e79818fba8ad8df89de7e677f4fc78", null ],
-    [ "actions", "structtgui__notification__create__info.html#ae01600d83e853da3837a77f5c181dcbc", null ]
+    [ "actions", "structtgui__notification__create__info.html#ae01600d83e853da3837a77f5c181dcbc", null ],
+    [ "actions_length", "structtgui__notification__create__info.html#a56030759580f3169516811a4822c16a1", null ]
 ];

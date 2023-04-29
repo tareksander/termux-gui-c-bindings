@@ -145,6 +145,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a4f5360a919eca4f2cf08bf7662d60eb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activity_8h.html#a4f5360a919eca4f2cf08bf7662d60eb0">tgui_activity_intercept_back_button</a> (<a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a> c, <a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a> a, bool intercept)</td></tr>
 <tr class="memdesc:a4f5360a919eca4f2cf08bf7662d60eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the user pressing the back button should finish the Activity (default action) or intercept that and send the <code>TGUI_EVENT_BACK</code> event instead.  <a href="activity_8h.html#a4f5360a919eca4f2cf08bf7662d60eb0">More...</a><br /></td></tr>
 <tr class="separator:a4f5360a919eca4f2cf08bf7662d60eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed03cc9a614f97d24ed9f65323a13900"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activity_8h.html#aed03cc9a614f97d24ed9f65323a13900">tgui_activity_intercept_volume_buttons</a> (<a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a> c, <a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a> a, bool intercept_up, bool intercept_down)</td></tr>
+<tr class="memdesc:aed03cc9a614f97d24ed9f65323a13900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the user pressing the volume buttons should change the volume or send an event instead.  <a href="activity_8h.html#aed03cc9a614f97d24ed9f65323a13900">More...</a><br /></td></tr>
+<tr class="separator:aed03cc9a614f97d24ed9f65323a13900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a47a61d036bec7e8f2236b7af2a512a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activity_8h.html#a9a47a61d036bec7e8f2236b7af2a512a">tgui_activity_configure_insets</a> (<a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a> c, <a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a> a, <a class="el" href="types_8h.html#a34b1e170727d6525ec1a050bd9d72ebf">tgui_inset</a> visible, <a class="el" href="types_8h.html#a8cf81cb345b0410e645b630b63eb074a">tgui_inset_behaviour</a> behaviour)</td></tr>
+<tr class="separator:a9a47a61d036bec7e8f2236b7af2a512a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43ce739188a99890fcc4e4e80958716d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activity_8h.html#a43ce739188a99890fcc4e4e80958716d">tgui_activity_set_secure</a> (<a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a> c, <a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a> a, bool secure)</td></tr>
 <tr class="memdesc:a43ce739188a99890fcc4e4e80958716d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the secure flag for the Activity. Disables screenshots and shows a blank Activity in the task switcher if enabled.  <a href="activity_8h.html#a43ce739188a99890fcc4e4e80958716d">More...</a><br /></td></tr>
 <tr class="separator:a43ce739188a99890fcc4e4e80958716d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -955,6 +960,124 @@ Errors</h3>
 
 </div>
 </div>
+<a id="aed03cc9a614f97d24ed9f65323a13900" name="aed03cc9a614f97d24ed9f65323a13900"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed03cc9a614f97d24ed9f65323a13900">&#9670;&#160;</a></span>tgui_activity_intercept_volume_buttons()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a> tgui_activity_intercept_volume_buttons </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>intercept_up</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>intercept_down</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets whether the user pressing the volume buttons should change the volume or send an event instead. </p>
+<h3><a class="anchor" id="autotoc_md14"></a>
+Errors</h3>
+<ul>
+<li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>
+<li>TGUI_ERR_NOMEM: Not enough memory.</li>
+<li>TGUI_ERR_EXCEPTION: Generic exception triggered.</li>
+<li>TGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>The connection to use. </td></tr>
+    <tr><td class="paramname">a</td><td>The Activity. </td></tr>
+    <tr><td class="paramname">intercept_up</td><td>Whether to intercept the volume up press. </td></tr>
+    <tr><td class="paramname">intercept_down</td><td>Whether to intercept the volume down press. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The error code. </dd></dl>
+
+</div>
+</div>
+<a id="a9a47a61d036bec7e8f2236b7af2a512a" name="a9a47a61d036bec7e8f2236b7af2a512a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a47a61d036bec7e8f2236b7af2a512a">&#9670;&#160;</a></span>tgui_activity_configure_insets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a> tgui_activity_configure_insets </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a34b1e170727d6525ec1a050bd9d72ebf">tgui_inset</a>&#160;</td>
+          <td class="paramname"><em>visible</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a8cf81cb345b0410e645b630b63eb074a">tgui_inset_behaviour</a>&#160;</td>
+          <td class="paramname"><em>behaviour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<h3><a class="anchor" id="autotoc_md15"></a>
+Errors</h3>
+<ul>
+<li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>
+<li>TGUI_ERR_NOMEM: Not enough memory.</li>
+<li>TGUI_ERR_EXCEPTION: Generic exception triggered.</li>
+<li>TGUI_ERR_ACTIVITY_DESTROYED: The Activity was already closed.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>The connection to use. </td></tr>
+    <tr><td class="paramname">a</td><td>The Activity. </td></tr>
+    <tr><td class="paramname">visible</td><td>The insets that should be visible. </td></tr>
+    <tr><td class="paramname">behaviour</td><td>How the insets will behave on user input. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The error code. </dd></dl>
+
+</div>
+</div>
 <a id="a43ce739188a99890fcc4e4e80958716d" name="a43ce739188a99890fcc4e4e80958716d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43ce739188a99890fcc4e4e80958716d">&#9670;&#160;</a></span>tgui_activity_set_secure()</h2>
 
@@ -988,7 +1111,7 @@ Errors</h3>
 </div><div class="memdoc">
 
 <p>Sets the secure flag for the Activity. Disables screenshots and shows a blank Activity in the task switcher if enabled. </p>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 Errors</h3>
 <ul>
 <li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>
@@ -1035,7 +1158,7 @@ Errors</h3>
 </div><div class="memdoc">
 
 <p>Brings the Task to the front (make it visible to the user as if they opened it). </p>
-<h3><a class="anchor" id="autotoc_md15"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 Errors</h3>
 <ul>
 <li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>
@@ -1080,7 +1203,7 @@ Errors</h3>
 </div><div class="memdoc">
 
 <p>Finishes the Task, closing all Activities in it. </p>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md18"></a>
 Errors</h3>
 <ul>
 <li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mod_0',['mod',['../structtgui__event.html#a834f1988aada2b94b81243ad49666ba0',1,'tgui_event']]],
-  ['msg_1',['msg',['../structtgui__event.html#a4ca4737cdebf36531a3714a786e111c6',1,'tgui_event']]]
+  ['language_0',['language',['../structtgui__activity__configuration.html#abd7aa37c2f025360590c6519f1d79235',1,'tgui_activity_configuration']]],
+  ['locale_1',['locale',['../structtgui__event.html#a427cb192d6f8336ff10d89126cf2a55d',1,'tgui_event']]],
+  ['longclick_2',['longClick',['../structtgui__event.html#ab9a96ec9f776872aaa6cd9b547357864',1,'tgui_event']]]
 ];

@@ -48,6 +48,15 @@ var structtgui__event =
     [ "code", "structtgui__event.html#ade4609d85f5d4146becd051d78c027ce", null ],
     [ "codePoint", "structtgui__event.html#a397f9afcb0fd488c55f1420e567ce5a6", null ],
     [ "key", "structtgui__event.html#ad7447d30af34299257ad35389f0c347d", null ],
-    [ "stacktrace", "structtgui__event.html#aa40b71a97d949dd18dfd301da2b87f68", null ],
+    [ "timestamp", "structtgui__event.html#ab786fc558eb675387244ac13aa44be26", null ],
+    [ "frame", "structtgui__event.html#a077ea0bd183a79c340d9b8fd1e9a33a3", null ],
+    [ "volume_up", "structtgui__event.html#a6b0ea114a35e33246ee369d8857c3d05", null ],
+    [ "released", "structtgui__event.html#a44382e93db83d53db00404cec78e58a0", null ],
+    [ "volume", "structtgui__event.html#a7d7eab894446b9088aa5334393ca3c46", null ],
+    [ "current_inset", "structtgui__event.html#a514657aebd582b47e67a03588731b156", null ],
+    [ "inset", "structtgui__event.html#af20311167056a7b0b65e67d4bec7db2d", null ],
+    [ "width", "structtgui__event.html#a47a17b76ddac3a3e972c451f58ccaeec", null ],
+    [ "height", "structtgui__event.html#abedc2504f8d870dbda9b1fd9a2a5fc9c", null ],
+    [ "surfaceChanged", "structtgui__event.html#ab8456476c215b54f2f172dd465e99b9b", null ],
     [ "_dummy", "structtgui__event.html#aa588d3a218c88ae3d48c94cc354423d7", null ]
 ];

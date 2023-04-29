@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['pip_0',['pip',['../structtgui__event.html#aaba68b899e5abfda648d2ff958fed1bf',1,'tgui_event::pip()'],['../structtgui__event.html#a34bac681f90026994caa79b0eb3f5f99',1,'tgui_event::pip()']]],
-  ['pointers_1',['pointers',['../structtgui__event.html#a427529be37be5516648508b579189ded',1,'tgui_event']]],
-  ['progress_2',['progress',['../structtgui__event.html#a0767b70079715f7c26671c4345434340',1,'tgui_event']]]
+  ['ongoing_0',['ongoing',['../structtgui__notification__create__info.html#a03066b25524396350d9bec28fe92d110',1,'tgui_notification_create_info']]],
+  ['orientation_1',['orientation',['../structtgui__activity__configuration.html#a1649c2f0bb8768d6e0da1c45b94bf4f6',1,'tgui_activity_configuration']]],
+  ['overlayscale_2',['overlayScale',['../structtgui__event.html#a5196f298c9f34e3b63344f58dc941b2f',1,'tgui_event']]]
 ];

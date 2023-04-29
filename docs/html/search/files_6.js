@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['views_2eh_0',['views.h',['../views_8h.html',1,'']]]
+  ['termuxgui_2eh_0',['termuxgui.h',['../termuxgui_8h.html',1,'']]],
+  ['types_2eh_1',['types.h',['../types_8h.html',1,'']]]
 ];

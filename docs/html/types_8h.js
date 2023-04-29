@@ -5,6 +5,7 @@ var types_8h =
     [ "tgui_view_size", "structtgui__view__size.html", "structtgui__view__size" ],
     [ "tgui_buffer", "structtgui__buffer.html", "structtgui__buffer" ],
     [ "tgui_touch_pointer", "structtgui__touch__pointer.html", "structtgui__touch__pointer" ],
+    [ "tgui_hardware_buffer", "structtgui__hardware__buffer.html", "structtgui__hardware__buffer" ],
     [ "tgui_event", "structtgui__event.html", "structtgui__event" ],
     [ "tgui_connection", "types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491", null ],
     [ "tgui_activity", "types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb", null ],
@@ -22,6 +23,7 @@ var types_8h =
       [ "TGUI_ERR_NOMEM", "types_8h.html#ad348bc71cd91c7637fedeb7073d6d3dba7f1c0f6a939b5b4aa2145744f364cd48", null ],
       [ "TGUI_ERR_EXCEPTION", "types_8h.html#ad348bc71cd91c7637fedeb7073d6d3dbaf993d83b414b2fb309aed36fea614571", null ],
       [ "TGUI_ERR_VIEW_INVALID", "types_8h.html#ad348bc71cd91c7637fedeb7073d6d3dba27cb4d1ba5fff242531d5aacf0625ed0", null ],
+      [ "TGUI_ERR_API_LEVEL", "types_8h.html#ad348bc71cd91c7637fedeb7073d6d3dbae53eef1b6370975c5f2e431ff2d837e6", null ],
       [ "TGUI_ERR_MAX", "types_8h.html#ad348bc71cd91c7637fedeb7073d6d3dba76adb59053c2dda452c1f14cd37bbf38", null ],
       [ "TGUI_ERR_MIN", "types_8h.html#ad348bc71cd91c7637fedeb7073d6d3dbaa165ad13a7fd77b3a6f5c8d0db7266e6", null ]
     ] ],
@@ -106,7 +108,10 @@ var types_8h =
       [ "TGUI_EVENT_NOTIFICATION_ACTION", "types_8h.html#a047827723e0c649b8ef4e029607651eea429396a6bf0097a59e03de25fe55d15e", null ],
       [ "TGUI_EVENT_OVERLAY_SCALE", "types_8h.html#a047827723e0c649b8ef4e029607651eea8042e826af6a4f7df21fbc4be9ae22ef", null ],
       [ "TGUI_EVENT_KEY", "types_8h.html#a047827723e0c649b8ef4e029607651eea4c6e934ebe6f1fd28de1bbb1f06f2194", null ],
-      [ "TGUI_EVENT_DEBUG_EXCEPTION", "types_8h.html#a047827723e0c649b8ef4e029607651eeacdff9bd655cfb99916085148c9c3597e", null ],
+      [ "TGUI_EVENT_FRAME_COMPLETE", "types_8h.html#a047827723e0c649b8ef4e029607651eea873f5a674dd5da4d89f2b74aa89f674d", null ],
+      [ "TGUI_EVENT_VOLUME", "types_8h.html#a047827723e0c649b8ef4e029607651eea10e1d1a91a933b58288d34c4e02ae847", null ],
+      [ "TGUI_EVENT_INSET", "types_8h.html#a047827723e0c649b8ef4e029607651eeaf601a9336feaa2132096c4f9d4d2109e", null ],
+      [ "TGUI_EVENT_SURFACE_CHANGED", "types_8h.html#a047827723e0c649b8ef4e029607651eeab196e52abbc638638f9439e562e4c409", null ],
       [ "TGUI_EVENT_TYPE_MAX", "types_8h.html#a047827723e0c649b8ef4e029607651eeafc137bcb56cfbb0c2c8075b489e20738", null ]
     ] ],
     [ "tgui_key_modifier", "types_8h.html#a470aa0a3526e3c50c8899706d548d501", [
@@ -172,5 +177,30 @@ var types_8h =
       [ "TGUI_TOUCH_POINTER_UP", "types_8h.html#acf1196c516017e4ed7c6b8e33c57e5f4ac9a5ffeeba6af082207f27cbef9d8a75", null ],
       [ "TGUI_TOUCH_CANCEL", "types_8h.html#acf1196c516017e4ed7c6b8e33c57e5f4a8886a19498f1d79a3ee10658af884e05", null ],
       [ "TGUI_TOUCH_MOVE", "types_8h.html#acf1196c516017e4ed7c6b8e33c57e5f4a4d8b3bce2b92da9d7bc4513f02cc2947", null ]
+    ] ],
+    [ "tgui_inset", "types_8h.html#a34b1e170727d6525ec1a050bd9d72ebf", [
+      [ "TGUI_INSET_NONE", "types_8h.html#a34b1e170727d6525ec1a050bd9d72ebfa785bb6c9829767389e8faa3107a6fd06", null ],
+      [ "TGUI_INSET_NAVIGATION_BAR", "types_8h.html#a34b1e170727d6525ec1a050bd9d72ebfa20ce002f960c41afbdba8c2f4db804b1", null ],
+      [ "TGUI_INSET_STATUS_BAR", "types_8h.html#a34b1e170727d6525ec1a050bd9d72ebfa493e363529abb1c2b7d23910f0614c62", null ],
+      [ "TGUI_INSET_BOTH", "types_8h.html#a34b1e170727d6525ec1a050bd9d72ebfa876bd5946316c916d6f6a5807307393f", null ]
+    ] ],
+    [ "tgui_inset_behaviour", "types_8h.html#a8cf81cb345b0410e645b630b63eb074a", [
+      [ "TGUI_INSET_BEHAVIOUR_DEFAULT", "types_8h.html#a8cf81cb345b0410e645b630b63eb074aa51308a3f98c7d02a4ed5a49e6d56df5f", null ],
+      [ "TGUI_INSET_BEHAVIOUR_TRANSIENT", "types_8h.html#a8cf81cb345b0410e645b630b63eb074aa331f05ab6bf02a7107a39f9eabc0e2cb", null ]
+    ] ],
+    [ "tgui_hardware_buffer_format", "types_8h.html#aaef9cf18bf076833ed2aea52c43f2c44", [
+      [ "TGUI_HARDWARE_BUFFER_FORMAT_RGBA8888", "types_8h.html#aaef9cf18bf076833ed2aea52c43f2c44a76d51a825d40dd6d67b150bbe6137c9d", null ],
+      [ "TGUI_HARDWARE_BUFFER_FORMAT_RGBX8888", "types_8h.html#aaef9cf18bf076833ed2aea52c43f2c44acd80c7e68190a84f43b2f761374f4268", null ],
+      [ "TGUI_HARDWARE_BUFFER_FORMAT_RGB888", "types_8h.html#aaef9cf18bf076833ed2aea52c43f2c44a88bdf740de73ce37a44dc745a1339c16", null ],
+      [ "TGUI_HARDWARE_BUFFER_FORMAT_RGB565", "types_8h.html#aaef9cf18bf076833ed2aea52c43f2c44a085e1927bac5df512989d0768e55764b", null ]
+    ] ],
+    [ "tgui_hardware_buffer_cpu_frequency", "types_8h.html#a4b1106d8be670d5469fd026d8d03d313", [
+      [ "TGUI_HARDWARE_BUFFER_CPU_NEVER", "types_8h.html#a4b1106d8be670d5469fd026d8d03d313abedc8ccff04dea74d8e6f5d417e00622", null ],
+      [ "TGUI_HARDWARE_BUFFER_CPU_RARELY", "types_8h.html#a4b1106d8be670d5469fd026d8d03d313a092cc7d28bbcca19170332481ec206ab", null ],
+      [ "TGUI_HARDWARE_BUFFER_CPU_OFTEN", "types_8h.html#a4b1106d8be670d5469fd026d8d03d313adbfd5c4f7a46f9a59ca39e239fee1007", null ]
+    ] ],
+    [ "tgui_surface_view_dimension_mismatch", "types_8h.html#a5ee63fa9600ca7eb0e0c6adc43a809f0", [
+      [ "TGUI_MISMATCH_STICK_TOPLEFT", "types_8h.html#a5ee63fa9600ca7eb0e0c6adc43a809f0a24a82b231b1b222c22975b35d27eaf33", null ],
+      [ "TGUI_MISMATCH_CENTER_AXIS", "types_8h.html#a5ee63fa9600ca7eb0e0c6adc43a809f0a25fa6a64cf0ef7197921f86a44e679ce", null ]
     ] ]
 ];

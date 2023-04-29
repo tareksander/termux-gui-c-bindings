@@ -19,5 +19,6 @@ var create_8h =
     [ "tgui_create_progress_bar", "create_8h.html#aa24e67acd8cfc537da1b1f101e719638", null ],
     [ "tgui_create_tab_layout", "create_8h.html#a50a3101765b14a384ff13912c6ad76f5", null ],
     [ "tgui_create_grid_layout", "create_8h.html#af752f012841ceceae790aef32ed2a1b8", null ],
-    [ "tgui_create_web_view", "create_8h.html#adc33a8370906617bc98a72076677c4e2", null ]
+    [ "tgui_create_web_view", "create_8h.html#adc33a8370906617bc98a72076677c4e2", null ],
+    [ "tgui_create_surface_view", "create_8h.html#abbd9c9a1e3322f0cf6271dd1e46a1cc6", null ]
 ];

@@ -390,10 +390,58 @@ union {</td></tr>
 <tr class="memitem:a4cad22b14dce79c2a0b81724b5510077"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<b>key</b></td></tr>
 <tr class="memdesc:a4cad22b14dce79c2a0b81724b5510077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TGUI_EVENT_KEY</code>. <br /></td></tr>
 <tr class="separator:a4cad22b14dce79c2a0b81724b5510077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f92051e6ac711a0722a18fbd5d9e61f"><td class="memItemLeft" >
-&#160;&#160;&#160;char *&#160;&#160;&#160;<b>stacktrace</b></td></tr>
-<tr class="memdesc:a6f92051e6ac711a0722a18fbd5d9e61f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TGUI_EVENT_DEBUG_EXCEPTION</code>. <br /></td></tr>
-<tr class="separator:a6f92051e6ac711a0722a18fbd5d9e61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8300ca5d1679b66d99b3780fd4dbef7b"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a42f1389203b23229a5e61769e695463d"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<b>id</b></td></tr>
+<tr class="memdesc:a42f1389203b23229a5e61769e695463d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the view. <br /></td></tr>
+<tr class="separator:a42f1389203b23229a5e61769e695463d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73b631ea91bcfe92aa1d70f921a0d053"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;uint64_t&#160;&#160;&#160;<b>timestamp</b></td></tr>
+<tr class="memdesc:a73b631ea91bcfe92aa1d70f921a0d053"><td class="mdescLeft">&#160;</td><td class="mdescRight">The timestamp of the frame. <br /></td></tr>
+<tr class="separator:a73b631ea91bcfe92aa1d70f921a0d053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8300ca5d1679b66d99b3780fd4dbef7b"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<b>frame</b></td></tr>
+<tr class="memdesc:a8300ca5d1679b66d99b3780fd4dbef7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TGUI_EVENT_FRAME_COMPLETE</code>. <br /></td></tr>
+<tr class="separator:a8300ca5d1679b66d99b3780fd4dbef7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a818418370efbb52bad895175ca5849d5"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a25dabe0a4c9eb4b0bbdb33e61ebf3cc2"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;bool&#160;&#160;&#160;<b>volume_up</b></td></tr>
+<tr class="memdesc:a25dabe0a4c9eb4b0bbdb33e61ebf3cc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the event is for the up or down volume button. <br /></td></tr>
+<tr class="separator:a25dabe0a4c9eb4b0bbdb33e61ebf3cc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a7e59dfdb26ee9591520d031e0fa252"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;bool&#160;&#160;&#160;<b>released</b></td></tr>
+<tr class="memdesc:a6a7e59dfdb26ee9591520d031e0fa252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the button is pressed or released. Multiple repeating events come for a long press. <br /></td></tr>
+<tr class="separator:a6a7e59dfdb26ee9591520d031e0fa252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a818418370efbb52bad895175ca5849d5"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<b>volume</b></td></tr>
+<tr class="memdesc:a818418370efbb52bad895175ca5849d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TGUI_EVENT_VOLUME</code>. <br /></td></tr>
+<tr class="separator:a818418370efbb52bad895175ca5849d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ed48e21de596dbd7506ee3e5d3db124"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a8dcdfa650f42663f272d92d81f7868be"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="types_8h.html#a34b1e170727d6525ec1a050bd9d72ebf">tgui_inset</a>&#160;&#160;&#160;<b>current_inset</b></td></tr>
+<tr class="memdesc:a8dcdfa650f42663f272d92d81f7868be"><td class="mdescLeft">&#160;</td><td class="mdescRight">The system insets (bars) that are now showing. <br /></td></tr>
+<tr class="separator:a8dcdfa650f42663f272d92d81f7868be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ed48e21de596dbd7506ee3e5d3db124"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<b>inset</b></td></tr>
+<tr class="memdesc:a4ed48e21de596dbd7506ee3e5d3db124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TGUI_EVENT_INSET</code>. <br /></td></tr>
+<tr class="separator:a4ed48e21de596dbd7506ee3e5d3db124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e07748a27290b3999de94558df10c4"><td class="memItemLeft" >
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a293200544eee68b599a93ebd638f1b5b"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;int&#160;&#160;&#160;<b>id</b></td></tr>
+<tr class="memdesc:a293200544eee68b599a93ebd638f1b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The id of the view. <br /></td></tr>
+<tr class="separator:a293200544eee68b599a93ebd638f1b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1f1747acdbf6d61221fa17da978b057"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<b>width</b></td></tr>
+<tr class="memdesc:ab1f1747acdbf6d61221fa17da978b057"><td class="mdescLeft">&#160;</td><td class="mdescRight">The new width of the Surface. <br /></td></tr>
+<tr class="separator:ab1f1747acdbf6d61221fa17da978b057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12ba6f245ee8118895b51506d435af94"><td class="memItemLeft" >
+&#160;&#160;&#160;&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<b>height</b></td></tr>
+<tr class="memdesc:a12ba6f245ee8118895b51506d435af94"><td class="mdescLeft">&#160;</td><td class="mdescRight">The new height of the Surface. <br /></td></tr>
+<tr class="separator:a12ba6f245ee8118895b51506d435af94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e07748a27290b3999de94558df10c4"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<b>surfaceChanged</b></td></tr>
+<tr class="memdesc:a80e07748a27290b3999de94558df10c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid for <code>TGUI_EVENT_SURFACE_CHANGED</code>. <br /></td></tr>
+<tr class="separator:a80e07748a27290b3999de94558df10c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace63c89f5c9121e889a9498b563665f2"><td class="memItemLeft" >
 &#160;&#160;&#160;double&#160;&#160;&#160;<b>_dummy</b> [20]</td></tr>
 <tr class="memdesc:ace63c89f5c9121e889a9498b563665f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">For future ABI compatibility, to force double alignment and bigger size. <br /></td></tr>
@@ -417,6 +465,7 @@ union {</td></tr>
 </div><div class="memdoc">
 
 <p>The id of the View. </p>
+<p >The id of the view.</p>
 <p >The id of the notification.</p>
 <p >The id of the WebView.</p>
 <p >The id of the Spinner or TabLayout.</p>

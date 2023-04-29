@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['num_5fpointers_0',['num_pointers',['../structtgui__event.html#a7e2725d8d2407097991344b37d0de813',1,'tgui_event']]]
+  ['mod_0',['mod',['../structtgui__event.html#a834f1988aada2b94b81243ad49666ba0',1,'tgui_event']]],
+  ['msg_1',['msg',['../structtgui__event.html#a4ca4737cdebf36531a3714a786e111c6',1,'tgui_event']]]
 ];

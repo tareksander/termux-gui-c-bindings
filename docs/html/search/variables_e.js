@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['refresh_0',['refresh',['../structtgui__event.html#a5d87631fde34220c40dfd0ecca587487',1,'tgui_event']]],
-  ['remoteclick_1',['remoteClick',['../structtgui__event.html#a3d0da07357060f27b4ee1fc5d6cb4d3d',1,'tgui_event']]],
-  ['rid_2',['rid',['../structtgui__event.html#ac1895c091c711b9e6720811dd10dfdb2',1,'tgui_event']]]
+  ['pip_0',['pip',['../structtgui__event.html#aaba68b899e5abfda648d2ff958fed1bf',1,'tgui_event::pip()'],['../structtgui__event.html#a34bac681f90026994caa79b0eb3f5f99',1,'tgui_event::pip()']]],
+  ['pointers_1',['pointers',['../structtgui__event.html#a427529be37be5516648508b579189ded',1,'tgui_event']]],
+  ['progress_2',['progress',['../structtgui__event.html#a0767b70079715f7c26671c4345434340',1,'tgui_event']]]
 ];
