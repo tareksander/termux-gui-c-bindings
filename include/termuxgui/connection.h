@@ -24,6 +24,7 @@ extern "C" {
  * @details
  * ### Errors
  *  - TGUI_ERR_SYSTEM: `am` executable not found.
+ *  - TGUI_ERR_CONNECTION_LOST: The timeout was exceeded.
  *  - TGUI_ERR_NOMEM: Not enough memory.
  *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
  * 

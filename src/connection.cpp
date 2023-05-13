@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <sys/wait.h>
 
 #include "types.hpp"
 
@@ -36,9 +37,78 @@ extern "C" {
 				close(null);
 				
 				execlp("termux-am", "termux-am", "start", "-n", "com.termux/.app.TermuxActivity", (char*) NULL);
-				execlp("am", "am", "start", "-n", "com.termux/.app.TermuxActivity", (char*) NULL);
 				std::perror("execlp");
 				exit(1);
+			}
+			// wait up to 5 seconds for am
+			int status;
+			bool expired = true;
+			bool started = false;
+			for (int i = 0; i < 100; i++) {
+				int pid = waitpid(fpid, &status, WNOHANG);
+				if (pid == -1 && errno != EINTR) {
+					return TGUI_ERR_SYSTEM;
+				}
+				if (pid == fpid) {
+					if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
+						started = true;
+					}
+					expired = false;
+					break;
+				}
+				usleep(1000 * 50);
+			}
+			if (expired) {
+				return TGUI_ERR_CONNECTION_LOST;
+			}
+			if (! started) {
+				int fpid = fork();
+				if (fpid == -1) {
+					return TGUI_ERR_SYSTEM;
+				}
+				if (fpid == 0) {
+					// redirect stdin and stdout to /dev/null
+					int null = open("/dev/null", O_RDWR);
+					if (null == -1) {
+						std::perror("open /dev/null");
+						exit(1);
+					}
+					if (dup2(null, 0) == -1) {
+						std::perror("dup2 0");
+						exit(1);
+					}
+					if (dup2(null, 1) == -1) {
+						std::perror("dup2 1");
+						exit(1);
+					}
+					
+					close(null);
+					
+					execlp("am", "am", "start", "-n", "com.termux/.app.TermuxActivity", (char*) NULL);
+					std::perror("execlp");
+					exit(1);
+				}
+				// wait up to 5 seconds for am
+				int status;
+				bool expired = true;
+				bool started = false;
+				for (int i = 0; i < 100; i++) {
+					int pid = waitpid(fpid, &status, WNOHANG);
+					if (pid == -1 && errno != EINTR) {
+						return TGUI_ERR_SYSTEM;
+					}
+					if (pid == fpid) {
+						if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
+							started = true;
+						}
+						expired = false;
+						break;
+					}
+					usleep(1000 * 50);
+				}
+				if (expired || ! started) {
+					return TGUI_ERR_CONNECTION_LOST;
+				}
 			}
 			return TGUI_ERR_OK;
 		});
