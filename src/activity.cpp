@@ -267,6 +267,13 @@ extern "C" {
 		});
 	}
 	
+	tgui_err tgui_activity_finish(tgui_connection c, tgui_activity a) {
+		METHOD_PRE(FinishActivity)
+		r.set_aid(a);
+		*m.mutable_finishactivity() = r;
+		METHOD_POST(FinishActivity)
+	}
+	
 	tgui_err tgui_task_to_front(tgui_connection c, tgui_task t) {
 		return exceptionToError<tgui_err>([&]() {
 			proto0::Method m;

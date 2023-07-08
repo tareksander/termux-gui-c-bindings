@@ -337,6 +337,24 @@ tgui_err tgui_activity_set_secure(tgui_connection c, tgui_activity a, bool secur
 
 
 
+/**
+ * @brief Finishes the Activity.
+ * 
+ * @details
+ * ### Errors
+ *  - TGUI_ERR_MESSAGE: Protobuf I/O error.
+ *  - TGUI_ERR_NOMEM: Not enough memory.
+ *  - TGUI_ERR_EXCEPTION: Generic exception triggered.
+ * 
+ * @param c The connection to use.
+ * @param a The Activity.
+ * @return The error code.
+ */
+tgui_err tgui_activity_finish(tgui_connection c, tgui_activity a);
+
+
+
+
 
 /**
  * @brief Brings the Task to the front (make it visible to the user as if they opened it).
