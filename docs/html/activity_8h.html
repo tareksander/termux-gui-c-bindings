@@ -153,6 +153,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a43ce739188a99890fcc4e4e80958716d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activity_8h.html#a43ce739188a99890fcc4e4e80958716d">tgui_activity_set_secure</a> (<a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a> c, <a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a> a, bool secure)</td></tr>
 <tr class="memdesc:a43ce739188a99890fcc4e4e80958716d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the secure flag for the Activity. Disables screenshots and shows a blank Activity in the task switcher if enabled.  <a href="activity_8h.html#a43ce739188a99890fcc4e4e80958716d">More...</a><br /></td></tr>
 <tr class="separator:a43ce739188a99890fcc4e4e80958716d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94bddf11a1d35015d14c03680cdedd67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activity_8h.html#a94bddf11a1d35015d14c03680cdedd67">tgui_activity_finish</a> (<a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a> c, <a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a> a)</td></tr>
+<tr class="memdesc:a94bddf11a1d35015d14c03680cdedd67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finishes the Activity.  <a href="activity_8h.html#a94bddf11a1d35015d14c03680cdedd67">More...</a><br /></td></tr>
+<tr class="separator:a94bddf11a1d35015d14c03680cdedd67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af863d0bab94925159a29a7c35504ea33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activity_8h.html#af863d0bab94925159a29a7c35504ea33">tgui_task_to_front</a> (<a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a> c, <a class="el" href="types_8h.html#a121c678b5272e82c9fd4b13a2def2d8a">tgui_task</a> t)</td></tr>
 <tr class="memdesc:af863d0bab94925159a29a7c35504ea33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Brings the Task to the front (make it visible to the user as if they opened it).  <a href="activity_8h.html#af863d0bab94925159a29a7c35504ea33">More...</a><br /></td></tr>
 <tr class="separator:af863d0bab94925159a29a7c35504ea33"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1131,6 +1134,51 @@ Errors</h3>
 
 </div>
 </div>
+<a id="a94bddf11a1d35015d14c03680cdedd67" name="a94bddf11a1d35015d14c03680cdedd67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94bddf11a1d35015d14c03680cdedd67">&#9670;&#160;</a></span>tgui_activity_finish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ad348bc71cd91c7637fedeb7073d6d3db">tgui_err</a> tgui_activity_finish </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a06c0b66dbca650ca4849c6f5b7eef491">tgui_connection</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a4660c32ada8b0eaa8329a2d0b2165cfb">tgui_activity</a>&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finishes the Activity. </p>
+<h3><a class="anchor" id="autotoc_md17"></a>
+Errors</h3>
+<ul>
+<li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>
+<li>TGUI_ERR_NOMEM: Not enough memory.</li>
+<li>TGUI_ERR_EXCEPTION: Generic exception triggered.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>The connection to use. </td></tr>
+    <tr><td class="paramname">a</td><td>The Activity. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The error code. </dd></dl>
+
+</div>
+</div>
 <a id="af863d0bab94925159a29a7c35504ea33" name="af863d0bab94925159a29a7c35504ea33"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af863d0bab94925159a29a7c35504ea33">&#9670;&#160;</a></span>tgui_task_to_front()</h2>
 
@@ -1158,7 +1206,7 @@ Errors</h3>
 </div><div class="memdoc">
 
 <p>Brings the Task to the front (make it visible to the user as if they opened it). </p>
-<h3><a class="anchor" id="autotoc_md17"></a>
+<h3><a class="anchor" id="autotoc_md18"></a>
 Errors</h3>
 <ul>
 <li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>
@@ -1203,7 +1251,7 @@ Errors</h3>
 </div><div class="memdoc">
 
 <p>Finishes the Task, closing all Activities in it. </p>
-<h3><a class="anchor" id="autotoc_md18"></a>
+<h3><a class="anchor" id="autotoc_md19"></a>
 Errors</h3>
 <ul>
 <li>TGUI_ERR_MESSAGE: Protobuf I/O error.</li>

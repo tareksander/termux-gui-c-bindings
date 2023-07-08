@@ -17,6 +17,7 @@ var activity_8h =
     [ "tgui_activity_intercept_volume_buttons", "activity_8h.html#aed03cc9a614f97d24ed9f65323a13900", null ],
     [ "tgui_activity_configure_insets", "activity_8h.html#a9a47a61d036bec7e8f2236b7af2a512a", null ],
     [ "tgui_activity_set_secure", "activity_8h.html#a43ce739188a99890fcc4e4e80958716d", null ],
+    [ "tgui_activity_finish", "activity_8h.html#a94bddf11a1d35015d14c03680cdedd67", null ],
     [ "tgui_task_to_front", "activity_8h.html#af863d0bab94925159a29a7c35504ea33", null ],
     [ "tgui_task_finish", "activity_8h.html#aefd40f4e1ca3db6a02b0bd1a72a730a2", null ]
 ];
