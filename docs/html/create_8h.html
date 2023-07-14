@@ -234,6 +234,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">horizontal</td><td>Whether the LinearLayout should place its children vertically or horizontally. </td></tr>
   </table>
   </dd>
@@ -301,6 +302,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -367,6 +369,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -451,6 +454,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>The initial text. NULL is the same as the empty string. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">selectableText</td><td>Whether the text is selectable by the user. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">clickableLinks</td><td>Whether links are clickable and open a browser. </td></tr>
@@ -536,9 +540,10 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>The initial text. NULL is the same as the empty string. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">type</td><td>The input type. This adjusts the soft keyboard to show relevant keys. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">noline</td><td>By default a line is shown under the text in an EditText. This parameter can be used to prevent that. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">noLine</td><td>By default a line is shown under the text in an EditText. This parameter can be used to prevent that. </td></tr>
   </table>
   </dd>
 </dl>
@@ -611,6 +616,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>The text. NULL is the same as the empty string. </td></tr>
   </table>
   </dd>
@@ -684,6 +690,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">keyboard</td><td>Whether the ImageView should get events from the keyboard. </td></tr>
   </table>
   </dd>
@@ -751,6 +758,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -835,8 +843,10 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">snapping</td><td>Whether the View snaps to the nearest child. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">noBar</td><td>Whether to show the scrollbar. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">fillViewport</td><td>Whether to stretch the content's height to fill the viewport. </td></tr>
   </table>
   </dd>
 </dl>
@@ -921,8 +931,10 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">snapping</td><td>Whether the View snaps to the nearest child. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">noBar</td><td>Whether to show the scrollbar. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">fillViewport</td><td>Whether to stretch the content's height to fill the viewport. </td></tr>
   </table>
   </dd>
 </dl>
@@ -989,6 +1001,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1067,6 +1080,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>The text. NULL is the same as the empty string. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">checked</td><td>Whether the View should be created checked or unchecked. </td></tr>
   </table>
@@ -1147,6 +1161,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>The text. NULL is the same as the empty string. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">checked</td><td>Whether the View should be created checked or unchecked. </td></tr>
   </table>
@@ -1221,6 +1236,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">checked</td><td>Whether the View should be created checked or unchecked. </td></tr>
   </table>
   </dd>
@@ -1294,6 +1310,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">checked</td><td>Whether the View should be created checked or unchecked. </td></tr>
   </table>
   </dd>
@@ -1361,6 +1378,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1427,6 +1445,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1493,6 +1512,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1571,8 +1591,9 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">rows</td><td>The number of rows. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">col</td><td>The number of columns. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">cols</td><td>The number of columns. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1639,6 +1660,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1711,6 +1733,7 @@ Errors</h3>
     <tr><td class="paramdir"></td><td class="paramname">a</td><td>The Activity the new View should be in. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">v</td><td>The new View. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">parent</td><td>The optional parent layout of the View. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vis</td><td>The initial visibility. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">keyboard</td><td>Whether the ImageView should get events from the keyboard. </td></tr>
   </table>
   </dd>

@@ -139,6 +139,13 @@ var types_8h =
       [ "TGUI_DIR_BOTTOM", "types_8h.html#ac5c1ca08003e880056876b1f9e5829a5a176780d3a5609ae3396929537928d9a0", null ],
       [ "TGUI_DIR_RIGHT", "types_8h.html#ac5c1ca08003e880056876b1f9e5829a5acdb3b47f1c5b8adbe742907b582d7e21", null ]
     ] ],
+    [ "tgui_importance", "types_8h.html#a9f6eabd5253d8b47f2a3406be967440b", [
+      [ "TGUI_IMP_DEFAULT", "types_8h.html#a9f6eabd5253d8b47f2a3406be967440baa21e073c9057adc12e9991e993685a93", null ],
+      [ "TGUI_IMP_MIN", "types_8h.html#a9f6eabd5253d8b47f2a3406be967440ba2722bab335d209fb1723b56e3ef721ec", null ],
+      [ "TGUI_IMP_LOW", "types_8h.html#a9f6eabd5253d8b47f2a3406be967440ba617a4e86427f235e49eaf962ee15cb90", null ],
+      [ "TGUI_IMP_HIGH", "types_8h.html#a9f6eabd5253d8b47f2a3406be967440ba33089c6756f63bd9ab4925691a104e7f", null ],
+      [ "TGUI_IMP_MAX", "types_8h.html#a9f6eabd5253d8b47f2a3406be967440ba216d6136acd77a16301c2758cbd3e0ae", null ]
+    ] ],
     [ "tgui_size_unit", "types_8h.html#aa66af4622fe4e613be4e91486a5db345", [
       [ "TGUI_UNIT_DP", "types_8h.html#aa66af4622fe4e613be4e91486a5db345a249411564af52eac92db3cd9e7a3fcb8", null ],
       [ "TGUI_UNIT_SP", "types_8h.html#aa66af4622fe4e613be4e91486a5db345adb961abb8c43f9b6b927ce450d373d0a", null ],
