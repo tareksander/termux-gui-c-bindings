@@ -198,9 +198,7 @@ tgui_err tgui_poll_event(tgui_connection c, tgui_event* event, bool* available);
  * Some events fill the union with pointers to dynamic memory, which have to be freed.
  * 
  * 
- * @param c The connection to use.
  * @param event The event to free.
- * @return The error code.
  */
 void tgui_event_destroy(tgui_event* event);
 

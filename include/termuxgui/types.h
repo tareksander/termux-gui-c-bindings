@@ -383,11 +383,20 @@ typedef enum {
 } tgui_direction;
 
 
+/**
+ * @brief The importance of a notification.
+ * 
+ */
 typedef enum {
+	/// @brief Use the default importance.
 	TGUI_IMP_DEFAULT = 0,
+	/// @brief Minimal importance, silent notification.
 	TGUI_IMP_MIN = 1,
+	/// @brief Low importance.
 	TGUI_IMP_LOW = 2,
+	/// @brief High importance.
 	TGUI_IMP_HIGH = 3,
+	/// @brief Maximum importance.
 	TGUI_IMP_MAX = 4,
 } tgui_importance;
 

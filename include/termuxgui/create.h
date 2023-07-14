@@ -31,6 +31,7 @@ extern "C" {
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param horizontal Whether the LinearLayout should place its children vertically or horizontally.
  * @return tgui_err The error code. 
  */
@@ -51,6 +52,7 @@ tgui_err tgui_create_linear_layout(tgui_connection c, tgui_activity a, tgui_view
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_frame_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -70,6 +72,7 @@ tgui_err tgui_create_frame_layout(tgui_connection c, tgui_activity a, tgui_view*
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_swipe_refresh_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -89,6 +92,7 @@ tgui_err tgui_create_swipe_refresh_layout(tgui_connection c, tgui_activity a, tg
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param[in] text The initial text. NULL is the same as the empty string.
  * @param selectableText Whether the text is selectable by the user.
  * @param clickableLinks Whether links are clickable and open a browser.
@@ -111,9 +115,10 @@ tgui_err tgui_create_text_view(tgui_connection c, tgui_activity a, tgui_view* v,
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param[in] text The initial text. NULL is the same as the empty string.
  * @param type The input type. This adjusts the soft keyboard to show relevant keys.
- * @param noline By default a line is shown under the text in an EditText. This parameter can be used to prevent that.
+ * @param noLine By default a line is shown under the text in an EditText. This parameter can be used to prevent that.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_edit_text(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, const char* text, tgui_edit_text_type type, bool noLine);
@@ -133,6 +138,7 @@ tgui_err tgui_create_edit_text(tgui_connection c, tgui_activity a, tgui_view* v,
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param[in] text The text. NULL is the same as the empty string.
  * @return tgui_err The error code. 
  */
@@ -153,6 +159,7 @@ tgui_err tgui_create_button(tgui_connection c, tgui_activity a, tgui_view* v, co
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param keyboard Whether the ImageView should get events from the keyboard.
  * @return tgui_err The error code. 
  */
@@ -173,6 +180,7 @@ tgui_err tgui_create_image_view(tgui_connection c, tgui_activity a, tgui_view* v
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_space(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -192,8 +200,10 @@ tgui_err tgui_create_space(tgui_connection c, tgui_activity a, tgui_view* v, con
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param snapping Whether the View snaps to the nearest child.
  * @param noBar Whether to show the scrollbar.
+ * @param fillViewport Whether to stretch the content's height to fill the viewport.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_nested_scroll_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool snapping, bool noBar, bool fillViewport);
@@ -213,8 +223,10 @@ tgui_err tgui_create_nested_scroll_view(tgui_connection c, tgui_activity a, tgui
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param snapping Whether the View snaps to the nearest child.
  * @param noBar Whether to show the scrollbar.
+ * @param fillViewport Whether to stretch the content's height to fill the viewport.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_horizontal_scroll_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, bool snapping, bool noBar, bool fillViewport);
@@ -234,6 +246,7 @@ tgui_err tgui_create_horizontal_scroll_view(tgui_connection c, tgui_activity a, 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_radio_group(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -253,6 +266,7 @@ tgui_err tgui_create_radio_group(tgui_connection c, tgui_activity a, tgui_view* 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param[in] text The text. NULL is the same as the empty string.
  * @param checked Whether the View should be created checked or unchecked.
  * @return tgui_err The error code. 
@@ -274,6 +288,7 @@ tgui_err tgui_create_radio_button(tgui_connection c, tgui_activity a, tgui_view*
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param[in] text The text. NULL is the same as the empty string.
  * @param checked Whether the View should be created checked or unchecked.
  * @return tgui_err The error code. 
@@ -295,6 +310,7 @@ tgui_err tgui_create_checkbox(tgui_connection c, tgui_activity a, tgui_view* v, 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param checked Whether the View should be created checked or unchecked.
  * @return tgui_err The error code. 
  */
@@ -315,6 +331,7 @@ tgui_err tgui_create_toggle_button(tgui_connection c, tgui_activity a, tgui_view
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param checked Whether the View should be created checked or unchecked.
  * @return tgui_err The error code. 
  */
@@ -335,6 +352,7 @@ tgui_err tgui_create_switch(tgui_connection c, tgui_activity a, tgui_view* v, co
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_spinner(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -354,6 +372,7 @@ tgui_err tgui_create_spinner(tgui_connection c, tgui_activity a, tgui_view* v, c
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_progress_bar(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -373,6 +392,7 @@ tgui_err tgui_create_progress_bar(tgui_connection c, tgui_activity a, tgui_view*
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_tab_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -392,8 +412,9 @@ tgui_err tgui_create_tab_layout(tgui_connection c, tgui_activity a, tgui_view* v
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param rows The number of rows.
- * @param col The number of columns.
+ * @param cols The number of columns.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_grid_layout(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis, uint32_t rows, uint32_t cols);
@@ -413,6 +434,7 @@ tgui_err tgui_create_grid_layout(tgui_connection c, tgui_activity a, tgui_view* 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_create_web_view(tgui_connection c, tgui_activity a, tgui_view* v, const tgui_view* parent, tgui_view_visibility vis);
@@ -431,6 +453,7 @@ tgui_err tgui_create_web_view(tgui_connection c, tgui_activity a, tgui_view* v, 
  * @param a The Activity the new View should be in.
  * @param[out] v The new View.
  * @param parent The optional parent layout of the View.
+ * @param vis The initial visibility.
  * @param keyboard Whether the ImageView should get events from the keyboard.
  * @return tgui_err The error code. 
  */

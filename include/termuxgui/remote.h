@@ -60,7 +60,7 @@ tgui_err tgui_remote_layout_destroy(tgui_connection c, tgui_remote_layout layout
  * @param c The connection to use.
  * @param layout The remote layout to use.
  * @param[in] parent The optional parent View.
- * @param[out] id Will contain the remote view id if successful.
+ * @param[out] v Will contain the remote view id if successful.
  * @return The error code. 
  */
 tgui_err tgui_remote_create_frame_layout(tgui_connection c, tgui_remote_layout layout, const tgui_view* parent, tgui_view* v);
@@ -78,7 +78,7 @@ tgui_err tgui_remote_create_frame_layout(tgui_connection c, tgui_remote_layout l
  * @param c The connection to use.
  * @param layout The remote layout to use.
  * @param[in] parent The optional parent View.
- * @param[out] id Will contain the remote view id if successful.
+ * @param[out] v Will contain the remote view id if successful.
  * @param horizontal Whether the LinearLayout should place its children vertically or horizontally.
  * @return The error code. 
  */
@@ -97,7 +97,7 @@ tgui_err tgui_remote_create_linear_layout(tgui_connection c, tgui_remote_layout 
  * @param c The connection to use.
  * @param layout The remote layout to use.
  * @param[in] parent The optional parent View.
- * @param[out] id Will contain the remote view id if successful.
+ * @param[out] v Will contain the remote view id if successful.
  * @return The error code. 
  */
 tgui_err tgui_remote_create_text_view(tgui_connection c, tgui_remote_layout layout, const tgui_view* parent, tgui_view* v);
@@ -115,7 +115,7 @@ tgui_err tgui_remote_create_text_view(tgui_connection c, tgui_remote_layout layo
  * @param c The connection to use.
  * @param layout The remote layout to use.
  * @param[in] parent The optional parent View.
- * @param[out] id Will contain the remote view id if successful.
+ * @param[out] v Will contain the remote view id if successful.
  * @return The error code. 
  */
 tgui_err tgui_remote_create_button(tgui_connection c, tgui_remote_layout layout, const tgui_view* parent, tgui_view* v);
@@ -133,7 +133,7 @@ tgui_err tgui_remote_create_button(tgui_connection c, tgui_remote_layout layout,
  * @param c The connection to use.
  * @param layout The remote layout to use.
  * @param[in] parent The optional parent View.
- * @param[out] id Will contain the remote view id if successful.
+ * @param[out] v Will contain the remote view id if successful.
  * @return The error code. 
  */
 tgui_err tgui_remote_create_image_view(tgui_connection c, tgui_remote_layout layout, const tgui_view* parent, tgui_view* v);
@@ -151,7 +151,7 @@ tgui_err tgui_remote_create_image_view(tgui_connection c, tgui_remote_layout lay
  * @param c The connection to use.
  * @param layout The remote layout to use.
  * @param[in] parent The optional parent View.
- * @param[out] id Will contain the remote view id if successful.
+ * @param[out] v Will contain the remote view id if successful.
  * @return The error code. 
  */
 tgui_err tgui_remote_create_progress_bar(tgui_connection c, tgui_remote_layout layout, const tgui_view* parent, tgui_view* v);

@@ -74,7 +74,7 @@ tgui_err tgui_linear_params(tgui_connection c, tgui_activity a, tgui_view v, flo
  * @param a The Activity the View is in.
  * @param v The View.
  * @param row The row position.
- * @param col. The column position.
+ * @param col The column position.
  * @param row_size How many rows the View occupies.
  * @param col_size How many columns the View occupies.
  * @param row_align The alignment in the row.
@@ -610,6 +610,7 @@ tgui_err tgui_add_buffer(tgui_connection c, tgui_buffer* buffer);
  * 
  * 
  * @param c The connection to use.
+ * @param buffer The buffer to delete.
  * @return tgui_err The error code. 
  */
 tgui_err tgui_delete_buffer(tgui_connection c, tgui_buffer* buffer);

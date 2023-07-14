@@ -1,5 +1,16 @@
 #pragma once
 
+
+
+/**
+ * \mainpage Termux:GUI C/C++ Bindings
+ * 
+ * This is the documentation for the Termux:GUI C/C++ bindings.  
+ * 
+ * See [termuxgui.h](termuxgui_8h.html) for the C documentation<!-- and the [tgui namespace](namespacetgui.html) for the C++ documentation-->.
+ */
+
+
 /**
  * @file
  * @brief This is the C API of the library.<br>For an introduction in how the use the API, see [the Tutorial](https://github.com/tareksander/termux-gui-c-bindings/blob/main/TUTORIAL.md#c-tutorial).<br>
