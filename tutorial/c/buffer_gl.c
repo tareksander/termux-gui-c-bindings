@@ -326,7 +326,7 @@ int main() {
             if (e.type == TGUI_EVENT_CREATE) {
                 // Activity created, we can create the ImageView now
                 if (sv == -1) {
-                    if (tgui_create_surface_view(c, a, &sv, NULL, TGUI_VIS_VISIBLE, false) != 0) {
+                    if (tgui_create_surface_view(c, a, &sv, NULL, TGUI_VIS_VISIBLE, true) != 0) {
                         puts("error create SurfaceView\n");
                         exit(1);
                     }
@@ -334,6 +334,8 @@ int main() {
                         puts("error SurfaceView config\n");
                         exit(1);
                     }
+                    tgui_send_touch_event(c, a, sv, true);
+                    tgui_focus(c, a, sv, true);
                 }
                 paused = false;
             }
@@ -347,6 +349,12 @@ int main() {
             
             if (e.type == TGUI_EVENT_DESTROY) {
                 exit(0);
+            }
+            if (e.type == TGUI_EVENT_KEY) {
+                printf("key: %c\n", (char) e.key.codePoint);
+            }
+            if (e.type == TGUI_EVENT_TOUCH && e.touch.action == TGUI_TOUCH_MOVE) {
+                printf("move: x: %d, y: %d\n", e.touch.pointers[0][0].x, e.touch.pointers[0][0].y);
             }
             
             tgui_event_destroy(&e);
