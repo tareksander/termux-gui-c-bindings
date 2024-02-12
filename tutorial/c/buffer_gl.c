@@ -317,48 +317,54 @@ int main() {
     while (true) {
         tgui_event e;
         bool available;
-        if (tgui_poll_event(c, &e, &available) != 0) {
-            puts("error poll\n");
-            exit(1);
-        }
-        if (available) {
-            
-            if (e.type == TGUI_EVENT_CREATE) {
-                // Activity created, we can create the ImageView now
-                if (sv == -1) {
-                    if (tgui_create_surface_view(c, a, &sv, NULL, TGUI_VIS_VISIBLE, true) != 0) {
-                        puts("error create SurfaceView\n");
-                        exit(1);
+        do {
+            if (tgui_poll_event(c, &e, &available) != 0) {
+                puts("error poll\n");
+                exit(1);
+            }
+            if (available) {
+                
+                if (e.type == TGUI_EVENT_CREATE) {
+                    // Activity created, we can create the ImageView now
+                    if (sv == -1) {
+                        if (tgui_create_surface_view(c, a, &sv, NULL, TGUI_VIS_VISIBLE, true) != 0) {
+                            puts("error create SurfaceView\n");
+                            exit(1);
+                        }
+                        if (tgui_surface_view_config(c, a, sv, 0xffffffff, TGUI_MISMATCH_STICK_TOPLEFT, TGUI_MISMATCH_STICK_TOPLEFT, 30) != 0) {
+                            puts("error SurfaceView config\n");
+                            exit(1);
+                        }
+                        tgui_send_touch_event(c, a, sv, true);
+                        tgui_focus(c, a, sv, true);
                     }
-                    if (tgui_surface_view_config(c, a, sv, 0xffffffff, TGUI_MISMATCH_STICK_TOPLEFT, TGUI_MISMATCH_STICK_TOPLEFT, 30) != 0) {
-                        puts("error SurfaceView config\n");
-                        exit(1);
-                    }
-                    tgui_send_touch_event(c, a, sv, true);
+                    paused = false;
+                }
+                // pause and resume the animation on pause/resume
+                if (e.type == TGUI_EVENT_PAUSE) {
+                    paused = true;
+                }
+                if (e.type == TGUI_EVENT_RESUME) {
+                    paused = false;
+                }
+                
+                if (e.type == TGUI_EVENT_DESTROY) {
+                    exit(0);
+                }
+                if (e.type == TGUI_EVENT_KEY) {
+                    printf("key: %c\n", (char) e.key.codePoint);
+                }
+                if (e.type == TGUI_EVENT_TOUCH && e.touch.action == TGUI_TOUCH_DOWN) {
+                    puts("touch down\n");
                     tgui_focus(c, a, sv, true);
                 }
-                paused = false;
+                if (e.type == TGUI_EVENT_TOUCH && e.touch.action == TGUI_TOUCH_MOVE) {
+                    printf("move: x: %d, y: %d\n", e.touch.pointers[0][0].x, e.touch.pointers[0][0].y);
+                }
+                
+                tgui_event_destroy(&e);
             }
-            // pause and resume the animation on pause/resume
-            if (e.type == TGUI_EVENT_PAUSE) {
-                paused = true;
-            }
-            if (e.type == TGUI_EVENT_RESUME) {
-                paused = false;
-            }
-            
-            if (e.type == TGUI_EVENT_DESTROY) {
-                exit(0);
-            }
-            if (e.type == TGUI_EVENT_KEY) {
-                printf("key: %c\n", (char) e.key.codePoint);
-            }
-            if (e.type == TGUI_EVENT_TOUCH && e.touch.action == TGUI_TOUCH_MOVE) {
-                printf("move: x: %d, y: %d\n", e.touch.pointers[0][0].x, e.touch.pointers[0][0].y);
-            }
-            
-            tgui_event_destroy(&e);
-        }
+        } while (available);
         // if the SurfaceView is created and we aren't paused, render the animation
         if (sv != -1 && ! paused) {
             float x = -1.0f + ((float)progress)/50.0f;
@@ -401,7 +407,7 @@ int main() {
                 progress = 1;
             }
         }
-        usleep(30000);
+        usleep(15000);
     }
     
     // you should destroy all resources in GLES and EGL here, but the program exits directly after, so it doesn't matter
