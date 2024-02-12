@@ -239,11 +239,11 @@ namespace tgui::common {
 				std::perror("execlp");
 				exit(1);
 			}
-			// wait up to 5 seconds for am
+			// wait up to 15 seconds for am
 			int status;
 			bool expired = true;
 			bool started = false;
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 300; i++) {
 				int pid = waitpid(fpid, &status, WNOHANG);
 				if (pid == -1 && errno != EINTR) {
 					throw system_error(error_code(errno, system_category()));
