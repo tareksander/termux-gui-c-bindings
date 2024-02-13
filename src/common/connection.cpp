@@ -239,11 +239,11 @@ namespace tgui::common {
 				std::perror("execlp");
 				exit(1);
 			}
-			// wait up to 15 seconds for am
+			// wait up to 5 seconds for termux-am
 			int status;
 			bool expired = true;
 			bool started = false;
-			for (int i = 0; i < 300; i++) {
+			for (int i = 0; i < 100; i++) {
 				int pid = waitpid(fpid, &status, WNOHANG);
 				if (pid == -1 && errno != EINTR) {
 					throw system_error(error_code(errno, system_category()));
@@ -289,11 +289,11 @@ namespace tgui::common {
 					std::perror("execlp");
 					exit(1);
 				}
-				// wait up to 5 seconds for am
+				// wait up to 15 seconds for am
 				int status;
 				bool expired = true;
 				bool started = false;
-				for (int i = 0; i < 100; i++) {
+				for (int i = 0; i < 300; i++) {
 					int pid = waitpid(fpid, &status, WNOHANG);
 					if (pid == -1 && errno != EINTR) {
 						throw system_error(error_code(errno, system_category()));
@@ -318,7 +318,7 @@ namespace tgui::common {
 			p.fd = mainfd;
 			p.events = POLLIN;
 			
-			if (poll(&p, 1, 2000) == -1) {
+			if (poll(&p, 1, 5000) == -1) {
 				throw system_error(error_code(errno, system_category()));
 			}
 			if (! (p.revents & POLLIN)) {
@@ -332,7 +332,7 @@ namespace tgui::common {
 			mainfd = tmp;
 			
 			p.fd = eventfd;
-			if (poll(&p, 1, 1000) == -1) {
+			if (poll(&p, 1, 2000) == -1) {
 				throw system_error(error_code(errno, system_category()));
 			}
 			if (! (p.revents & POLLIN)) {
