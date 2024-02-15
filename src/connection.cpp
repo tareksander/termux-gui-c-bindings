@@ -430,6 +430,8 @@ extern "C" {
 			event.key.code = e.code();
 			event.key.codePoint = e.codepoint();
 			event.key.mod = static_cast<tgui_key_modifier>(e.modifiers());
+			event.key.flags = e.flags();
+			event.key.down = e.action() == KeyAction::ACTION_DOWN;
 		} else if (ev.event_case() == Event::kFrameComplete) {
 			const SurfaceViewFrameCompleteEvent& e = ev.framecomplete();
 			event.type = TGUI_EVENT_FRAME_COMPLETE;

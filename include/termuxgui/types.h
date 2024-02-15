@@ -821,6 +821,10 @@ typedef struct {
 			uint32_t code;
 			/// The unicode code point.
 			uint32_t codePoint;
+			/// The [KeyEVent flags](https://developer.android.com/reference/android/view/KeyEvent#FLAG_CANCELED).
+			uint32_t flags;
+			/// Whether the button is pressed or released. Multiple repeating events come for a long press.
+			bool down;
 		} key;
 		/// Valid for `TGUI_EVENT_FRAME_COMPLETE`.
 		struct {
